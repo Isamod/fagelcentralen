@@ -923,3 +923,62 @@ body { overflow-wrap: break-word; }
 .wish-group .check-list li { font-size: .92rem; }
 @media (max-width: 1000px) { .wish-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .wish-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Mobil: Stöd oss i sidhuvudet ---------- */
+
+.header-cta { display: none; }
+.main-nav { display: flex; align-items: center; gap: 10px; }
+@media (max-width: 760px) {
+  .header-cta { display: inline-flex; padding: 9px 14px; }
+  .main-nav ul .btn { display: none; }
+}
+
+/* ---------- Mobil: Ring-knapp på Hjälp en fågel ---------- */
+
+.mobile-call { display: none; }
+@media (max-width: 900px) {
+  .mobile-call { display: flex; width: 100%; margin-top: 20px; font-size: 1rem; padding: 14px 20px; }
+}
+
+/* ---------- Gåvosidan: formuläret tidigt på mobil ---------- */
+
+.donate-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  grid-template-areas: "intro form" "extra form";
+  grid-template-rows: auto 1fr;
+  gap: 0 48px;
+  align-items: start;
+}
+.donate-intro { grid-area: intro; }
+.donate-form { grid-area: form; }
+.donate-extra { grid-area: extra; }
+.donate-extra .goal-meter { margin-top: 24px !important; }
+@media (max-width: 900px) {
+  .donate-grid { grid-template-columns: 1fr; grid-template-areas: "intro" "form" "extra"; gap: 24px; }
+  .donate-extra .hero-image { display: none; }
+}
+
+/* ---------- Swish i formuläret och kompakt Swish/bankgiro ---------- */
+
+.swish-number { font-family: var(--serif); font-size: 1.5rem; color: var(--green-900); margin: 2px 0 6px; line-height: 1.2; }
+.or-divider { display: flex; align-items: center; gap: 12px; margin: 22px 0 16px; color: var(--muted); font-size: .85rem; }
+.or-divider::before, .or-divider::after { content: ""; flex: 1; border-top: 1px solid var(--border); }
+.swish-inline { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--peach); border-radius: 10px; padding: 16px 18px; }
+.swish-inline .swish-number { font-size: 1.3rem; }
+.pay-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.pay-item { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-radius: var(--radius); padding: 20px 24px; }
+.pay-item.card-peach { background: var(--peach); }
+@media (max-width: 760px) { .pay-row { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .swish-inline { flex-direction: column; align-items: flex-start; } }
+.header-cta { white-space: nowrap; }
+@media (max-width: 480px) {
+  .site-header .logo-tag { display: none; }
+  .site-header .logo-name { font-size: 1.3rem; }
+  .site-header .container { gap: 12px; }
+  .main-nav { gap: 8px; }
+  .nav-toggle { padding: 8px 10px; }
+}
+@media (max-width: 360px) {
+  .site-header .logo-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
