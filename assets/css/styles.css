@@ -823,3 +823,10 @@ body { overflow-wrap: break-word; }
 p, li, dd, label, small { hyphens: auto; }
 .hero-grid > *, .grid-2 > *, .grid-3 > *, .feature > *, .faq > *, .split-head > *,
 .steps-grid > *, .footer-grid > *, .editor-grid > *, .amount-option label > * { min-width: 0; }
+
+/* ---------- Logotyp ---------- */
+
+.logo { display: inline-flex; align-items: center; gap: 12px; }
+.logo-mark { width: 48px; height: 48px; flex: none; }
+.logo-text { display: block; }
+@media (max-width: 560px) { .logo-mark { width: 40px; height: 40px; } .logo-name { font-size: 1.4rem; } }
