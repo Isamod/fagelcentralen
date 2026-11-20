@@ -35,6 +35,7 @@
         </span>
       </a>
       <nav class="main-nav" aria-label="Huvudmeny">
+        <a class="btn header-cta" href="stod-oss.html" aria-current="page">Stöd oss</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Meny</button>
         <ul id="menu">
           <li><a href="hjalp-en-fagel.html">Hjälp en fågel</a></li>
@@ -51,23 +52,13 @@
     <section class="hero">
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Start</a> / Stöd oss</p>
-        <div class="hero-grid align-start">
-          <div>
+        <div class="donate-grid">
+          <div class="donate-intro">
             <p class="eyebrow">Stöd Fågelcentralen</p>
             <h1>Hjälp en skadad fågel tillbaka till det fria.</h1>
             <p class="lead">Bara i år har vi tagit emot <strong data-faglar-i-ar>2 300</strong> skadade och sjuka vilda fåglar. Det är tack vare gåvor, bidrag och månadsgivare som verksamheten går runt. Som Fågelvän ger du ett tryggt stöd varje månad – från 50 kr.</p>
-            <div class="goal-meter" data-goal-meter></div>
-            <div class="hero-image" style="margin-top:28px">
-              <img src="assets/img/blames.jpg" alt="En blåmes sitter på en snötäckt kant medan det snöar." width="1600" height="1060">
-            </div>
-            <p class="tiny muted" style="margin-top:14px">Fågelcentralen drivs av Animals HOPE, en ideell förening · Org.nr 802458-3240</p>
-            <div class="aside-card">
-              <h2>Som Fågelvän får du</h2>
-              <p>Ett långsiktigt stöd till fåglarna i Kungälv.<br>En inblick i arbetet via Månadens patient, om du vill.<br>Fågelcentralens kalender varje år.</p>
-            </div>
           </div>
-
-          <div class="form-card" data-donation>
+          <div class="form-card donate-form" data-donation>
             <h2 style="font-size:1.6rem">Välj din gåva</h2>
             <div class="segmented" role="tablist" aria-label="Typ av gåva">
               <button type="button" role="tab" id="tab-month" aria-controls="panel-month" aria-selected="true">Fågelvän · varje månad</button>
@@ -135,8 +126,29 @@
                   <p class="meta">Betalsätt: kort</p>
                 </div>
                 <button class="btn btn-block" type="submit" data-summary-button data-prefix="Fortsätt">Fortsätt · 250 kr</button>
-                <p class="tiny muted" style="margin:14px 0 0"><a href="#fler-satt">Vill du ge med Swish eller bankgiro? Se alternativen nedan <span aria-hidden="true">↓</span></a></p>
+                <p class="tiny muted" style="margin:14px 0 0">Du fyller i kortuppgifterna i nästa steg (säker betalning via Stripe).</p>
+                <div class="or-divider"><span>eller</span></div>
+                <div class="swish-inline">
+                  <div>
+                    <p class="eyebrow" style="margin:0">Ge med Swish</p>
+                    <p class="swish-number">123 25 35 912</p>
+                    <p class="tiny muted" style="margin:0">Valfritt belopp. Skriv ”Fågelcentralen” som meddelande.</p>
+                  </div>
+                  <button class="btn btn-outline" type="button" data-copy="1232535912" data-copy-label="Swishnumret">Kopiera</button>
+                </div>
+                <p class="tiny muted" style="margin:12px 0 0">Hellre bankgiro? <a href="#fler-satt">740-8198</a></p>
               </form>
+            </div>
+          </div>
+          <div class="donate-extra">
+            <div class="goal-meter" data-goal-meter style="margin-top:0"></div>
+            <div class="hero-image" style="margin-top:28px">
+              <img src="assets/img/blames.jpg" alt="En blåmes sitter på en snötäckt kant medan det snöar." width="1600" height="1060">
+            </div>
+            <p class="tiny muted" style="margin-top:14px">Fågelcentralen drivs av Animals HOPE, en ideell förening · Org.nr 802458-3240</p>
+            <div class="aside-card">
+              <h2>Som Fågelvän får du</h2>
+              <p>Ett långsiktigt stöd till fåglarna i Kungälv.<br>En inblick i arbetet via Månadens patient, om du vill.<br>Fågelcentralens kalender varje år.</p>
             </div>
           </div>
         </div>
@@ -178,28 +190,19 @@
       </div>
     </section>
 
-    <section class="section bg-white">
+    <section class="section-sm bg-white" id="fler-satt" aria-labelledby="fler-satt-rubrik">
       <div class="container">
-        <p class="eyebrow">Fler sätt att ge</p>
-        <h2>En gåva, på ditt sätt.</h2>
-        <p class="muted small">Vill du ge en engångsgåva utan kort? Använd Swish eller bankgiro och välj själv ditt belopp.</p>
-        <div class="grid-2" style="margin-top:28px" id="fler-satt">
-          <article class="card card-peach pay-card">
-            <h3>Ge med Swish</h3>
-            <p class="eyebrow" style="margin:0">Swishnummer</p>
-            <p class="pay-number">123 25 35 912</p>
-            <p>Öppna Swish och ange numret ovan. Välj ett valfritt belopp och skriv ”Fågelcentralen” som meddelande.</p>
-            <button class="btn btn-block" type="button" data-copy="1232535912" data-copy-label="Swishnumret">Kopiera Swishnummer</button>
-            <p class="tiny" style="margin:0">Detta är en engångsgåva.</p>
-          </article>
-          <article class="card pay-card">
-            <h3>Ge via bankgiro</h3>
-            <p class="eyebrow" style="margin:0">Bankgironummer</p>
-            <p class="pay-number">740-8198</p>
-            <p>Betala ett valfritt belopp via din bank. Märk betalningen ”Fågelcentralen”.</p>
-            <button class="btn btn-block" type="button" data-copy="740-8198" data-copy-label="Bankgironumret">Kopiera bankgironummer</button>
-            <p class="tiny" style="margin:0">Detta är en engångsgåva.</p>
-          </article>
+        <h2 id="fler-satt-rubrik" style="font-size:1.6rem">Ge med Swish eller bankgiro</h2>
+        <p class="muted small">Valfritt belopp, en gång. Märk betalningen ”Fågelcentralen”.</p>
+        <div class="pay-row">
+          <div class="pay-item card-peach">
+            <div><p class="eyebrow" style="margin:0">Swish</p><p class="swish-number">123 25 35 912</p></div>
+            <button class="btn" type="button" data-copy="1232535912" data-copy-label="Swishnumret">Kopiera Swishnummer</button>
+          </div>
+          <div class="pay-item card">
+            <div><p class="eyebrow" style="margin:0">Bankgiro</p><p class="swish-number">740-8198</p></div>
+            <button class="btn" type="button" data-copy="740-8198" data-copy-label="Bankgironumret">Kopiera bankgironummer</button>
+          </div>
         </div>
       </div>
     </section>
@@ -262,7 +265,6 @@
             <summary>Vad är Månadens patient?</summary>
             <div class="accordion-body"><p>Ett kort mejl i månaden, enbart för Fågelvänner. Följ en fågel som kommit till oss, rehabiliteringen och hur det går. Du väljer själv om du vill få mejlet och kan avregistrera dig utan att sluta ge.</p></div>
           </details>
-        </div>
         </div>
       </div>
     </section>
