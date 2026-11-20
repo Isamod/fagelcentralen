@@ -30,6 +30,16 @@ python3 -m http.server 8000
 
 Öppna sedan http://localhost:8000.
 
+## Efter ändringar i CSS eller JavaScript
+
+Kör
+
+```bash
+python3 tools/ny-version.py
+```
+
+Skriptet ger CSS- och JavaScript-filerna ett nytt versionsnummer i alla HTML-sidor (`styles.css?v=…`). Annars kan besökare få ny HTML ihop med en gammal, sparad CSS-fil, och då ser sidan trasig ut. Byt också filnamn på bilder som ersätts, av samma skäl.
+
 ## Struktur
 
 - `assets/css/styles.css` – gemensam stilmall (färger och typsnitt som variabler överst)
