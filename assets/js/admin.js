@@ -252,9 +252,24 @@
         (a.phone ? "<dt>Telefon</dt><dd>" + esc(a.phone) + "</dd>" : "") +
         "<dt>Varför</dt><dd>" + esc(a.why) + "</dd>" +
         (a.when ? "<dt>Kan hjälpa till</dt><dd>" + esc(a.when) + "</dd>" : "") +
-        "</dl></article>";
+        "</dl>" +
+        '<div class="row-actions" style="margin-top:16px">' +
+          '<a class="btn btn-light" href="mailto:' + esc(a.email) + '">Svara via e-post</a>' +
+          '<button class="btn btn-danger" type="button" data-remove-app="' + esc(a.receivedAt) + '">Ta bort</button>' +
+        "</div></article>";
     }).join("");
   }
+
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-remove-app]");
+    if (!b) return;
+    if (!window.confirm("Ta bort ansökan? Gör det när ansökan är färdigbehandlad. Det går inte att ångra.")) return;
+    store.removeApplication(b.getAttribute("data-remove-app"));
+    updateCounts();
+    var current = tabs.filter(function (t) { return t.getAttribute("aria-selected") === "true"; })[0];
+    if (current) activate(current);
+    toast("Ansökan är borttagen.");
+  });
 
   /* ---------- Återställ ---------- */
   document.getElementById("reset-demo").addEventListener("click", function () {
@@ -272,4 +287,5 @@
     else { editor.hidden = true; renderRows(); }
   }
   start();
+  if (window.location.hash === "#ansokningar") activate(document.getElementById("tab-apps"));
 })();

@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Volontäruppdrag – Administration – Fågelcentralen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
@@ -15,12 +13,15 @@
   <header class="admin-header">
     <div class="container">
       <div class="admin-brand">
-        <a class="logo-name" href="volontaruppdrag.html">Fågelcentralen</a>
-        <span class="admin-crumb">Administration / Volontäruppdrag</span>
+        <a class="logo-name" href="index.html">Fågelcentralen</a>
+        <span class="admin-crumb">Administration</span>
       </div>
-      <a class="admin-site-link" href="../volontar.html">Till webbplatsen ↗</a>
+      <a class="admin-site-link" href="../index.html">Till webbplatsen ↗</a>
     </div>
   </header>
+  <nav class="admin-nav" aria-label="Administration">
+    <div class="container"><a href="index.html">Översikt</a><a href="volontaruppdrag.html" aria-current="page">Volontäruppdrag</a><a href="nyheter.html">Nyheter</a></div>
+  </nav>
 
   <main class="container admin-main" id="innehall">
     <div class="admin-title">
@@ -124,10 +125,12 @@
     </section>
 
     <section role="tabpanel" id="view-apps" aria-labelledby="tab-apps" hidden>
+      <p class="small muted">Ta bort ansökningar när de är färdigbehandlade. Spara inte personuppgifter längre än ni behöver dem.</p>
       <div id="apps-list"></div>
     </section>
 
     <section role="tabpanel" id="view-general" aria-labelledby="tab-general" hidden>
+      <p class="small muted">Ta bort intresseanmälningar när de är färdigbehandlade. Spara inte personuppgifter längre än ni behöver dem.</p>
       <div id="general-list"></div>
     </section>
   </main>

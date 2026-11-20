@@ -2,6 +2,31 @@
 (function () {
   "use strict";
 
+  /* ---------- Webbplatsmeddelande (t.ex. intagningsstopp) ---------- */
+  if (window.FCNyheter && !document.body.classList.contains("admin")) {
+    var notice = window.FCNyheter.notice();
+    if (notice.active && notice.text) {
+      var bar = document.createElement("div");
+      bar.className = "site-notice";
+      bar.setAttribute("role", "status");
+      var inner = document.createElement("div");
+      inner.className = "container";
+      var text = document.createElement("p");
+      text.textContent = notice.text;
+      inner.appendChild(text);
+      var url = String(notice.linkUrl || "").trim();
+      if (url && !/^javascript:/i.test(url)) {
+        var a = document.createElement("a");
+        a.href = url;
+        a.textContent = (notice.linkText || "Läs mer") + " →";
+        inner.appendChild(a);
+      }
+      bar.appendChild(inner);
+      var topbar = document.querySelector(".topbar");
+      if (topbar) topbar.insertAdjacentElement("afterend", bar);
+    }
+  }
+
   /* ---------- Mobilmeny ---------- */
   var nav = document.querySelector(".main-nav");
   var toggle = document.querySelector(".nav-toggle");

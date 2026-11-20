@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Nyheter – Administration – Fågelcentralen</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin">
+  <header class="admin-header">
+    <div class="container">
+      <div class="admin-brand">
+        <a class="logo-name" href="index.html">Fågelcentralen</a>
+        <span class="admin-crumb">Administration</span>
+      </div>
+      <a class="admin-site-link" href="../index.html">Till webbplatsen ↗</a>
+    </div>
+  </header>
+  <nav class="admin-nav" aria-label="Administration">
+    <div class="container"><a href="index.html">Översikt</a><a href="volontaruppdrag.html">Volontäruppdrag</a><a href="nyheter.html" aria-current="page">Nyheter</a></div>
+  </nav>
+
+  <main class="container admin-main" id="innehall">
+    <div class="admin-title">
+      <div>
+        <h1>Nyheter</h1>
+        <p class="muted">Lägg upp, ändra och ta bort nyheter. De tre senaste visas på startsidan.</p>
+      </div>
+      <button class="btn" type="button" id="new-news">Skriv ny nyhet</button>
+    </div>
+
+    <div class="admin-note">
+      <span>Exempeldata · Tre exempelnyheter. Ändringar sparas bara i den här webbläsaren.</span>
+      <button type="button" class="link-btn" id="reset-news">Återställ exempelnyheter</button>
+    </div>
+
+    <div class="news-admin-list" id="news-list"></div>
+
+    <div id="news-editor" hidden>
+      <h2 class="editor-heading" id="news-editor-heading">Ny nyhet</h2>
+      <div class="editor-grid">
+        <form class="admin-card" id="news-form" novalidate>
+          <div class="field">
+            <label for="a-title">Rubrik *</label>
+            <input id="a-title" name="title" type="text" maxlength="90" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="a-category">Kategori</label>
+              <input id="a-category" name="category" type="text" placeholder="T.ex. Engagera dig">
+            </div>
+            <div class="field">
+              <label for="a-date">Datum *</label>
+              <input id="a-date" name="date" type="date" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="a-summary">Ingress *</label>
+            <textarea id="a-summary" name="summary" maxlength="200" style="min-height:80px" required aria-describedby="a-summary-hint"></textarea>
+            <p class="hint" id="a-summary-hint">Ett par meningar som visas på startsidan och i Google. Högst 200 tecken.</p>
+          </div>
+          <div class="field">
+            <label for="a-body">Text *</label>
+            <textarea id="a-body" name="body" style="min-height:220px" required aria-describedby="a-body-hint"></textarea>
+            <p class="hint" id="a-body-hint">Lämna en tom rad mellan stycken.</p>
+          </div>
+          <div class="field">
+            <label for="a-image">Bild</label>
+            <input id="a-image" name="image" type="file" accept="image/*">
+            <p class="hint">Bilden förminskas automatiskt. Liggande bilder blir bäst.</p>
+            <div class="image-preview" id="a-image-preview" hidden><img alt=""></div>
+            <button type="button" class="link-btn" id="a-image-remove" hidden style="margin-top:8px">Ta bort bilden</button>
+          </div>
+          <div class="field">
+            <label for="a-alt">Bildbeskrivning</label>
+            <input id="a-alt" name="imageAlt" type="text" placeholder="T.ex. En kattuggla sitter på en gren." aria-describedby="a-alt-hint">
+            <p class="hint" id="a-alt-hint">Beskriv vad bilden visar. Läses upp för den som inte ser bilden och hjälper Google.</p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="a-link">Knapp: länk (valfritt)</label>
+              <input id="a-link" name="linkUrl" type="text" placeholder="t.ex. volontar.html">
+            </div>
+            <div class="field">
+              <label for="a-linktext">Knapp: text (valfritt)</label>
+              <input id="a-linktext" name="linkText" type="text" placeholder="t.ex. Se volontäruppdragen">
+            </div>
+          </div>
+        </form>
+
+        <div class="editor-side">
+          <div class="admin-card">
+            <h3 class="editor-title" style="font-size:1.6rem">Publicering</h3>
+            <p class="eyebrow" style="font-size:.62rem" id="news-status">Status · Utkast</p>
+            <p class="muted small" id="news-status-text">Nyheten syns inte på webbplatsen ännu.</p>
+            <div class="side-actions">
+              <button class="btn btn-light btn-block" type="button" id="news-save">Spara utkast</button>
+              <button class="btn btn-block" type="button" id="news-publish">Publicera nyhet</button>
+              <button class="btn btn-light btn-block" type="button" id="news-unpublish" hidden>Avpublicera</button>
+              <button class="btn btn-danger btn-block" type="button" id="news-delete" hidden>Ta bort nyheten</button>
+            </div>
+          </div>
+          <div class="tip-card">
+            <h3>Korta nyheter läses mest.</h3>
+            <p>Börja med det viktigaste. En bra bild och en tydlig rubrik gör att fler klickar.</p>
+            <p>Visa aldrig personuppgifter eller bilder på personer utan deras tillstånd.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/nyheter.js"></script>
+  <script src="../assets/js/admin-nyheter.js"></script>
+</body>
+</html>
