@@ -820,7 +820,7 @@ input::placeholder, textarea::placeholder { color: #6b7873; }
 /* ---------- Långa ord (svenska sammansättningar) på smala skärmar ---------- */
 
 body { overflow-wrap: break-word; }
-p, li, dd, label, small { hyphens: auto; }
+@media (max-width: 420px) { p, li, dd, label, small { hyphens: auto; } }
 .hero-grid > *, .grid-2 > *, .grid-3 > *, .feature > *, .faq > *, .split-head > *,
 .steps-grid > *, .footer-grid > *, .editor-grid > *, .amount-option label > * { min-width: 0; }
 
@@ -830,3 +830,36 @@ p, li, dd, label, small { hyphens: auto; }
 .logo-mark { width: 48px; height: 48px; flex: none; }
 .logo-text { display: block; }
 @media (max-width: 560px) { .logo-mark { width: 40px; height: 40px; } .logo-name { font-size: 1.4rem; } }
+
+/* ---------- Dragspel (details/summary) ---------- */
+
+.accordion { border-top: 1px solid var(--border); }
+.accordion details { border-bottom: 1px solid var(--border); }
+.accordion summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 40px 20px 0;
+  position: relative;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary::after {
+  content: "+";
+  content: "+" / "";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+.accordion details[open] summary::after { content: "−"; content: "−" / ""; }
+.accordion summary:hover { text-decoration: underline; text-underline-offset: 4px; }
+.accordion-body { padding: 0 0 22px; }
+.accordion-body p, .accordion-body li { font-size: .95rem; color: var(--muted); }
+.accordion-body ul { margin: 0 0 1em; padding-left: 1.2em; }
+.accordion-body li { margin-bottom: 6px; }
+.accordion-body p:last-child { margin-bottom: 0; }
+.accordion-body a { color: var(--text); font-weight: 600; text-underline-offset: 3px; }

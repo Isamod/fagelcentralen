@@ -51,7 +51,7 @@ Sidhuvud och sidfot finns i varje HTML-fil. Ändras de behöver alla sidor uppda
 - **Betalning:** knapparna Fortsätt och Bli Fågelvän går i dag direkt till `tack.html` i demoläge. Koppla dem till Stripe Checkout med `tack.html?typ=engang|manad&belopp=…` som adress efter lyckad betalning, och ta bort `demo=1`.
 - **Målmätaren** visar exempelsiffror (87 av 300). Fyll i riktigt mål och antal i `assets/js/fagelvan-mal.js` och sätt `exempel: false`.
 - **Texterna under månadsbeloppen** (vad 50/100/200 kr räcker till) behöver bekräftas av föreningen.
-- **Länkar som saknar mål (`href="#"`):** integritetspolicy, cookies, villkor, Alla nyheter, nyhetsartiklarna, Bli medlem och KFV-länkarna på Hjälp en fågel (märkta `data-todo="KFV-länk"`).
+- **Länkar som saknar mål (`href="#"`):** integritetspolicy, cookies, villkor och Bli medlem.
 
 ## SEO
 
