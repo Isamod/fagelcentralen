@@ -11,8 +11,8 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | `kontakt.html` | Kontakt (telefon för fågelhjälp, e-post för övrigt) |
 | `om-oss.html` | Om oss |
 | `volontar.html` | Volontäruppdrag och ansökningsformulär |
-| `stod-oss.html` | Stöd oss (engångsgåva / månadsgåva, Swish, bankgiro) |
-| `bli-fagelvan.html` | Bli Fågelvän (månadsgivande) |
+| `stod-oss.html` | Stöd oss: Bli Fågelvän (månadsgåva, förvald), engångsgåva, Swish, bankgiro, Månadens patient |
+| `bli-fagelvan.html` | Skickar vidare till Stöd oss (finns kvar så att gamla länkar fungerar) |
 | `nyheter.html`, `nyhet.html` | Nyhetslista och enskild nyhet |
 | `tack.html` | Tacksida efter gåva (erbjuder månadsgåva efter engångsgåva) |
 | `admin/index.html` | Administration: översikt och viktigt meddelande (visas överst på alla sidor) |

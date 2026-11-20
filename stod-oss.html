@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stöd Fågelcentralen – Ge en gåva till skadade vilda fåglar</title>
-  <meta name="description" content="Ge en gåva till Fågelcentralen med kort, Swish (123 25 35 912) eller bankgiro (740-8198). Hjälp skadade och sjuka vilda fåglar att få en andra chans.">
+  <title>Stöd Fågelcentralen – Bli Fågelvän eller ge en gåva</title>
+  <meta name="description" content="Bli Fågelvän och stöd skadade vilda fåglar varje månad från 50 kr, eller ge en gåva en gång med kort, Swish (123 25 35 912) eller bankgiro (740-8198).">
   <meta name="theme-color" content="#163f35">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -13,8 +13,8 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="sv_SE">
   <meta property="og:site_name" content="Fågelcentralen">
-  <meta property="og:title" content="Stöd Fågelcentralen – Ge en gåva till skadade vilda fåglar">
-  <meta property="og:description" content="Ge en gåva till Fågelcentralen med kort, Swish (123 25 35 912) eller bankgiro (740-8198). Hjälp skadade och sjuka vilda fåglar att få en andra chans.">
+  <meta property="og:title" content="Stöd Fågelcentralen – Bli Fågelvän eller ge en gåva">
+  <meta property="og:description" content="Bli Fågelvän och stöd skadade vilda fåglar varje månad från 50 kr, eller ge en gåva en gång med kort, Swish (123 25 35 912) eller bankgiro (740-8198).">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -55,36 +55,80 @@
           <div>
             <p class="eyebrow">Fler vingslag börjar med dig</p>
             <h1>Ge omtanken<br>vingar.</h1>
-            <p class="lead">Hjälp skadade och sjuka vilda fåglar att få en andra chans. Ge en gåva i dag eller stötta oss varje månad.</p>
+            <p class="lead">Hjälp skadade och sjuka vilda fåglar att få en andra chans. Bli Fågelvän och ge varje månad – eller ge en gåva en gång.</p>
+            <div class="goal-meter" data-goal-meter></div>
             <div class="hero-image" style="margin-top:28px">
-              <img src="assets/img/rodhake-jarnbage.jpg" alt="En rödhake sitter på en rostig järnbåge med fågelfrön." width="1333" height="833">
+              <img src="assets/img/blames.jpg" alt="En blåmes sitter på en snötäckt kant medan det snöar." width="1600" height="1060">
             </div>
             <p class="tiny muted" style="margin-top:14px">Fågelcentralen drivs av Animals HOPE, en ideell förening.</p>
+            <div class="aside-card">
+              <h2>Som Fågelvän får du</h2>
+              <p>Ett långsiktigt stöd till fåglarna i Kungälv.<br>En inblick i arbetet via Månadens patient, om du vill.<br>Fågelcentralens kalender varje år.</p>
+            </div>
           </div>
 
           <div class="form-card" data-donation>
             <h2 style="font-size:1.6rem">Din gåva gör skillnad.</h2>
             <div class="segmented" role="tablist" aria-label="Typ av gåva">
-              <button type="button" role="tab" id="tab-month" aria-controls="panel-month" aria-selected="false" tabindex="-1">Varje månad</button>
-              <button type="button" role="tab" id="tab-once" aria-controls="panel-once" aria-selected="true">En gång</button>
+              <button type="button" role="tab" id="tab-month" aria-controls="panel-month" aria-selected="true">Fågelvän · varje månad</button>
+              <button type="button" role="tab" id="tab-once" aria-controls="panel-once" aria-selected="false" tabindex="-1">En gång</button>
             </div>
 
-            <div role="tabpanel" id="panel-once" aria-labelledby="tab-once" data-interval="once" data-min="1">
+            <div role="tabpanel" id="panel-month" aria-labelledby="tab-month" data-interval="month" data-min="50">
+              <form>
+                <h3 style="font-family:var(--sans); font-size:.95rem; font-weight:600; margin:0 0 4px">En månadsgåva, ett engagemang</h3>
+                <p class="tiny muted">Fågelvän är namnet på vårt månadsgivande. Din gåva betalas med kort varje månad.</p>
+                <fieldset style="border:0; padding:0; margin:0">
+                  <legend style="font-size:.82rem; font-weight:600; margin-bottom:8px">Välj belopp per månad</legend>
+                  <div class="amounts stacked">
+                    <div class="amount-option"><input type="radio" name="fv-month" id="fv-50" value="50"><label for="fv-50"><strong>50 kr/mån</strong><small>Specialfoder och vätskeersättning för en svältande unge.</small></label></div>
+                    <div class="amount-option"><input type="radio" name="fv-month" id="fv-100" value="100" checked><label for="fv-100"><strong>100 kr/mån</strong><small>Medicin och bandage för en skadad rovfågel.</small></label></div>
+                    <div class="amount-option"><input type="radio" name="fv-month" id="fv-200" value="200"><label for="fv-200"><strong>200 kr/mån</strong><small>Bidrar till uppvärmning och drift av rehabiliteringsvoljärerna.</small></label></div>
+                  </div>
+                </fieldset>
+                <div class="field">
+                  <label for="fv-custom">Eller ange eget belopp (minst 50 kr)</label>
+                  <div class="input-suffix">
+                    <input id="fv-custom" type="text" inputmode="numeric" placeholder="Ange belopp" data-custom-amount aria-describedby="fv-custom-hint">
+                    <span>kr/mån</span>
+                  </div>
+                  <p class="hint" id="fv-custom-hint">Exempel på vad stödet kan bidra till. Gåvor används där behovet är störst.</p>
+                </div>
+                <div class="summary">
+                  <p class="eyebrow">Du har valt · Fågelvän</p>
+                  <p class="value" data-summary-value>100 kr varje månad</p>
+                  <p class="meta">Betalsätt: kort</p>
+                </div>
+                <div class="checkbox-row">
+                  <input type="checkbox" id="fv-patient" name="patient">
+                  <label for="fv-patient">Ja tack till Månadens patient<small>Ett mejl i månaden, bara för Fågelvänner. Valfritt – ditt stöd påverkas inte av om du tackar nej.</small></label>
+                </div>
+                <div class="link-list">
+                  <a href="#">Villkor för Fågelvän och månadsgåvor</a>
+                  <a href="#">Så hanteras dina personuppgifter</a>
+                </div>
+                <button class="btn btn-block" type="submit" data-summary-button data-prefix="Bli Fågelvän">Bli Fågelvän · 100 kr/mån</button>
+                <p class="tiny muted" style="margin:14px 0 10px">Nästa steg: kortbetalning via Stripe. Du fyller i dina uppgifter och bekräftar betalningen där.</p>
+                <p class="tiny muted" style="margin:0">Som Fågelvän får du också vår kalender varje år.</p>
+              </form>
+            </div>
+
+            <div role="tabpanel" id="panel-once" aria-labelledby="tab-once" data-interval="once" data-min="1" hidden>
               <form>
                 <h3 style="font-family:var(--sans); font-size:.95rem; font-weight:600; margin:0 0 4px">Engångsgåva via kort</h3>
                 <p class="tiny muted">Du ger en gång. Ingen återkommande betalning.</p>
                 <fieldset style="border:0; padding:0; margin:0">
-                  <legend class="label" style="font-size:.82rem; font-weight:600; margin-bottom:8px">Välj belopp i kronor</legend>
+                  <legend style="font-size:.82rem; font-weight:600; margin-bottom:8px">Välj belopp i kronor</legend>
                   <div class="amounts">
-                    <div class="amount-option"><input type="radio" name="once" id="once-100" value="100"><label for="once-100">100 kr</label></div>
-                    <div class="amount-option"><input type="radio" name="once" id="once-250" value="250" checked><label for="once-250">250 kr</label></div>
-                    <div class="amount-option"><input type="radio" name="once" id="once-500" value="500"><label for="once-500">500 kr</label></div>
+                    <div class="amount-option"><input type="radio" name="fv-once" id="fvo-100" value="100"><label for="fvo-100">100 kr</label></div>
+                    <div class="amount-option"><input type="radio" name="fv-once" id="fvo-250" value="250" checked><label for="fvo-250">250 kr</label></div>
+                    <div class="amount-option"><input type="radio" name="fv-once" id="fvo-500" value="500"><label for="fvo-500">500 kr</label></div>
                   </div>
                 </fieldset>
                 <div class="field">
-                  <label for="once-custom">Eller ange ett eget belopp</label>
+                  <label for="fvo-custom">Eller ange ett eget belopp</label>
                   <div class="input-suffix">
-                    <input id="once-custom" type="text" inputmode="numeric" placeholder="Ange belopp" data-custom-amount>
+                    <input id="fvo-custom" type="text" inputmode="numeric" placeholder="Ange belopp" data-custom-amount>
                     <span>kr</span>
                   </div>
                 </div>
@@ -93,49 +137,33 @@
                   <p class="value" data-summary-value>250 kr vid ett tillfälle</p>
                   <p class="meta">Betalsätt: kort</p>
                 </div>
-                <div class="link-list">
-                  <a href="#">Villkor för engångsgåvor</a>
-                  <a href="#">Så hanteras dina personuppgifter</a>
-                </div>
                 <button class="btn btn-block" type="submit" data-summary-button data-prefix="Fortsätt">Fortsätt · 250 kr</button>
-                <p class="tiny muted" style="margin:14px 0 10px">Nästa steg: kortbetalning via Stripe. Du fyller i dina uppgifter och bekräftar betalningen där.</p>
-                <a class="tiny" href="#fler-satt">Vill du ge med Swish eller bankgiro? Se alternativen nedan <span aria-hidden="true">↓</span></a>
-              </form>
-            </div>
-
-            <div role="tabpanel" id="panel-month" aria-labelledby="tab-month" data-interval="month" data-min="50" hidden>
-              <form>
-                <h3 style="font-family:var(--sans); font-size:.95rem; font-weight:600; margin:0 0 4px">Månadsgåva via kort</h3>
-                <p class="tiny muted">Samma belopp dras varje månad. Du kan avsluta när du vill.</p>
-                <fieldset style="border:0; padding:0; margin:0">
-                  <legend class="label" style="font-size:.82rem; font-weight:600; margin-bottom:8px">Välj belopp per månad</legend>
-                  <div class="amounts">
-                    <div class="amount-option"><input type="radio" name="month" id="month-50" value="50"><label for="month-50">50 kr</label></div>
-                    <div class="amount-option"><input type="radio" name="month" id="month-100" value="100" checked><label for="month-100">100 kr</label></div>
-                    <div class="amount-option"><input type="radio" name="month" id="month-200" value="200"><label for="month-200">200 kr</label></div>
-                  </div>
-                </fieldset>
-                <div class="field">
-                  <label for="month-custom">Eller ange eget belopp (minst 50 kr)</label>
-                  <div class="input-suffix">
-                    <input id="month-custom" type="text" inputmode="numeric" placeholder="Ange belopp" data-custom-amount>
-                    <span>kr/mån</span>
-                  </div>
-                </div>
-                <div class="summary">
-                  <p class="eyebrow">Du har valt</p>
-                  <p class="value" data-summary-value>100 kr varje månad</p>
-                  <p class="meta">Betalsätt: kort</p>
-                </div>
-                <div class="link-list">
-                  <a href="bli-fagelvan.html">Läs mer om att bli Fågelvän</a>
-                  <a href="#">Så hanteras dina personuppgifter</a>
-                </div>
-                <button class="btn btn-block" type="submit" data-summary-button data-prefix="Fortsätt">Fortsätt · 100 kr/mån</button>
-                <p class="tiny muted" style="margin:14px 0 0">Nästa steg: kortbetalning via Stripe. Du fyller i dina uppgifter och bekräftar betalningen där.</p>
+                <p class="tiny muted" style="margin:14px 0 0"><a href="#fler-satt">Vill du ge med Swish eller bankgiro? Se alternativen nedan <span aria-hidden="true">↓</span></a></p>
               </form>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section bg-sage">
+      <div class="container hero-grid align-start">
+        <div>
+          <p class="eyebrow">Bara för Fågelvänner</p>
+          <h2>Du ger en andra chans.<br>Följ vägen tillbaka.</h2>
+          <p class="muted">Med Månadens patient får du en nära inblick i vad ditt stöd bidrar till – direkt från Fågelcentralen i Kungälv.</p>
+          <p class="small muted">Ett kort mejl en gång i månaden. En fågel, en bild eller ett kort klipp och en uppdatering från rehabiliteringen. När en fågel kan släppas fri delar vi också det.</p>
+          <p class="small"><strong>Du väljer själv om du vill få utskicket.</strong></p>
+        </div>
+        <div class="form-card">
+          <p class="eyebrow">Fågelcentralen / Fågelvän</p>
+          <h3 style="font-size:1.6rem">Månadens patient</h3>
+          <p class="small muted">En fågel. En berättelse. En inblick.</p>
+          <ol class="patient-list">
+            <li><span class="num">01</span><div><strong>Möt fågeln</strong><span>Vad som hänt och hur fågeln kom till oss.</span></div></li>
+            <li><span class="num">02</span><div><strong>Följ rehabiliteringen</strong><span>En bild eller ett kort klipp från arbetet.</span></div></li>
+            <li><span class="num">03</span><div><strong>Se hur det går</strong><span>Återhämtningen, nästa steg och eventuellt utsläpp.</span></div></li>
+          </ol>
         </div>
       </div>
     </section>
@@ -167,28 +195,6 @@
     </section>
 
 
-    <section class="section bg-sage">
-      <div class="container">
-        <div class="split-head" style="align-items:start">
-          <div>
-            <p class="eyebrow">Tack för att du finns där</p>
-            <h2>En andra chans<br>behöver omtanke.</h2>
-            <p class="muted">Din gåva stöttar Fågelcentralens arbete med skadade och sjuka vilda fåglar. Regelbundet stöd hjälper oss att planera arbetet långsiktigt.</p>
-          </div>
-          <div>
-            <h2>Små och stora liv.<br>Samma omtanke.</h2>
-            <p class="tiny muted">Fågelcentralen / Animals HOPE<br>En ideell förening för djurens bästa.</p>
-          </div>
-        </div>
-        <div class="steps">
-          <div class="step"><p class="num">01</p><h3>Daglig omsorg</h3><p>Hjälp till fåglar som har blivit sjuka eller skadade.</p></div>
-          <div class="step"><p class="num">02</p><h3>Tid för återhämtning</h3><p>Rehabilitering med målet att fåglarna ska kunna återvända till naturen.</p></div>
-          <div class="step"><p class="num">03</p><h3>Ett långsiktigt arbete</h3><p>Kunskap, engagemang och omsorg om vilda fåglar.</p></div>
-        </div>
-        <a class="arrow-link" href="index.html#om-foreningen" style="display:inline-block; margin-top:16px">Lär känna föreningen bakom arbetet</a>
-      </div>
-    </section>
-
     <section class="section">
       <div class="container faq">
         <div>
@@ -196,11 +202,28 @@
           <h2>Känn dig trygg<br>i ditt val.</h2>
           <p class="small muted">Belopp och intervall ska alltid vara tydliga innan du bekräftar.</p>
         </div>
-        <div class="faq-list">
-          <div class="faq-item"><h3>Vad är skillnaden mellan alternativen?</h3><p>En engångsgåva betalas vid ett tillfälle. Som månadsgivare ger du samma belopp varje månad. Månadsgåvan är minst 50 kr.</p></div>
-          <div class="faq-item"><h3>Hur betalar jag?</h3><p>Månadsgåvor betalas med kort. För en engångsgåva kan du välja kort, Swish eller bankgiro.</p></div>
-          <div class="faq-item"><h3>Vad händer när jag väljer Fortsätt?</h3><p>Du går vidare till kortbetalningen, där du fyller i dina uppgifter och bekräftar beloppet. Läs betalningsvillkoren innan du bekräftar.</p></div>
-          <div class="faq-item"><h3>Får jag kalendern som månadsgivare?</h3><p>Ja, enligt föreningens erbjudande får månadsgivare kalendern varje år. Kalenderköp är ett separat sätt att stötta föreningen.</p></div>
+        <div class="accordion">
+          <details>
+            <summary>Vad är skillnaden mellan alternativen?</summary>
+            <div class="accordion-body"><p>Som Fågelvän ger du samma belopp varje månad, minst 50 kr, och kan avsluta när du vill. En engångsgåva betalas vid ett tillfälle och kan ges med kort, Swish eller bankgiro.</p></div>
+          </details>
+          <details>
+            <summary>Vad innebär det att vara Fågelvän?</summary>
+            <div class="accordion-body"><p>Fågelvän är namnet på vårt månadsgivande. Du stöttar arbetet med en återkommande gåva och får vår kalender varje år. Du kan också välja att få Månadens patient via mejl. Det är inte ett separat föreningsmedlemskap.</p></div>
+          </details>
+          <details>
+            <summary>Hur betalar jag?</summary>
+            <div class="accordion-body"><p>Fågelvän betalas med kort. För en engångsgåva kan du välja kort, Swish eller bankgiro. Beloppet visas alltid innan du bekräftar.</p></div>
+          </details>
+          <details>
+            <summary>Vad händer när jag går vidare?</summary>
+            <div class="accordion-body"><p>Du kommer till kortbetalningen, där du fyller i dina uppgifter och bekräftar beloppet. Läs betalningsvillkoren innan du bekräftar.</p></div>
+          </details>
+          <details>
+            <summary>Vad är Månadens patient?</summary>
+            <div class="accordion-body"><p>Ett kort mejl i månaden, enbart för Fågelvänner. Följ en fågel som kommit till oss, rehabiliteringen och hur det går. Du väljer själv om du vill få mejlet och kan avregistrera dig utan att sluta ge.</p></div>
+          </details>
+        </div>
         </div>
       </div>
     </section>
@@ -213,7 +236,7 @@
           <span class="logo-name">Fågelcentralen</span>
           <p>En ideell förening.<br>En andra chans för vilda fåglar.</p>
           <p class="footer-give">Ge en gåva: Swish <strong>123 25 35 912</strong><br>Bankgiro <strong>740-8198</strong></p>
-          <p><a class="footer-cta" href="bli-fagelvan.html">Bli Fågelvän <span aria-hidden="true">→</span></a></p>
+          <p><a class="footer-cta" href="stod-oss.html">Bli Fågelvän <span aria-hidden="true">→</span></a></p>
         </div>
         <div>
           <h2>Fågelhjälp</h2>
@@ -239,6 +262,7 @@
   </footer>
 
   <script src="assets/js/nyheter.js"></script>
+  <script src="assets/js/fagelvan-mal.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
