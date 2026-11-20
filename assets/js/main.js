@@ -31,6 +31,36 @@
     }
   }
 
+  /* ---------- Sidhuvud som följer med ----------
+   Dator: följer alltid med (skugga när man scrollat).
+   Mobil: gömmer sig vid scroll nedåt, visas direkt vid scroll uppåt.
+   Gömmer sig aldrig när menyn är öppen eller fokus är i sidhuvudet. */
+  var header = document.querySelector(".site-header");
+  if (header) {
+    var lastY = window.scrollY;
+    var ticking = false;
+    var mobile = window.matchMedia("(max-width: 760px)");
+    var update = function () {
+      var y = window.scrollY;
+      var navEl = header.querySelector(".main-nav");
+      header.classList.toggle("is-scrolled", y > 40);
+      if (!mobile.matches || (navEl && navEl.classList.contains("open")) || header.contains(document.activeElement) || y < 160) {
+        header.classList.remove("is-hidden");
+      } else if (y > lastY + 6) {
+        header.classList.add("is-hidden");
+      } else if (y < lastY - 6) {
+        header.classList.remove("is-hidden");
+      }
+      lastY = y;
+      ticking = false;
+    };
+    window.addEventListener("scroll", function () {
+      if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    header.addEventListener("focusin", function () { header.classList.remove("is-hidden"); });
+    update();
+  }
+
   /* ---------- Mobilmeny ---------- */
   var nav = document.querySelector(".main-nav");
   var toggle = document.querySelector(".nav-toggle");

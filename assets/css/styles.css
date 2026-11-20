@@ -986,3 +986,29 @@ body { overflow-wrap: break-word; }
 
 /* Bildform: rundat övre vänstra hörn, mindre på mobil */
 @media (max-width: 560px) { :root { --arch: 72px 14px 14px 14px; } }
+
+/* ---------- Sidhuvud som följer med ---------- */
+
+html { scroll-padding-top: 100px; }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--cream);
+  transition: transform .25s ease, box-shadow .2s ease;
+}
+.site-header.is-scrolled { box-shadow: 0 2px 14px rgba(22, 63, 53, .08); }
+@media (max-width: 760px) {
+  html { scroll-padding-top: 88px; }
+  .site-header.is-hidden { transform: translateY(-100%); box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) { .site-header { transition: none; } }
+
+/* Hjälp en fågel: Ring-knapp i sidhuvudet */
+.header-cta.header-call { display: inline-flex; }
+@media (max-width: 760px) { .has-call .main-nav ul .btn { display: inline-flex; } }
+@media (min-width: 761px) {
+  .header-cta.header-call { order: 2; }
+  .has-call .main-nav ul .btn { background: transparent; color: var(--green-900); }
+  .has-call .main-nav ul .btn:hover { background: var(--sage-100); }
+}
