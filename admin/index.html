@@ -49,6 +49,42 @@
       </a>
     </div>
 
+    <section class="admin-card" aria-labelledby="patient-heading" style="max-width:760px; margin-bottom:24px">
+      <h2 class="editor-title" id="patient-heading">Månadens patient</h2>
+      <p class="small muted">Visas på startsidan. Berätta kort om en fågel som kommit in – vad som hänt och hur det går. Folk ger hellre till en fågel än till ”verksamheten”.</p>
+      <form id="patient-form" novalidate>
+        <div class="switch-row">
+          <input type="checkbox" id="p-active" name="active">
+          <label for="p-active">Visa på startsidan</label>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="p-name">Rubrik *</label>
+            <input id="p-name" name="name" type="text" maxlength="60" placeholder="T.ex. Sigge och den brutna vingen">
+          </div>
+          <div class="field">
+            <label for="p-species">Art</label>
+            <input id="p-species" name="species" type="text" maxlength="40" placeholder="T.ex. Ormvråk">
+          </div>
+        </div>
+        <div class="field">
+          <label for="p-text">Berättelse *</label>
+          <textarea id="p-text" name="text" maxlength="400" aria-describedby="p-text-hint"></textarea>
+          <p class="hint" id="p-text-hint">Två–fyra meningar. Högst 400 tecken.</p>
+        </div>
+        <div class="field">
+          <label for="p-image">Bild</label>
+          <input id="p-image" name="image" type="file" accept="image/*">
+          <div class="image-preview" id="p-image-preview" hidden><img alt=""></div>
+        </div>
+        <div class="field">
+          <label for="p-alt">Bildbeskrivning</label>
+          <input id="p-alt" name="imageAlt" type="text" placeholder="T.ex. En ormvråk med bandage på vingen.">
+        </div>
+        <button class="btn" type="submit">Spara patient</button>
+      </form>
+    </section>
+
     <section class="admin-card" aria-labelledby="notice-heading" style="max-width:760px">
       <h2 class="editor-title" id="notice-heading">Viktigt meddelande</h2>
       <p class="small muted">Visas som en rad högst upp på alla sidor. Använd till exempel vid intagningsstopp eller ändrade telefontider.</p>
@@ -87,6 +123,53 @@
       set("apps", U.applications().length);
       set("missions", U.published().length);
       set("news", N.published().length);
+
+      /* Månadens patient */
+      var pf = document.getElementById("patient-form");
+      var pat = N.patient();
+      var pImg = pat.example ? "" : (pat.image || "");
+      pf.active.checked = !!pat.active;
+      pf.name.value = pat.example ? "" : (pat.name || "");
+      pf.species.value = pat.example ? "" : (pat.species || "");
+      pf.text.value = pat.example ? "" : (pat.text || "");
+      pf.imageAlt.value = pat.example ? "" : (pat.imageAlt || "");
+      var prev = document.getElementById("p-image-preview");
+      function showPImg() {
+        prev.hidden = !pImg || pat.example;
+        if (pImg) prev.querySelector("img").src = N.imageSrc(pImg, "../");
+      }
+      showPImg();
+      pf.image.addEventListener("change", function () {
+        var file = pf.image.files && pf.image.files[0];
+        if (!file || !/^image\//.test(file.type)) return;
+        var r = new FileReader();
+        r.onload = function () {
+          var img = new Image();
+          img.onload = function () {
+            var sc = Math.min(1, 1200 / Math.max(img.width, img.height));
+            var c = document.createElement("canvas");
+            c.width = Math.round(img.width * sc); c.height = Math.round(img.height * sc);
+            c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+            pImg = c.toDataURL("image/jpeg", 0.8); pat.example = false; showPImg();
+          };
+          img.src = r.result;
+        };
+        r.readAsDataURL(file);
+      });
+      pf.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var bad = [pf.name, pf.text].filter(function (i) { return !i.value.trim(); });
+        [pf.name, pf.text].forEach(function (i) { window.FCForm.clearError(i); });
+        if (bad.length) {
+          bad.forEach(function (i) { window.FCForm.showError(i, "Fyll i det här fältet."); });
+          bad[0].focus();
+          return;
+        }
+        var ok = N.savePatient({ active: pf.active.checked, example: false, name: pf.name.value.trim(),
+          species: pf.species.value.trim(), text: pf.text.value.trim(), image: pImg, imageAlt: pf.imageAlt.value.trim() });
+        window.FCToast(ok === false ? "Kunde inte spara – prova en mindre bild." :
+          pf.active.checked ? "Månadens patient visas nu på startsidan." : "Patienten är sparad men visas inte.");
+      });
 
       var form = document.getElementById("notice-form");
       var n = N.notice();

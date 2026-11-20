@@ -60,6 +60,17 @@
 
   var DEFAULT_NOTICE = { active: false, text: "", linkUrl: "", linkText: "" };
 
+  var KEY_PATIENT = "fc.patient.v1";
+  var DEFAULT_PATIENT = {
+    active: true,
+    example: true,
+    name: "Månadens patient",
+    species: "Exempel",
+    text: "Här presenterar föreningen en fågel som kommit in till oss: vad som hänt, hur rehabiliteringen går och – förhoppningsvis – när den kan släppas fri igen.",
+    image: "assets/img/rovfagel.jpg",
+    imageAlt: "Närbild på en rovfågel med krokig näbb."
+  };
+
   function read(key, fallback) {
     try {
       var raw = window.localStorage.getItem(key);
@@ -104,6 +115,8 @@
     },
 
     notice: function () { return read(KEY_NOTICE, clone(DEFAULT_NOTICE)); },
+    patient: function () { return read(KEY_PATIENT, clone(DEFAULT_PATIENT)); },
+    savePatient: function (p) { return write(KEY_PATIENT, p); },
     saveNotice: function (n) { return write(KEY_NOTICE, n); },
 
     reset: function () {
