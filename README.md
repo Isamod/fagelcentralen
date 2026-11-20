@@ -57,7 +57,7 @@ Sidhuvud och sidfot finns i varje HTML-fil. Ändras de behöver alla sidor uppda
 - **Månadens patient** visar en exempeltext tills föreningen fyller i en riktig patient under Administration → Översikt.
 - **Minnesgåva:** bekräfta att föreningen kan meddela anhöriga när någon mejlar om en minnesgåva.
 - **Texterna under månadsbeloppen** (vad 50/100/200 kr räcker till) behöver bekräftas av föreningen.
-- **Länkar som saknar mål (`href="#"`):** integritetspolicy, cookies, villkor och Bli medlem.
+- **Länkar som saknar mål (`href="#"`):** integritetspolicy, cookies och villkor.
 
 ## SEO
 
