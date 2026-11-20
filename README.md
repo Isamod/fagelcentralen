@@ -8,6 +8,7 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | --- | --- |
 | `index.html` | Startsida |
 | `hjalp-en-fagel.html` | Hjälp en fågel |
+| `kontakt.html` | Kontakt (telefon för fågelhjälp, e-post för övrigt) |
 | `om-oss.html` | Om oss |
 | `volontar.html` | Volontäruppdrag och ansökningsformulär |
 | `stod-oss.html` | Stöd oss (engångsgåva / månadsgåva, Swish, bankgiro) |
