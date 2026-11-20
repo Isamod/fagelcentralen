@@ -16,14 +16,14 @@
         <a class="logo-name" href="index.html">Fågelcentralen</a>
         <span class="admin-crumb">Administration</span>
       </div>
-      <a class="admin-site-link" href="../index.html">Till webbplatsen ↗</a>
+      <a class="admin-site-link" href="../index.html">Till webbplatsen <span aria-hidden="true">↗</span></a>
     </div>
   </header>
   <nav class="admin-nav" aria-label="Administration">
     <div class="container"><a href="index.html">Översikt</a><a href="volontaruppdrag.html">Volontäruppdrag</a><a href="nyheter.html" aria-current="page">Nyheter</a></div>
   </nav>
 
-  <main class="container admin-main" id="innehall">
+  <main class="container admin-main" id="innehall" tabindex="-1">
     <div class="admin-title">
       <div>
         <h1>Nyheter</h1>
@@ -94,7 +94,7 @@
         <div class="editor-side">
           <div class="admin-card">
             <h3 class="editor-title" style="font-size:1.6rem">Publicering</h3>
-            <p class="eyebrow" style="font-size:.62rem" id="news-status">Status · Utkast</p>
+            <p class="eyebrow" id="news-status">Status · Utkast</p>
             <p class="muted small" id="news-status-text">Nyheten syns inte på webbplatsen ännu.</p>
             <div class="side-actions">
               <button class="btn btn-light btn-block" type="button" id="news-save">Spara utkast</button>

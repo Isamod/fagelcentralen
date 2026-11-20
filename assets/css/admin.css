@@ -7,7 +7,7 @@
 }
 .admin-brand { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
 .admin-brand .logo-name { color: #fff; text-decoration: none; font-size: 1.75rem; font-family: var(--serif); }
-.admin-crumb { font-size: .72rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
+.admin-crumb { font-size: .78rem; font-weight: 600; letter-spacing: .03em; text-transform: uppercase; }
 .admin-site-link { font-size: .88rem; text-decoration: none; }
 .admin-site-link:hover { text-decoration: underline; }
 
@@ -47,7 +47,7 @@
 .admin-table th {
   background: var(--sage-100);
   text-align: left;
-  font-size: .68rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  font-size: .75rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
   padding: 22px 18px;
   border-bottom: 1px solid var(--border);
 }
@@ -137,7 +137,7 @@
 .news-row.is-editing { border: 2px solid var(--green-900); }
 .news-row .thumb { width: 96px; height: 64px; border-radius: 8px; overflow: hidden; background: var(--sage-100); }
 .news-row .thumb img { width: 100%; height: 100%; object-fit: cover; }
-.news-row h3 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 0 0 4px; }
+.news-row h2 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 0 0 4px; }
 .news-row p { margin: 0; font-size: .8rem; color: var(--muted); }
 .badge { display: inline-block; font-size: .7rem; font-weight: 600; padding: 3px 8px; border-radius: 99px; background: var(--sage-100); margin-left: 8px; vertical-align: middle; }
 .badge.draft { background: var(--peach); }

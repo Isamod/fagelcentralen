@@ -17,12 +17,12 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <div class="topbar">
+  <aside class="topbar" aria-label="Snabbkontakt">
     <div class="container">
       <a class="skip-link" href="#innehall">Hoppa till innehåll</a>
       <a href="tel:0733105773">Fågelhjälp · 0733–105 773</a>
     </div>
-  </div>
+  </aside>
 
   <header class="site-header">
     <div class="container">
@@ -43,7 +43,7 @@
     </div>
   </header>
 
-  <main id="innehall">
+  <main id="innehall" tabindex="-1">
     <section class="hero">
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Start</a> / <a href="stod-oss.html">Stöd oss</a> / Bli Fågelvän</p>
@@ -58,7 +58,7 @@
             </div>
             <p class="tiny muted" style="margin-top:14px">Fågelcentralen drivs av Animals HOPE, en ideell förening.</p>
             <div class="aside-card">
-              <h3>Mer än en gåva.</h3>
+              <h2>Mer än en gåva.</h2>
               <p>Ett långsiktigt stöd till fåglarna i Kungälv.<br>En inblick i arbetet via Månadens patient, om du vill.<br>Fågelcentralens kalender varje år.</p>
             </div>
           </div>
@@ -134,7 +134,7 @@
                   <p class="meta">Betalsätt: kort</p>
                 </div>
                 <button class="btn btn-block" type="submit" data-summary-button data-prefix="Fortsätt">Fortsätt · 250 kr</button>
-                <p class="tiny muted" style="margin:14px 0 0"><a href="#fler-satt">Vill du ge med Swish eller bankgiro? Se alternativen nedan ↓</a></p>
+                <p class="tiny muted" style="margin:14px 0 0"><a href="#fler-satt">Vill du ge med Swish eller bankgiro? Se alternativen nedan <span aria-hidden="true">↓</span></a></p>
               </form>
             </div>
           </div>
@@ -152,7 +152,7 @@
           <p class="small"><strong>Du väljer själv om du vill få utskicket.</strong></p>
         </div>
         <div class="form-card">
-          <p class="eyebrow" style="font-size:.6rem">Fågelcentralen / Fågelvän</p>
+          <p class="eyebrow">Fågelcentralen / Fågelvän</p>
           <h3 style="font-size:1.6rem">Månadens patient</h3>
           <p class="small muted">En fågel. En berättelse. En inblick.</p>
           <ol class="patient-list">
@@ -172,7 +172,7 @@
         <div class="grid-2" style="margin-top:28px" id="fler-satt">
           <article class="card card-peach pay-card">
             <h3>Ge med Swish</h3>
-            <p class="eyebrow" style="font-size:.6rem; margin:0">Swishnummer</p>
+            <p class="eyebrow" style="margin:0">Swishnummer</p>
             <p class="pay-number">123 25 35 912</p>
             <p>Öppna Swish och ange numret ovan. Välj ett valfritt belopp och skriv ”Fågelcentralen” som meddelande.</p>
             <button class="btn btn-block" type="button" data-copy="1232535912" data-copy-label="Swishnumret">Kopiera Swishnummer</button>
@@ -180,7 +180,7 @@
           </article>
           <article class="card pay-card">
             <h3>Ge via bankgiro</h3>
-            <p class="eyebrow" style="font-size:.6rem; margin:0">Bankgironummer</p>
+            <p class="eyebrow" style="margin:0">Bankgironummer</p>
             <p class="pay-number">740-8198</p>
             <p>Betala ett valfritt belopp via din bank. Märk betalningen ”Fågelcentralen”.</p>
             <button class="btn btn-block" type="button" data-copy="740-8198" data-copy-label="Bankgironumret">Kopiera bankgironummer</button>
@@ -215,15 +215,15 @@
           <span class="logo-name">Fågelcentralen</span>
           <p>En ideell förening.<br>En andra chans för vilda fåglar.</p>
           <p class="footer-give">Ge en gåva: Swish <strong>123 25 35 912</strong><br>Bankgiro <strong>740-8198</strong></p>
-          <p><a class="footer-cta" href="bli-fagelvan.html">Bli Fågelvän →</a></p>
+          <p><a class="footer-cta" href="bli-fagelvan.html">Bli Fågelvän <span aria-hidden="true">→</span></a></p>
         </div>
         <div>
-          <h3>Fågelhjälp</h3>
+          <h2>Fågelhjälp</h2>
           <p class="phone"><a href="tel:0733105773">0733–105 773</a></p>
           <p class="small">Alla dagar<br>10.00–12.00 · 13.00–16.00</p>
         </div>
         <div>
-          <h3>Hitta hit</h3>
+          <h2>Hitta hit</h2>
           <p>Tullare Hög 50<br>442 90 Kungälv</p>
           <p style="margin-top:12px">Ring alltid före besök.</p>
         </div>

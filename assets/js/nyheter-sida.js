@@ -14,14 +14,15 @@
     return /^(https?:\/\/|[a-z0-9][a-z0-9\-_.\/#?=&]*$)/i.test(u) && !/^javascript:/i.test(u) ? u : "";
   }
 
-  function card(n) {
+  function card(n, level) {
+    var h = level || "h3";
     var href = "nyhet.html?id=" + encodeURIComponent(n.id);
     return '<article class="news-card">' +
       (n.image ? '<div class="thumb' + (n.imageFit === "contain" ? " contain" : "") + '"><img loading="lazy" decoding="async" src="' +
         esc(store.imageSrc(n.image)) + '" alt="' + esc(n.imageAlt) + '"></div>' : "") +
       '<div class="body">' +
-      '<p class="eyebrow" style="font-size:.6rem">' + esc(n.category || store.formatDate(n.date)) + "</p>" +
-      "<h3>" + esc(n.title) + "</h3>" +
+      '<p class="eyebrow">' + esc(n.category || store.formatDate(n.date)) + "</p>" +
+      "<" + h + ">" + esc(n.title) + "</" + h + ">" +
       "<p>" + esc(n.summary) + "</p>" +
       '<a class="arrow-link" href="' + href + '">Läs mer<span class="visually-hidden"> om ' + esc(n.title) + "</span></a>" +
       "</div></article>";
@@ -31,7 +32,7 @@
   var latest = document.querySelector("[data-news-latest]");
   if (latest) {
     var items = store.published().slice(0, 3);
-    if (items.length) latest.innerHTML = items.map(card).join("");
+    if (items.length) latest.innerHTML = items.map(function (n) { return card(n, "h3"); }).join("");
     else latest.closest("section").hidden = true;
   }
 
@@ -39,7 +40,7 @@
   var list = document.querySelector("[data-news-list]");
   if (list) {
     var all = store.published();
-    list.innerHTML = all.length ? all.map(card).join("")
+    list.innerHTML = all.length ? all.map(function (n) { return card(n, "h2"); }).join("")
       : '<p class="muted">Inga nyheter just nu.</p>';
   }
 
@@ -71,7 +72,7 @@
           return "<p>" + esc(p.trim()).replace(/\n/g, "<br>") + "</p>";
         }).join("") +
       "</div>" +
-      (link ? '<p><a class="btn" href="' + esc(link) + '">' + esc(n.linkText || "Läs mer") + " →</a></p>" : "") +
+      (link ? '<p><a class="btn" href="' + esc(link) + '">' + esc(n.linkText || "Läs mer") + " <span aria-hidden=true>→</span></a></p>" : "") +
       '<p style="margin-top:40px"><a class="arrow-link" href="nyheter.html">Alla nyheter</a></p>';
   }
 })();

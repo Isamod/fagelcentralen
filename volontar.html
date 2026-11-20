@@ -17,12 +17,12 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <div class="topbar">
+  <aside class="topbar" aria-label="Snabbkontakt">
     <div class="container">
       <a class="skip-link" href="#innehall">Hoppa till innehåll</a>
       <a href="tel:0733105773">Fågelhjälp · 0733–105 773</a>
     </div>
-  </div>
+  </aside>
 
   <header class="site-header">
     <div class="container">
@@ -43,7 +43,7 @@
     </div>
   </header>
 
-  <main id="innehall">
+  <main id="innehall" tabindex="-1">
     <section class="hero">
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Start</a> / Engagera dig / Volontär</p>
@@ -53,7 +53,7 @@
             <h1>Din tid kan ge<br>nya vingslag.</h1>
             <p class="lead">Vill du bidra i Fågelcentralens verksamhet? Hitta ett volontäruppdrag där ditt engagemang kan göra skillnad.</p>
             <div class="btn-group" style="margin: 28px 0 20px">
-              <a class="btn" href="#uppdrag">Se volontäruppdrag ↓</a>
+              <a class="btn" href="#uppdrag">Se volontäruppdrag <span aria-hidden="true">↓</span></a>
             </div>
             <p class="tiny muted">Fågelcentralen / Animals HOPE · Kungälv</p>
           </div>
@@ -69,7 +69,7 @@
         <p class="eyebrow">Hitta ditt sätt att bidra</p>
         <h2>Aktuella volontäruppdrag</h2>
         <p class="tiny muted">Föreningen bekräftar innehåll och vilka uppdrag som är öppna före publicering.</p>
-        <div class="grid-2" id="mission-list" style="margin-top: 24px" aria-live="polite">
+        <div class="grid-2" id="mission-list" style="margin-top: 24px" >
           <noscript><p>Aktivera JavaScript för att se aktuella uppdrag, eller ring oss på 0733–105 773.</p></noscript>
         </div>
         <div class="interest-bar">
@@ -77,7 +77,7 @@
             <h3>Hittar du inte rätt uppdrag?</h3>
             <p>Välj ”Allmän intresseanmälan” i formuläret och berätta hur du vill bidra.</p>
           </div>
-          <a class="btn btn-light" href="#ansokan" data-select-mission="allman">Gör en intresseanmälan ↓</a>
+          <a class="btn btn-light" href="#ansokan" data-select-mission="allman">Gör en intresseanmälan <span aria-hidden="true">↓</span></a>
         </div>
       </div>
     </section>
@@ -120,7 +120,7 @@
             <p class="form-note">Skriv inte personnummer, hälsouppgifter eller annan känslig information.</p>
             <p class="form-note">Uppgifterna används för att hantera din ansökan. Läs hur vi hanterar dina personuppgifter.</p>
             <p class="form-note"><a href="#">Så hanteras dina personuppgifter</a></p>
-            <button class="btn btn-block" type="submit" style="margin-top:12px">Skicka ansökan →</button>
+            <button class="btn btn-block" type="submit" style="margin-top:12px">Skicka ansökan <span aria-hidden="true">→</span></button>
             <p class="form-note" style="margin-top:14px">Din ansökan gäller valt uppdrag och innebär inte att du har fått en volontärplats.</p>
           </form>
           <div class="form-success" id="volunteer-success" hidden tabindex="-1">
@@ -163,15 +163,15 @@
           <span class="logo-name">Fågelcentralen</span>
           <p>En ideell förening.<br>En andra chans för vilda fåglar.</p>
           <p class="footer-give">Ge en gåva: Swish <strong>123 25 35 912</strong><br>Bankgiro <strong>740-8198</strong></p>
-          <p><a class="footer-cta" href="bli-fagelvan.html">Bli Fågelvän →</a></p>
+          <p><a class="footer-cta" href="bli-fagelvan.html">Bli Fågelvän <span aria-hidden="true">→</span></a></p>
         </div>
         <div>
-          <h3>Fågelhjälp</h3>
+          <h2>Fågelhjälp</h2>
           <p class="phone"><a href="tel:0733105773">0733–105 773</a></p>
           <p class="small">Alla dagar<br>10.00–12.00 · 13.00–16.00</p>
         </div>
         <div>
-          <h3>Hitta hit</h3>
+          <h2>Hitta hit</h2>
           <p>Tullare Hög 50<br>442 90 Kungälv</p>
           <p style="margin-top:12px">Ring alltid före besök.</p>
         </div>

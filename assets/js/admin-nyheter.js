@@ -36,13 +36,13 @@
       var draft = n.status !== "published";
       return '<article class="news-row' + (isEditing ? " is-editing" : "") + '">' +
         '<div class="thumb">' + (n.image ? '<img src="' + esc(store.imageSrc(n.image, "../")) + '" alt="">' : "") + "</div>" +
-        "<div><h3>" + esc(n.title || "Namnlös nyhet") +
-          '<span class="badge' + (draft ? " draft" : "") + '">' + (draft ? "Utkast" : "Publicerad") + "</span></h3>" +
+        "<div><h2>" + esc(n.title || "Namnlös nyhet") +
+          '<span class="badge' + (draft ? " draft" : "") + '">' + (draft ? "Utkast" : "Publicerad") + "</span></h2>" +
           "<p>" + esc(store.formatDate(n.date)) + (n.category ? " · " + esc(n.category) : "") + (n.example ? " · Exempel" : "") + "</p></div>" +
         '<div class="row-actions">' +
           (isEditing ? '<button class="btn btn-light" type="button" disabled>Redigeras</button>'
                      : '<button class="btn btn-light" type="button" data-edit="' + esc(n.id) + '">Redigera</button>') +
-          (!draft ? '<a class="btn btn-light" href="../nyhet.html?id=' + encodeURIComponent(n.id) + '" target="_blank" rel="noopener">Visa ↗</a>' : "") +
+          (!draft ? '<a class="btn btn-light" href="../nyhet.html?id=' + encodeURIComponent(n.id) + '" target="_blank" rel="noopener">Visa <span aria-hidden=true>↗</span></a>' : "") +
         "</div></article>";
     }).join("");
   }
@@ -51,7 +51,7 @@
     var b = e.target.closest("[data-edit]");
     if (b) {
       openEditor(store.get(b.getAttribute("data-edit")));
-      editor.scrollIntoView({ behavior: "smooth", block: "start" });
+      editor.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     }
   });
 
@@ -205,7 +205,7 @@
   field("new-news").addEventListener("click", function () {
     openEditor({ id: "", title: "", category: "", date: today(), summary: "", body: "", image: "",
       imageAlt: "", imageFit: "cover", linkUrl: "", linkText: "", status: "draft", example: false });
-    editor.scrollIntoView({ behavior: "smooth", block: "start" });
+    editor.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     field("a-title").focus({ preventScroll: true });
   });
 

@@ -6,9 +6,9 @@
   if (window.FCNyheter && !document.body.classList.contains("admin")) {
     var notice = window.FCNyheter.notice();
     if (notice.active && notice.text) {
-      var bar = document.createElement("div");
+      var bar = document.createElement("aside");
       bar.className = "site-notice";
-      bar.setAttribute("role", "status");
+      bar.setAttribute("aria-label", "Viktigt meddelande");
       var inner = document.createElement("div");
       inner.className = "container";
       var text = document.createElement("p");
@@ -18,7 +18,11 @@
       if (url && !/^javascript:/i.test(url)) {
         var a = document.createElement("a");
         a.href = url;
-        a.textContent = (notice.linkText || "Läs mer") + " →";
+        a.textContent = (notice.linkText || "Läs mer") + " ";
+        var arrow = document.createElement("span");
+        arrow.setAttribute("aria-hidden", "true");
+        arrow.textContent = "→";
+        a.appendChild(arrow);
         inner.appendChild(a);
       }
       bar.appendChild(inner);

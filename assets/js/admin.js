@@ -193,7 +193,7 @@
   document.getElementById("new-mission").addEventListener("click", function () {
     openEditor({ id: "", title: "", summary: "", tasks: [], requirements: "", place: "", extent: "",
       deadline: "", recipient: "", status: "draft", example: false });
-    editor.scrollIntoView({ behavior: "smooth", block: "start" });
+    editor.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     field("m-title").focus({ preventScroll: true });
   });
 
