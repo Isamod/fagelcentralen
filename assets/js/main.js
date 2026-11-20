@@ -214,6 +214,67 @@
 
   window.FCForm = { showError: showError, clearError: clearError };
 
+  function escHtml(v) {
+    return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* ---------- Månadens patient ---------- */
+  document.querySelectorAll("[data-patient]").forEach(function (el) {
+    var p = window.FCNyheter && window.FCNyheter.patient();
+    var section = el.closest("section") || el;
+    if (!p || !p.active || !p.text) { section.hidden = true; return; }
+    var img = p.image ? window.FCNyheter.imageSrc(p.image, el.getAttribute("data-prefix") || "") : "";
+    el.innerHTML =
+      (img ? '<div class="patient-media"><img loading="lazy" decoding="async" src="' + escHtml(img) + '" alt="' + escHtml(p.imageAlt) + '"></div>' : "") +
+      '<div class="patient-body">' +
+        '<p class="eyebrow">Månadens patient' + (p.species ? " · " + escHtml(p.species) : "") + "</p>" +
+        "<h2>" + escHtml(p.name) + "</h2>" +
+        '<p class="muted">' + escHtml(p.text) + "</p>" +
+        (p.example ? '<p class="goal-note">Exempeltext – föreningen fyller i en riktig patient i administrationen.</p>' : "") +
+        '<div class="btn-group" style="margin-top:20px"><a class="btn" href="stod-oss.html">Hjälp nästa patient <span aria-hidden="true">→</span></a></div>' +
+      "</div>";
+  });
+
+  /* ---------- Så används din gåva ---------- */
+  document.querySelectorAll("[data-anvandning]").forEach(function (el) {
+    var d = window.FCInsamling;
+    if (!d || !d.anvandning || !d.anvandning.length) { (el.closest("section") || el).hidden = true; return; }
+    el.innerHTML = d.anvandning.map(function (a) {
+      return '<div class="use-item">' +
+        (a.andel ? '<p class="use-share">' + escHtml(a.andel) + " %</p>" : "") +
+        "<h3>" + escHtml(a.rubrik) + "</h3><p>" + escHtml(a.text) + "</p></div>";
+    }).join("");
+  });
+  document.querySelectorAll("[data-faglar-i-ar]").forEach(function (el) {
+    if (window.FCInsamling) el.textContent = window.FCInsamling.faglarIAr;
+  });
+
+  /* ---------- Dela ---------- */
+  document.querySelectorAll("[data-share]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var url = new URL(btn.getAttribute("data-share"), window.location.href).href;
+      var data = { title: "Fågelcentralen", text: btn.getAttribute("data-share-text") || "", url: url };
+      var copied = function () { toast("Länken är kopierad – klistra in den där du vill dela."); };
+      var copy = function () {
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(url).then(copied, function () { fallbackCopy(url); copied(); });
+        } else {
+          fallbackCopy(url);
+          copied();
+        }
+      };
+      if (navigator.share) {
+        navigator.share(data).catch(function (err) {
+          if (!err || err.name !== "AbortError") copy();
+        });
+      } else {
+        copy();
+      }
+    });
+  });
+
   /* ---------- Målmätare för Fågelvänner ---------- */
   var goal = window.FCFagelvanMal;
   document.querySelectorAll("[data-goal-meter]").forEach(function (el) {
