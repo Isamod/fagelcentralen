@@ -14,6 +14,7 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | `stod-oss.html` | Stöd oss: Bli Fågelvän (månadsgåva, förvald), engångsgåva, Swish, bankgiro, Månadens patient |
 | `minnesgava.html` | Minnesgåva |
 | `foretag.html` | Stöd som företag |
+| `onskelista.html` | Fåglarnas önskelista (material) |
 | `bli-fagelvan.html` | Skickar vidare till Stöd oss (finns kvar så att gamla länkar fungerar) |
 | `nyheter.html`, `nyhet.html` | Nyhetslista och enskild nyhet |
 | `tack.html` | Tacksida efter gåva (erbjuder månadsgåva efter engångsgåva) |
