@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Volontäruppdrag – Administration – Fågelcentralen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin">
+  <header class="admin-header">
+    <div class="container">
+      <div class="admin-brand">
+        <a class="logo-name" href="volontaruppdrag.html">Fågelcentralen</a>
+        <span class="admin-crumb">Administration / Volontäruppdrag</span>
+      </div>
+      <a class="admin-site-link" href="../volontar.html">Till webbplatsen ↗</a>
+    </div>
+  </header>
+
+  <main class="container admin-main" id="innehall">
+    <div class="admin-title">
+      <div>
+        <h1>Volontäruppdrag</h1>
+        <p class="muted">Skapa, publicera och stäng uppdrag från ett och samma ställe.</p>
+      </div>
+      <button class="btn" type="button" id="new-mission">Skapa nytt uppdrag</button>
+    </div>
+
+    <div class="admin-note" id="demo-note">
+      <span>Exempeldata · Två publicerade exempeluppdrag och ett utkast. Ändringar sparas bara i den här webbläsaren.</span>
+      <button type="button" class="link-btn" id="reset-demo">Återställ exempeldata</button>
+    </div>
+
+    <div class="admin-tabs" role="tablist" aria-label="Vy">
+      <button type="button" role="tab" id="tab-missions" aria-controls="view-missions" aria-selected="true">Uppdrag (<span data-count="missions">0</span>)</button>
+      <button type="button" role="tab" id="tab-apps" aria-controls="view-apps" aria-selected="false" tabindex="-1">Ansökningar (<span data-count="apps">0</span>)</button>
+      <button type="button" role="tab" id="tab-general" aria-controls="view-general" aria-selected="false" tabindex="-1">Allmänna intresseanmälningar (<span data-count="general">0</span>)</button>
+    </div>
+
+    <section role="tabpanel" id="view-missions" aria-labelledby="tab-missions">
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th scope="col">Uppdrag</th><th scope="col">Status</th><th scope="col">Åtgärder</th></tr>
+          </thead>
+          <tbody id="mission-rows"></tbody>
+        </table>
+      </div>
+
+      <div id="editor" hidden>
+        <h2 class="editor-heading" id="editor-heading">Redigera utkast</h2>
+        <div class="editor-grid">
+          <form class="admin-card" id="mission-form" novalidate>
+            <h3 class="editor-title" id="editor-title">Nytt uppdrag</h3>
+            <p class="tiny muted" id="editor-sub">Fyll i uppgifterna nedan.</p>
+
+            <div class="field">
+              <label for="m-title">Rubrik *</label>
+              <input id="m-title" name="title" type="text" required>
+            </div>
+            <div class="field">
+              <label for="m-summary">Kort beskrivning *</label>
+              <input id="m-summary" name="summary" type="text" required>
+            </div>
+            <div class="field">
+              <label for="m-tasks">Arbetsuppgifter *</label>
+              <textarea id="m-tasks" name="tasks" required aria-describedby="m-tasks-hint"></textarea>
+              <p class="hint" id="m-tasks-hint">En uppgift per rad. Varje rad blir en punkt på webbplatsen.</p>
+            </div>
+            <div class="field">
+              <label for="m-req">Förkunskaper och förutsättningar</label>
+              <input id="m-req" name="requirements" type="text" placeholder="Ange endast krav som faktiskt behövs för uppdraget.">
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="m-place">Plats *</label>
+                <input id="m-place" name="place" type="text" required>
+              </div>
+              <div class="field">
+                <label for="m-extent">Omfattning och tider *</label>
+                <input id="m-extent" name="extent" type="text" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="m-deadline">Sista ansökningsdag</label>
+              <input id="m-deadline" name="deadline" type="text" placeholder="Ingen sista ansökningsdag">
+            </div>
+            <p class="tiny muted" style="margin:0">Stäng uppdraget när ni inte längre tar emot ansökningar.</p>
+          </form>
+
+          <div class="editor-side">
+            <div class="admin-card">
+              <h3 class="editor-title" style="font-size:1.6rem">Publicering</h3>
+              <p class="eyebrow" style="font-size:.62rem" id="pub-status">Status · Utkast</p>
+              <p class="muted" id="pub-text">Det här uppdraget syns inte på webbplatsen ännu.</p>
+              <h4>Ansökningsformulär</h4>
+              <p class="small muted">Ansökningar kopplas till uppdraget. Stängda uppdrag ska inte gå att söka.</p>
+              <div class="field">
+                <label for="m-recipient">Mottagare för ansökningar *</label>
+                <select id="m-recipient" name="recipient" form="mission-form" required>
+                  <option value="">Välj behörig mottagare</option>
+                </select>
+              </div>
+              <p class="tiny muted" id="pub-hint">Fyll i mottagare och obligatoriska fält före publicering.</p>
+              <div class="side-actions">
+                <button class="btn btn-light btn-block" type="button" id="save-draft">Spara utkast</button>
+                <button class="btn btn-light btn-block" type="button" id="preview">Förhandsgranska</button>
+                <button class="btn btn-block" type="button" id="publish" disabled>Publicera uppdrag</button>
+              </div>
+            </div>
+            <div class="tip-card">
+              <h3>Tydliga uppdrag ger bättre ansökningar.</h3>
+              <p>Beskriv arbetsuppgifter, plats, tidsåtgång och eventuella förkunskaper. Använd bara bekräftade uppgifter.</p>
+              <p>Samla bara in de personuppgifter som behövs för rekryteringen.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section role="tabpanel" id="view-apps" aria-labelledby="tab-apps" hidden>
+      <div id="apps-list"></div>
+    </section>
+
+    <section role="tabpanel" id="view-general" aria-labelledby="tab-general" hidden>
+      <div id="general-list"></div>
+    </section>
+  </main>
+
+  <dialog class="preview-dialog" id="preview-dialog" aria-labelledby="preview-title">
+    <div class="preview-head">
+      <p class="eyebrow" style="margin:0">Förhandsgranskning</p>
+      <button type="button" class="btn btn-light" id="close-preview">Stäng</button>
+    </div>
+    <div class="mission-detail" id="preview-body"></div>
+  </dialog>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/uppdrag.js"></script>
+  <script src="../assets/js/admin.js"></script>
+</body>
+</html>
