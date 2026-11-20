@@ -153,6 +153,10 @@
 
     applications: function () { return read(KEY_APPLICATIONS, []); },
 
+    removeApplication: function (receivedAt) {
+      write(KEY_APPLICATIONS, store.applications().filter(function (a) { return a.receivedAt !== receivedAt; }));
+    },
+
     addApplication: function (app) {
       var list = store.applications();
       app.receivedAt = new Date().toISOString();

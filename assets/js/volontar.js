@@ -34,13 +34,13 @@
       var isSel = m.id === selected;
       var label = (m.example ? "Exempeluppdrag" : "Volontäruppdrag") + (isSel ? " · Visas nedan" : "");
       return '<article class="mission-card' + (isSel ? " selected" : "") + '">' +
-        '<p class="eyebrow" style="font-size:.6rem">' + esc(label) + "</p>" +
+        '<p class="eyebrow">' + esc(label) + "</p>" +
         "<h3>" + esc(m.title) + "</h3>" +
         '<p class="meta">' + esc(metaLine(m)) + "</p>" +
         '<p class="desc">' + esc(m.summary) + "</p>" +
         '<p class="extent">Omfattning och tider ' + esc(lowerFirst(m.extent)) + ".</p>" +
         '<a class="btn' + (isSel ? "" : " btn-light") + '" href="#ansokan" data-select-mission="' + esc(m.id) + '">' +
-        (isSel ? "Läs uppdrag och ansök ↓" : "Läs mer och ansök →") + "</a>" +
+        (isSel ? "Läs uppdrag och ansök <span aria-hidden=true>↓</span>" : "Läs mer och ansök <span aria-hidden=true>→</span>") + "</a>" +
         "</article>";
     }).join("");
   }

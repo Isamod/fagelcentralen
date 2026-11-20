@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tack för din gåva – Fågelcentralen</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#163f35">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/lora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <aside class="topbar" aria-label="Snabbkontakt">
+    <div class="container">
+      <a class="skip-link" href="#innehall">Hoppa till innehåll</a>
+      <a href="tel:0733105773">Fågelhjälp · 0733–105 773</a>
+    </div>
+  </aside>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="logo" href="index.html">
+        <img class="logo-mark" src="assets/img/logo-mark.svg" alt="" width="48" height="48">
+        <span class="logo-text">
+        <span class="logo-name">Fågelcentralen</span>
+        <span class="logo-tag">Tillsammans för vilda fåglar</span>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Huvudmeny">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Meny</button>
+        <ul id="menu">
+          <li><a href="hjalp-en-fagel.html">Hjälp en fågel</a></li>
+          <li><a href="volontar.html">Engagera dig</a></li>
+          <li><a href="om-oss.html">Om oss</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+          <li><a class="btn" href="stod-oss.html">Stöd oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="innehall" tabindex="-1">
+
+    <section class="hero">
+      <div class="container">
+        <div class="thanks-card">
+          <p class="demo-note" id="demo-note" hidden>Förhandsvisning – ingen betalning har gjorts. När Stripe är kopplat kommer givaren hit efter betalningen.</p>
+          <p class="eyebrow" id="thanks-eyebrow">Tack för din gåva</p>
+          <h1 id="thanks-title">Tack!</h1>
+          <p class="lead" id="thanks-lead">Din gåva hjälper skadade och sjuka vilda fåglar att få en andra chans.</p>
+          <p class="small muted" id="thanks-receipt">Ett kvitto skickas till din e-post.</p>
+
+          <div class="upsell" id="upsell" hidden>
+            <h2>Vill du göra det här varje månad?</h2>
+            <p class="small muted">Som Fågelvän ger du ett tryggt stöd som hjälper oss att planera arbetet långsiktigt. Du får vår kalender varje år och kan avsluta när du vill.</p>
+            <div class="goal-meter" data-goal-meter style="margin:16px 0 0"></div>
+            <div class="btn-group">
+              <a class="btn" href="bli-fagelvan.html">Bli Fågelvän · 100 kr/mån <span aria-hidden="true">→</span></a>
+              <a class="btn btn-light" href="index.html">Nej tack, till startsidan</a>
+            </div>
+          </div>
+
+          <div class="upsell" id="welcome" hidden>
+            <h2>Välkommen som Fågelvän!</h2>
+            <p class="small muted">Du får ett välkomstmejl inom kort. Kalendern skickas ut en gång om året.</p>
+            <p class="small muted" id="welcome-patient" hidden>Du har tackat ja till Månadens patient. Det första mejlet kommer nästa månad.</p>
+            <p class="small muted">Vill du ändra belopp eller avsluta? Kontakta oss så hjälper vi dig.</p>
+            <div class="btn-group">
+              <a class="btn btn-light" href="index.html">Till startsidan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="kontakt">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <span class="logo-name">Fågelcentralen</span>
+          <p>En ideell förening.<br>En andra chans för vilda fåglar.</p>
+          <p class="footer-give">Ge en gåva: Swish <strong>123 25 35 912</strong><br>Bankgiro <strong>740-8198</strong></p>
+          <p><a class="footer-cta" href="bli-fagelvan.html">Bli Fågelvän <span aria-hidden="true">→</span></a></p>
+        </div>
+        <div>
+          <h2>Fågelhjälp</h2>
+          <p class="phone"><a href="tel:0733105773">0733–105 773</a></p>
+          <p class="small">Alla dagar<br>10.00–12.00 · 13.00–16.00</p>
+        </div>
+        <div>
+          <h2>Hitta hit</h2>
+          <p>Tullare Hög 50<br>442 90 Kungälv</p>
+          <p style="margin-top:12px">Ring alltid före besök.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Fågelcentralen / Animals HOPE</span>
+        <nav aria-label="Juridiskt">
+          <a href="#">Integritetspolicy</a>
+          <a href="#">Om cookies</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/nyheter.js"></script>
+  <script src="assets/js/fagelvan-mal.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/tack.js"></script>
+</body>
+</html>

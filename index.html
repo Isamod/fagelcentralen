@@ -3,31 +3,71 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fågelcentralen – En andra chans för vilda fåglar</title>
-  <meta name="description" content="Fågelcentralen är en ideell förening som tar hand om skadade och sjuka vilda fåglar i Västra Götaland.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <title>Fågelcentralen – Fågelrehabilitering i Göteborg och Kungälv</title>
+  <meta name="description" content="Fågelcentralen är en ideell förening som tar hand om skadade och sjuka vilda fåglar i Göteborg, Kungälv och Västra Götaland. Ring 0733–105 773 för fågelhjälp.">
+  <meta name="theme-color" content="#163f35">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/lora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:site_name" content="Fågelcentralen">
+  <meta property="og:title" content="Fågelcentralen – Fågelrehabilitering i Göteborg och Kungälv">
+  <meta property="og:description" content="Fågelcentralen är en ideell förening som tar hand om skadade och sjuka vilda fåglar i Göteborg, Kungälv och Västra Götaland. Ring 0733–105 773 för fågelhjälp.">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Fågelcentralen",
+    "description": "Ideell förening som tar hand om skadade och sjuka vilda fåglar i Göteborg, Kungälv och Västra Götaland.",
+    "foundingDate": "1987",
+    "telephone": "+46733105773",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tullare Hög 50",
+      "postalCode": "442 90",
+      "addressLocality": "Kungälv",
+      "addressCountry": "SE"
+    },
+    "areaServed": "Västra Götaland",
+    "parentOrganization": { "@type": "NGO", "name": "Animals HOPE" },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Fågelhjälp",
+      "telephone": "+46733105773",
+      "availableLanguage": "Swedish",
+      "hoursAvailable": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "10:00", "closes": "12:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "13:00", "closes": "16:00" }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
-  <div class="topbar">
+  <aside class="topbar" aria-label="Snabbkontakt">
     <div class="container">
       <a class="skip-link" href="#innehall">Hoppa till innehåll</a>
       <a href="tel:0733105773">Fågelhjälp · 0733–105 773</a>
     </div>
-  </div>
+  </aside>
 
   <header class="site-header">
     <div class="container">
       <a class="logo" href="index.html">
+        <img class="logo-mark" src="assets/img/logo-mark.svg" alt="" width="48" height="48">
+        <span class="logo-text">
         <span class="logo-name">Fågelcentralen</span>
         <span class="logo-tag">Tillsammans för vilda fåglar</span>
+        </span>
       </a>
       <nav class="main-nav" aria-label="Huvudmeny">
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Meny</button>
         <ul id="menu">
           <li><a href="hjalp-en-fagel.html">Hjälp en fågel</a></li>
+          <li><a href="volontar.html">Engagera dig</a></li>
           <li><a href="om-oss.html">Om oss</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
           <li><a class="btn" href="stod-oss.html">Stöd oss</a></li>
@@ -36,7 +76,7 @@
     </div>
   </header>
 
-  <main id="innehall">
+  <main id="innehall" tabindex="-1">
     <section class="hero">
       <div class="container">
         <div class="hero-grid">
@@ -45,7 +85,7 @@
             <h1>En andra chans<br>att flyga fritt.</h1>
             <p class="lead">Vi tar hand om skadade och sjuka vilda fåglar. Med din hjälp kan fler få komma tillbaka till naturen.</p>
             <div class="btn-group" style="margin: 28px 0 20px">
-              <a class="btn" href="hjalp-en-fagel.html">Hjälp en fågel →</a>
+              <a class="btn" href="hjalp-en-fagel.html">Hjälp en fågel <span aria-hidden="true">→</span></a>
               <a class="btn btn-outline" href="stod-oss.html">Stöd vårt arbete</a>
             </div>
             <p class="tiny muted">Fågelhjälp i Västra Götaland</p>
@@ -90,7 +130,7 @@
     <section class="section bg-sage" id="om-foreningen">
       <div class="container feature">
         <div class="media">
-          <img src="assets/img/kattuggla.jpg" alt="En kattuggla sitter på en gren.">
+          <img loading="lazy" decoding="async" src="assets/img/kattuggla.jpg" alt="En kattuggla sitter på en gren.">
         </div>
         <div>
           <p class="eyebrow">Det här är Fågelcentralen</p>
@@ -121,7 +161,8 @@
           <article class="card card-sage">
             <h3>Bli månadsgivare</h3>
             <p class="small muted">Gör omtanken till en vana och stötta föreningens arbete över tid.</p>
-            <a class="btn" href="bli-fagelvan.html">Bli månadsgivare →</a>
+            <div class="goal-meter on-sage" data-goal-meter style="margin:0 0 20px"></div>
+            <a class="btn" href="bli-fagelvan.html">Bli månadsgivare <span aria-hidden="true">→</span></a>
             <p class="tiny muted" style="margin-top:18px">Läs om villkor och hur du kommer igång.</p>
           </article>
         </div>
@@ -136,31 +177,31 @@
             <h2 style="margin-bottom:.3em">Aktuellt från Fågelcentralen</h2>
             <p class="muted">Inblickar i verksamheten och fler sätt att engagera sig.</p>
           </div>
-          <a class="arrow-link" href="#">Alla nyheter</a>
+          <a class="arrow-link" href="nyheter.html">Alla nyheter</a>
         </div>
-        <div class="grid-3" style="margin-top: 28px">
+        <div class="grid-3" style="margin-top: 28px" data-news-latest>
           <article class="news-card">
-            <div class="thumb contain"><img src="assets/img/kalender-2027.jpg" alt="Omslaget till Fågelcentralens kalender 2027."></div>
+            <div class="thumb contain"><img loading="lazy" decoding="async" src="assets/img/kalender-2027.jpg" alt="Omslaget till Fågelcentralens kalender 2027."></div>
             <div class="body">
-              <p class="eyebrow" style="font-size:.6rem">Kalender · 2027</p>
+              <p class="eyebrow">Kalender · 2027</p>
               <h3>Fågelcentralens kalender 2027</h3>
               <p>Upptäck kalendern för 2027 med hotade fågelarter och stötta Fågelcentralens arbete.</p>
-              <a class="arrow-link" href="#">Läs om kalendern</a>
+              <a class="arrow-link" href="nyhet.html?id=kalender-2027">Läs om kalendern</a>
             </div>
           </article>
           <article class="news-card">
-            <div class="thumb"><img src="assets/img/kattuggla.jpg" alt=""></div>
+            <div class="thumb"><img loading="lazy" decoding="async" src="assets/img/kattuggla.jpg" alt=""></div>
             <div class="body">
-              <p class="eyebrow" style="font-size:.6rem">Kunskap · Samarbete</p>
+              <p class="eyebrow">Kunskap · Samarbete</p>
               <h3>Föreläsningar med Medborgarskolan</h3>
               <p>Nyfiken på hur vårt arbete går till? Läs om föreläsningarna i samarbete med Medborgarskolan.</p>
-              <a class="arrow-link" href="#">Läs om föreläsningarna</a>
+              <a class="arrow-link" href="nyhet.html?id=forelasningar-medborgarskolan">Läs om föreläsningarna</a>
             </div>
           </article>
           <article class="news-card">
-            <div class="thumb"><img src="assets/img/volontar.jpg" alt=""></div>
+            <div class="thumb"><img loading="lazy" decoding="async" src="assets/img/volontar.jpg" alt=""></div>
             <div class="body">
-              <p class="eyebrow" style="font-size:.6rem">Engagera dig</p>
+              <p class="eyebrow">Engagera dig</p>
               <h3>Bidra med din tid hos oss</h3>
               <p>Vill du hjälpa till i verksamheten? Läs om volontärarbetet och hur du anmäler ditt intresse.</p>
               <a class="arrow-link" href="volontar.html">Läs om volontärarbete</a>
@@ -201,14 +242,16 @@
         <div>
           <span class="logo-name">Fågelcentralen</span>
           <p>En ideell förening.<br>En andra chans för vilda fåglar.</p>
+          <p class="footer-give">Ge en gåva: Swish <strong>123 25 35 912</strong><br>Bankgiro <strong>740-8198</strong></p>
+          <p><a class="footer-cta" href="bli-fagelvan.html">Bli Fågelvän <span aria-hidden="true">→</span></a></p>
         </div>
         <div>
-          <h3>Fågelhjälp</h3>
+          <h2>Fågelhjälp</h2>
           <p class="phone"><a href="tel:0733105773">0733–105 773</a></p>
           <p class="small">Alla dagar<br>10.00–12.00 · 13.00–16.00</p>
         </div>
         <div>
-          <h3>Hitta hit</h3>
+          <h2>Hitta hit</h2>
           <p>Tullare Hög 50<br>442 90 Kungälv</p>
           <p style="margin-top:12px">Ring alltid före besök.</p>
         </div>
@@ -223,6 +266,9 @@
     </div>
   </footer>
 
+  <script src="assets/js/nyheter.js"></script>
+  <script src="assets/js/fagelvan-mal.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/nyheter-sida.js"></script>
 </body>
 </html>

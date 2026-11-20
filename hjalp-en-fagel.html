@@ -3,31 +3,71 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hjälp en fågel – Fågelcentralen</title>
-  <meta name="description" content="Hittat en skadad eller sjuk vild fågel i Västra Götaland? Ring Fågelcentralen för råd innan du kommer.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <title>Hittat en skadad fågel? Fågelhjälp i Göteborg och Kungälv – Fågelcentralen</title>
+  <meta name="description" content="Hittat en skadad eller sjuk vild fågel i Göteborg, Kungälv eller Västra Götaland? Ring Fågelcentralen på 0733–105 773 för råd innan du kommer.">
+  <meta name="theme-color" content="#163f35">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/lora-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="sv_SE">
+  <meta property="og:site_name" content="Fågelcentralen">
+  <meta property="og:title" content="Hittat en skadad fågel? Fågelhjälp i Göteborg och Kungälv – Fågelcentralen">
+  <meta property="og:description" content="Hittat en skadad eller sjuk vild fågel i Göteborg, Kungälv eller Västra Götaland? Ring Fågelcentralen på 0733–105 773 för råd innan du kommer.">
   <link rel="stylesheet" href="assets/css/styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "name": "Fågelcentralen",
+    "description": "Ideell förening som tar hand om skadade och sjuka vilda fåglar i Göteborg, Kungälv och Västra Götaland.",
+    "foundingDate": "1987",
+    "telephone": "+46733105773",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Tullare Hög 50",
+      "postalCode": "442 90",
+      "addressLocality": "Kungälv",
+      "addressCountry": "SE"
+    },
+    "areaServed": "Västra Götaland",
+    "parentOrganization": { "@type": "NGO", "name": "Animals HOPE" },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Fågelhjälp",
+      "telephone": "+46733105773",
+      "availableLanguage": "Swedish",
+      "hoursAvailable": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "10:00", "closes": "12:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "13:00", "closes": "16:00" }
+      ]
+    }
+  }
+  </script>
 </head>
 <body>
-  <div class="topbar">
+  <aside class="topbar" aria-label="Snabbkontakt">
     <div class="container">
       <a class="skip-link" href="#innehall">Hoppa till innehåll</a>
       <a href="tel:0733105773">Fågelhjälp · 0733–105 773</a>
     </div>
-  </div>
+  </aside>
 
   <header class="site-header">
     <div class="container">
       <a class="logo" href="index.html">
+        <img class="logo-mark" src="assets/img/logo-mark.svg" alt="" width="48" height="48">
+        <span class="logo-text">
         <span class="logo-name">Fågelcentralen</span>
         <span class="logo-tag">Tillsammans för vilda fåglar</span>
+        </span>
       </a>
       <nav class="main-nav" aria-label="Huvudmeny">
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Meny</button>
         <ul id="menu">
           <li><a href="hjalp-en-fagel.html" aria-current="page">Hjälp en fågel</a></li>
+          <li><a href="volontar.html">Engagera dig</a></li>
           <li><a href="om-oss.html">Om oss</a></li>
           <li><a href="#kontakt">Kontakt</a></li>
           <li><a class="btn" href="stod-oss.html">Stöd oss</a></li>
@@ -36,14 +76,14 @@
     </div>
   </header>
 
-  <main id="innehall">
+  <main id="innehall" tabindex="-1">
     <section class="hero">
       <div class="container">
         <p class="breadcrumb"><a href="index.html">Start</a> / Hjälp en fågel</p>
         <div class="hero-grid align-start">
           <div>
             <h1>Hittat en fågel<br>som behöver hjälp?</h1>
-            <p class="lead">Vi hjälper skadade och sjuka vilda fåglar i Västra Götaland. Ring oss för råd innan du kommer hit.</p>
+            <p class="lead">Vi hjälper skadade och sjuka vilda fåglar i Göteborg, Kungälv och övriga Västra Götaland. Ring oss för råd innan du kommer hit.</p>
             <div class="notice">
               <strong>Ring alltid innan du åker</strong>
               <p>Vi behöver säkerställa att vi har tid och plats att ta emot fågeln.</p>
@@ -74,17 +114,17 @@
           <article class="card help-card">
             <p class="num">02</p>
             <h3>Ensam fågelunge</h3>
-            <p>En ensam fågelunge behöver inte vara övergiven. Läs råden innan du tar med den.</p>
-            <a class="arrow-link" href="#bra-att-veta">Läs om fågelungar</a>
+            <p>En ensam fågelunge är nästan aldrig övergiven. Läs råden innan du tar med den.</p>
+            <a class="arrow-link" href="https://www.kfv-riks.se/Djurungar" rel="noopener">Läs om fågelungar</a>
           </article>
           <article class="card help-card">
             <p class="num">03</p>
             <h3>Utanför vårt område</h3>
             <p>Hittat en skadad fågel i en annan del av Sverige? Hitta en rehabiliterare närmare dig.</p>
-            <a class="arrow-link" href="#" data-todo="KFV-länk">Hitta hjälp via KFV</a>
+            <a class="arrow-link" href="http://www.kfv-riks.se/Kontakt" rel="noopener">Hitta en viltrehabiliterare</a>
           </article>
         </div>
-        <p class="small muted" style="margin-top:28px">Hittat ett däggdjur? Vi har inte tillstånd att ta emot däggdjur. Kontakta en viltrehabiliterare som kan hjälpa den aktuella djurarten.</p>
+        <p class="small muted" style="margin-top:28px"><strong>Hittat ett skadat däggdjur?</strong> Vi kan inte ta emot däggdjur. Ring polisen på <a href="tel:11414">114 14</a> så kontaktar de en viltvårdare.</p>
       </div>
     </section>
 
@@ -104,7 +144,7 @@
             </li>
             <li>
               <h3>Planera transporten med oss</h3>
-              <p>Vi har inte möjlighet att hämta skadade fåglar. Prata med oss om hur fågeln kan komma till rätt hjälp.</p>
+              <p>Vi kan tyvärr inte hämta fåglar. Kan du köra fågeln till oss är vi mycket tacksamma. Annars kan Svenska Djurambulansen hämta i mån av tid: <a href="tel:0771999112">0771-999 112</a>.</p>
             </li>
           </ol>
           <div class="form-card address-card">
@@ -119,27 +159,75 @@
       </div>
     </section>
 
+    <section class="section-sm">
+      <div class="container">
+        <div class="give-band">
+          <div>
+            <p class="eyebrow">Varje fågel kostar att vårda</p>
+            <h2>Vill du hjälpa fågeln<br>en bit till?</h2>
+            <p class="muted" style="margin:0">Foder, medicin och tid för varje fågel betalas av gåvor. Ett litet bidrag gör skillnad för just den fågel du hittade.</p>
+          </div>
+          <div>
+            <p class="eyebrow" style="margin-bottom:4px">Swish</p>
+            <p class="swish-line">123 25 35 912</p>
+            <div class="btn-group">
+              <button class="btn" type="button" data-copy="1232535912" data-copy-label="Swishnumret">Kopiera Swishnummer</button>
+              <a class="btn btn-outline" href="stod-oss.html">Fler sätt att ge</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section bg-white" id="bra-att-veta">
       <div class="container faq">
         <div>
           <p class="eyebrow">Bra att veta</p>
           <h2>Osäker på<br>vad som gäller?</h2>
-          <p class="small muted">Börja här. Ring oss om du behöver råd om en skadad fågel.</p>
+          <p class="small muted">Svar på de vanligaste frågorna. Ring oss om du behöver råd om en skadad fågel.</p>
         </div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <h3>Jag kommer inte fram på telefon. Vad gör jag?</h3>
-            <p>Vi får många samtal, särskilt under vår och sommar. Ha tålamod och försök igen under telefontid: 10.00–12.00 och 13.00–16.00, alla dagar.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Kan jag mejla om en skadad fågel?</h3>
-            <p>Nej. Frågor om skadade fåglar besvaras bara via telefon. Ring 0733–105 773.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Är en ensam fågelunge alltid övergiven?</h3>
-            <p>Nej, en ensam fågelunge behöver inte vara övergiven. Läs råden om fågelungar innan du tar med den från platsen.</p>
-            <p style="margin-top:14px"><a class="ext-link small" style="font-weight:600; text-underline-offset:3px" href="#" data-todo="KFV-länk">Läs mer om fågelungar hos KFV</a></p>
-          </div>
+        <div class="accordion">
+          <details id="fagelungar">
+            <summary>Är en ensam fågelunge övergiven?</summary>
+            <div class="accordion-body">
+              <p>Nästan aldrig. Föräldrarna håller sig undan så länge människor är i närheten.</p>
+              <ul>
+                <li>Gå undan och titta på avstånd, gärna med kikare, i flera timmar.</li>
+                <li>Ungen är bara övergiven om en förälder har hittats död eller inte kommit tillbaka på flera timmar.</li>
+                <li>Har du rört ungen? Lägg tillbaka den där du hittade den. Att föräldrarna stöter bort ungen på grund av lukten är en myt.</li>
+              </ul>
+              <p><a class="ext-link" href="https://www.kfv-riks.se/Djurungar" rel="noopener">Läs mer om djurungar hos KFV</a></p>
+            </div>
+          </details>
+          <details>
+            <summary>Jag måste ha fågeln hemma över natten</summary>
+            <div class="accordion-body">
+              <ul>
+                <li>Håll den borta från egna fåglar och höns. Vissa sjukdomar hos vilda fåglar smittar.</li>
+                <li>Tvätta händerna noga efteråt. Byt gärna kläder och skor innan du hanterar dina egna fåglar.</li>
+              </ul>
+              <p>Mer information finns hos Statens veterinärmedicinska anstalt (SVA) och Jordbruksverket.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Jag har hittat ett skadat däggdjur</summary>
+            <div class="accordion-body">
+              <p>Vi har inte tillstånd från Länsstyrelsen att ta emot däggdjur. Har du hittat till exempel ett påkört rådjur eller en grävling – ring polisen på <a href="tel:11414">114 14</a> så kontaktar de en viltvårdare.</p>
+              <p>Märk ut platsen noga om du inte kan stanna kvar.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Jag kommer inte fram på telefon</summary>
+            <div class="accordion-body">
+              <p>Under vår, sommar och höst får vi väldigt många samtal. Ha tålamod och försök igen under telefontid: 10.00–12.00 och 13.00–16.00, alla dagar.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Kan jag mejla om en skadad fågel?</summary>
+            <div class="accordion-body">
+              <p>Nej. Frågor om skadade fåglar besvaras bara via telefon: <a href="tel:0733105773">0733–105 773</a>.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -151,14 +239,16 @@
         <div>
           <span class="logo-name">Fågelcentralen</span>
           <p>En ideell förening.<br>En andra chans för vilda fåglar.</p>
+          <p class="footer-give">Ge en gåva: Swish <strong>123 25 35 912</strong><br>Bankgiro <strong>740-8198</strong></p>
+          <p><a class="footer-cta" href="bli-fagelvan.html">Bli Fågelvän <span aria-hidden="true">→</span></a></p>
         </div>
         <div>
-          <h3>Fågelhjälp</h3>
+          <h2>Fågelhjälp</h2>
           <p class="phone"><a href="tel:0733105773">0733–105 773</a></p>
           <p class="small">Alla dagar<br>10.00–12.00 · 13.00–16.00</p>
         </div>
         <div>
-          <h3>Hitta hit</h3>
+          <h2>Hitta hit</h2>
           <p>Tullare Hög 50<br>442 90 Kungälv</p>
           <p style="margin-top:12px">Ring alltid före besök.</p>
         </div>
@@ -173,6 +263,7 @@
     </div>
   </footer>
 
+  <script src="assets/js/nyheter.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

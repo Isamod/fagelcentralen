@@ -2,6 +2,35 @@
 (function () {
   "use strict";
 
+  /* ---------- Webbplatsmeddelande (t.ex. intagningsstopp) ---------- */
+  if (window.FCNyheter && !document.body.classList.contains("admin")) {
+    var notice = window.FCNyheter.notice();
+    if (notice.active && notice.text) {
+      var bar = document.createElement("aside");
+      bar.className = "site-notice";
+      bar.setAttribute("aria-label", "Viktigt meddelande");
+      var inner = document.createElement("div");
+      inner.className = "container";
+      var text = document.createElement("p");
+      text.textContent = notice.text;
+      inner.appendChild(text);
+      var url = String(notice.linkUrl || "").trim();
+      if (url && !/^javascript:/i.test(url)) {
+        var a = document.createElement("a");
+        a.href = url;
+        a.textContent = (notice.linkText || "Läs mer") + " ";
+        var arrow = document.createElement("span");
+        arrow.setAttribute("aria-hidden", "true");
+        arrow.textContent = "→";
+        a.appendChild(arrow);
+        inner.appendChild(a);
+      }
+      bar.appendChild(inner);
+      var topbar = document.querySelector(".topbar");
+      if (topbar) topbar.insertAdjacentElement("afterend", bar);
+    }
+  }
+
   /* ---------- Mobilmeny ---------- */
   var nav = document.querySelector(".main-nav");
   var toggle = document.querySelector(".nav-toggle");
@@ -120,7 +149,13 @@
             if (custom) showError(custom, "Ange ett belopp på minst " + min + " kr.");
             return;
           }
-          toast("Här skickas du vidare till kortbetalning (" + formatAmount(amount) + ").");
+          // Prototyp: här ska en Stripe Checkout-session skapas. Stripe skickar sedan
+          // tillbaka givaren till tack.html. Tills dess går vi direkt dit i demoläge.
+          var interval = panel.getAttribute("data-interval") === "month" ? "manad" : "engang";
+          var tackUrl = "tack.html?typ=" + interval + "&belopp=" + amount + "&demo=1";
+          var patient = panel.querySelector("input[name='patient']");
+          if (patient && patient.checked) tackUrl += "&patient=1";
+          window.location.href = tackUrl;
         });
       }
       updateSummary(panel);
@@ -178,4 +213,18 @@
   }
 
   window.FCForm = { showError: showError, clearError: clearError };
+
+  /* ---------- Målmätare för Fågelvänner ---------- */
+  var goal = window.FCFagelvanMal;
+  document.querySelectorAll("[data-goal-meter]").forEach(function (el) {
+    if (!goal) { el.hidden = true; return; }
+    var pct = Math.max(0, Math.min(100, Math.round(goal.antal / goal.mal * 100)));
+    var fmt = function (n) { return Number(n).toLocaleString("sv-SE"); };
+    el.innerHTML =
+      '<p class="goal-title">' + goal.rubrik + "</p>" +
+      '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + goal.mal +
+      '" aria-valuenow="' + goal.antal + '" aria-label="Antal Fågelvänner"><span style="width:' + pct + '%"></span></div>' +
+      '<p class="goal-count"><strong>' + fmt(goal.antal) + " av " + fmt(goal.mal) + "</strong> har gått med</p>" +
+      (goal.exempel ? '<p class="goal-note">Exempelsiffror – föreningen fyller i rätt mål och antal.</p>' : "");
+  });
 })();

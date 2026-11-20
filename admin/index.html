@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Översikt – Administration – Fågelcentralen</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin">
+  <header class="admin-header">
+    <div class="container">
+      <div class="admin-brand">
+        <a class="logo-name" href="index.html">Fågelcentralen</a>
+        <span class="admin-crumb">Administration</span>
+      </div>
+      <a class="admin-site-link" href="../index.html">Till webbplatsen <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <nav class="admin-nav" aria-label="Administration">
+    <div class="container"><a href="index.html" aria-current="page">Översikt</a><a href="volontaruppdrag.html">Volontäruppdrag</a><a href="nyheter.html">Nyheter</a></div>
+  </nav>
+
+  <main class="container admin-main" id="innehall" tabindex="-1">
+    <h1>Hej!</h1>
+    <p class="muted">Här sköter ni volontäruppdrag, ansökningar, nyheter och viktiga meddelanden på webbplatsen.</p>
+
+    <div class="admin-note">
+      <span>Prototyp · Ändringar sparas bara i den här webbläsaren tills webbplatsen kopplas till en server.</span>
+    </div>
+
+    <div class="dash-grid">
+      <a class="dash-card" href="volontaruppdrag.html#ansokningar">
+        <span class="big" data-dash="apps">0</span>
+        <span class="label">Ansökningar</span>
+        <span class="sub">Till uppdrag och allmänna intresseanmälningar</span>
+      </a>
+      <a class="dash-card" href="volontaruppdrag.html">
+        <span class="big" data-dash="missions">0</span>
+        <span class="label">Publicerade uppdrag</span>
+        <span class="sub">Syns på volontärsidan</span>
+      </a>
+      <a class="dash-card" href="nyheter.html">
+        <span class="big" data-dash="news">0</span>
+        <span class="label">Publicerade nyheter</span>
+        <span class="sub">De tre senaste visas på startsidan</span>
+      </a>
+    </div>
+
+    <section class="admin-card" aria-labelledby="notice-heading" style="max-width:760px">
+      <h2 class="editor-title" id="notice-heading">Viktigt meddelande</h2>
+      <p class="small muted">Visas som en rad högst upp på alla sidor. Använd till exempel vid intagningsstopp eller ändrade telefontider.</p>
+      <form id="notice-form" novalidate>
+        <div class="switch-row">
+          <input type="checkbox" id="n-active" name="active">
+          <label for="n-active">Visa meddelandet på webbplatsen</label>
+        </div>
+        <div class="field">
+          <label for="n-text">Meddelande</label>
+          <input id="n-text" name="text" type="text" maxlength="160" placeholder="T.ex. Just nu har vi intagningsstopp. Ring innan du åker hit.">
+          <p class="hint">Håll det kort – högst 160 tecken.</p>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="n-link">Länk (valfritt)</label>
+            <input id="n-link" name="linkUrl" type="text" placeholder="t.ex. hjalp-en-fagel.html">
+          </div>
+          <div class="field">
+            <label for="n-linktext">Länktext (valfritt)</label>
+            <input id="n-linktext" name="linkText" type="text" placeholder="Läs mer">
+          </div>
+        </div>
+        <button class="btn" type="submit">Spara meddelande</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/uppdrag.js"></script>
+  <script src="../assets/js/nyheter.js"></script>
+  <script>
+    (function () {
+      var U = window.FCUppdrag, N = window.FCNyheter;
+      function set(k, v) { document.querySelector('[data-dash="' + k + '"]').textContent = v; }
+      set("apps", U.applications().length);
+      set("missions", U.published().length);
+      set("news", N.published().length);
+
+      var form = document.getElementById("notice-form");
+      var n = N.notice();
+      form.active.checked = !!n.active;
+      form.text.value = n.text || "";
+      form.linkUrl.value = n.linkUrl || "";
+      form.linkText.value = n.linkText || "";
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (form.active.checked && !form.text.value.trim()) {
+          window.FCForm.showError(form.text, "Skriv ett meddelande eller stäng av visningen.");
+          form.text.focus();
+          return;
+        }
+        window.FCForm.clearError(form.text);
+        N.saveNotice({ active: form.active.checked, text: form.text.value.trim(),
+          linkUrl: form.linkUrl.value.trim(), linkText: form.linkText.value.trim() });
+        window.FCToast(form.active.checked ? "Meddelandet visas nu på webbplatsen." : "Meddelandet är sparat men visas inte.");
+      });
+    })();
+  </script>
+</body>
+</html>
