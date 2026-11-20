@@ -33,6 +33,7 @@
   --border: #c9d2cc;
   --radius: 14px;
   --radius-sm: 6px;
+  --arch: 120px 18px 18px 18px;
   --max: 1200px;
   --serif: "Lora", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -250,7 +251,7 @@ main:focus { outline: none; }
 }
 .hero-grid.align-start { align-items: start; }
 .hero-image {
-  border-radius: 18px;
+  border-radius: var(--arch);
   overflow: hidden;
   aspect-ratio: 16 / 10;
   background: var(--sage-200);
@@ -310,7 +311,7 @@ main:focus { outline: none; }
   gap: 64px;
   align-items: center;
 }
-.media { border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--sage-200); }
+.media { border-radius: var(--arch); overflow: hidden; aspect-ratio: 4 / 3; background: var(--sage-200); }
 
 /* News */
 .news-card {
@@ -678,7 +679,7 @@ input::placeholder, textarea::placeholder { color: #6b7873; }
 /* ---------- Om oss ---------- */
 
 .bg-peach { background: var(--peach); }
-.hero-image-arch { border-radius: 120px 18px 18px 18px; aspect-ratio: 5 / 4; }
+.hero-image-arch { aspect-ratio: 5 / 4; }
 
 .stats {
   display: grid;
@@ -982,3 +983,6 @@ body { overflow-wrap: break-word; }
 @media (max-width: 360px) {
   .site-header .logo-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 }
+
+/* Bildform: rundat övre vänstra hörn, mindre på mobil */
+@media (max-width: 560px) { :root { --arch: 72px 14px 14px 14px; } }
