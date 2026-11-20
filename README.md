@@ -46,7 +46,7 @@ Sidhuvud och sidfot finns i varje HTML-fil. Ändras de behöver alla sidor uppda
 
 ## Att göra innan lansering
 
-- **Bilder:** bilderna i `assets/img/` är tillfälligt utklippta ur skisserna och har låg upplösning. Byt dem mot originalen med samma filnamn. Styrelsens porträtt visas som initialer tills foton finns.
+- **Bilder:** `volontar.jpg` och `kalender-2027.jpg` är fortfarande lågupplösta utklipp ur skisserna. Byt dem mot original med samma filnamn. Styrelsens porträtt visas som initialer tills foton finns.
 - **Backend för admin:** administrationen (uppdrag, ansökningar, nyheter, meddelande) är en fungerande prototyp som sparar i webbläsarens `localStorage`. Uppdrag som publiceras i admin syns direkt på `volontar.html` i samma webbläsare, men inte för andra besökare. Byt funktionerna i `assets/js/uppdrag.js` mot API-anrop och lägg inloggning framför `admin/`.
 - **Betalning:** knapparna Fortsätt och Bli Fågelvän går i dag direkt till `tack.html` i demoläge. Koppla dem till Stripe Checkout med `tack.html?typ=engang|manad&belopp=…` som adress efter lyckad betalning, och ta bort `demo=1`.
 - **Målmätaren** visar exempelsiffror (87 av 300). Fyll i riktigt mål och antal i `assets/js/fagelvan-mal.js` och sätt `exempel: false`.
