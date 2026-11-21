@@ -305,32 +305,63 @@
     });
   });
 
-  /* Stödföretag från assets/js/insamling.js */
-  document.querySelectorAll("[data-supporters]").forEach(function (section) {
-  /* Alla stödföretag visas likadant, i bokstavsordning och utan nivå. */
-  var data = ((window.FCInsamling && window.FCInsamling.stodforetag) || []).slice().sort(function (a, b) {
-    return String(a.namn).localeCompare(String(b.namn), "sv");
-  });
-  var list = section.querySelector("[data-supporter-list]");
-  if (list && data.length) {
-    data.forEach(function (c) {
-      var li = document.createElement("li");
-      var inner = c.lank && /^https?:\/\//.test(c.lank) ? document.createElement("a") : document.createElement("span");
-      if (inner.tagName === "A") { inner.href = c.lank; inner.rel = "noopener"; }
-      if (c.logga) {
-        var img = document.createElement("img");
-        img.src = c.logga; img.alt = c.namn; img.loading = "lazy";
-        inner.appendChild(img);
-      } else {
-        inner.textContent = c.namn;
-      }
-      li.appendChild(inner);
-      list.appendChild(li);
+  /* ---------- Partner och stödföretag ----------
+     Läggs in under Administration → Partner. Visas i bokstavsordning, alla lika. */
+  function partnerList() {
+    var list = (window.FCNyheter && window.FCNyheter.partners()) || [];
+    var extra = ((window.FCInsamling && window.FCInsamling.stodforetag) || []).map(function (c) {
+      return { namn: c.namn, typ: "foretag", logga: c.logga, lank: c.lank };
     });
-    section.hidden = false;
+    return list.concat(extra);
   }
+  function partnerItem(c, prefix) {
+    var li = document.createElement("li");
+    li.className = "partner-item" + (c.logga ? "" : " is-text") + (c.example ? " is-example" : "");
+    var url = String(c.lank || "").trim();
+    var inner = /^https?:\/\//.test(url) ? document.createElement("a") : document.createElement("span");
+    if (inner.tagName === "A") { inner.href = url; inner.rel = "noopener"; }
+    if (c.logga) {
+      var img = document.createElement("img");
+      img.src = window.FCNyheter ? window.FCNyheter.imageSrc(c.logga, prefix) : c.logga;
+      img.alt = c.namn;
+      img.loading = "lazy";
+      inner.appendChild(img);
+    } else {
+      inner.textContent = c.example ? "Logotyp" : c.namn;
+      if (c.example) inner.setAttribute("aria-label", c.namn + " (exempel)");
+    }
+    li.appendChild(inner);
+    return li;
+  }
+  document.querySelectorAll("[data-partners]").forEach(function (section) {
+    var only = section.getAttribute("data-partner-type");
+    var prefix = section.getAttribute("data-prefix") || "";
+    var all = partnerList().filter(function (c) { return !only || c.typ === only; });
+    var groupsEl = section.querySelector("[data-partner-groups]");
+    if (!all.length || !groupsEl) return;
+    var groups = only ? [[only, null]] : [["partner", "Samarbetspartner"], ["foretag", "Stödföretag"]];
+    groups.forEach(function (g) {
+      var items = all.filter(function (c) { return c.typ === g[0]; }).sort(function (a, b) {
+        return String(a.namn).localeCompare(String(b.namn), "sv");
+      });
+      if (!items.length) return;
+      var wrap = document.createElement("div");
+      wrap.className = "partner-group";
+      if (g[1]) {
+        var h = document.createElement("h3");
+        h.textContent = g[1];
+        wrap.appendChild(h);
+      }
+      var ul = document.createElement("ul");
+      ul.className = "partner-grid";
+      items.forEach(function (c) { ul.appendChild(partnerItem(c, prefix)); });
+      wrap.appendChild(ul);
+      groupsEl.appendChild(wrap);
+    });
+    var note = section.querySelector("[data-partner-note]");
+    if (note) note.hidden = !all.some(function (c) { return c.example; });
+    section.hidden = false;
   });
-
 
   /* ---------- Målmätare för Fågelvänner ---------- */
   var goal = window.FCFagelvanMal;

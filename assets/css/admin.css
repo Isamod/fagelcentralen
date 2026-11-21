@@ -152,3 +152,9 @@
   .news-row .thumb { width: 64px; height: 48px; }
   .news-row .row-actions { grid-column: 1 / -1; }
 }
+
+.news-row .logo-thumb { background: var(--white); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+.news-row .logo-thumb img { object-fit: contain; padding: 6px; }
+.news-row h2 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 0 0 4px; }
+.logo-preview { background: var(--white); border: 1px solid var(--border); padding: 14px; max-width: 240px; }
+.logo-preview img { max-height: 80px; width: auto; margin: 0 auto; }

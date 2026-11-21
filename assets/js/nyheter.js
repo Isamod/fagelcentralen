@@ -61,6 +61,15 @@
   var DEFAULT_NOTICE = { active: false, text: "", linkUrl: "", linkText: "" };
 
   var KEY_PATIENT = "fc.patient.v1";
+  var KEY_PARTNERS = "fc.partner.v1";
+  var DEFAULT_PARTNERS = [
+    { id: "exempel-1", namn: "Samarbetspartner", typ: "partner", logga: "", lank: "", example: true },
+    { id: "exempel-2", namn: "Samarbetspartner", typ: "partner", logga: "", lank: "", example: true },
+    { id: "exempel-3", namn: "Samarbetspartner", typ: "partner", logga: "", lank: "", example: true },
+    { id: "exempel-4", namn: "Stödföretag", typ: "foretag", logga: "", lank: "", example: true },
+    { id: "exempel-5", namn: "Stödföretag", typ: "foretag", logga: "", lank: "", example: true },
+    { id: "exempel-6", namn: "Stödföretag", typ: "foretag", logga: "", lank: "", example: true }
+  ];
   var DEFAULT_PATIENT = {
     active: true,
     example: true,
@@ -116,6 +125,25 @@
 
     notice: function () { return read(KEY_NOTICE, clone(DEFAULT_NOTICE)); },
     patient: function () { return read(KEY_PATIENT, clone(DEFAULT_PATIENT)); },
+
+    /* Partner och stödföretag: { id, namn, typ: "partner" | "foretag", logga, lank } */
+    partners: function () { return read(KEY_PARTNERS, clone(DEFAULT_PARTNERS)); },
+    savePartner: function (item) {
+      var list = store.partners();
+      if (!item.id) {
+        item.id = "p" + Date.now().toString(36);
+        list.push(item);
+      } else {
+        list = list.map(function (x) { return x.id === item.id ? item : x; });
+      }
+      return write(KEY_PARTNERS, list) ? item : false;
+    },
+    removePartner: function (id) {
+      write(KEY_PARTNERS, store.partners().filter(function (x) { return x.id !== id; }));
+    },
+    removeExamplePartners: function () {
+      write(KEY_PARTNERS, store.partners().filter(function (x) { return !x.example; }));
+    },
     savePatient: function (p) { return write(KEY_PATIENT, p); },
     saveNotice: function (n) { return write(KEY_NOTICE, n); },
 
