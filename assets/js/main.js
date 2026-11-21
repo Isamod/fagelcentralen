@@ -372,17 +372,20 @@
     section.hidden = false;
   });
 
-  /* ---------- Målmätare för Fågelvänner ---------- */
+  /* ---------- Målmätare för Fågelvänner ----------
+     Fylls efter kronor per månad; antalet Fågelvänner visas som komplement. */
   var goal = window.FCFagelvanMal;
   document.querySelectorAll("[data-goal-meter]").forEach(function (el) {
-    if (!goal) { el.hidden = true; return; }
-    var pct = Math.max(0, Math.min(100, Math.round(goal.antal / goal.mal * 100)));
-    var fmt = function (n) { return Number(n).toLocaleString("sv-SE"); };
+    if (!goal || !goal.malKrPerManad) { el.hidden = true; return; }
+    var kr = function (n) { return Number(n).toLocaleString("sv-SE") + " kr"; };
+    var pct = Math.max(0, Math.min(100, Math.round(goal.insamlatKrPerManad / goal.malKrPerManad * 100)));
     el.innerHTML =
-      '<p class="goal-title">' + goal.rubrik + "</p>" +
-      '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + goal.mal +
-      '" aria-valuenow="' + goal.antal + '" aria-label="Antal Fågelvänner"><span style="width:' + pct + '%"></span></div>' +
-      '<p class="goal-count"><strong>' + fmt(goal.antal) + " av " + fmt(goal.mal) + "</strong> har gått med</p>" +
-      (goal.exempel ? '<p class="goal-note">Exempelsiffror – föreningen fyller i rätt mål och antal.</p>' : "");
+      '<p class="goal-title">Vi behöver ' + kr(goal.malKrPerManad) + " i månaden från Fågelvänner för att klara driften " + escHtml(goal.ar) + "</p>" +
+      '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + goal.malKrPerManad +
+      '" aria-valuenow="' + goal.insamlatKrPerManad + '" aria-valuetext="' + kr(goal.insamlatKrPerManad) + " av " + kr(goal.malKrPerManad) +
+      ' i månaden" aria-label="Månadsgåvor från Fågelvänner"><span style="width:' + pct + '%"></span></div>' +
+      '<p class="goal-count"><strong>' + kr(goal.insamlatKrPerManad) + "</strong> av " + kr(goal.malKrPerManad) + " i månaden" +
+      (goal.antal ? ' <span class="goal-people">· ' + Number(goal.antal).toLocaleString("sv-SE") + " Fågelvänner är med</span>" : "") + "</p>" +
+      (goal.exempel ? '<p class="goal-note">Exempelsiffror – föreningen fyller i rätt mål och summa.</p>' : "");
   });
 })();
