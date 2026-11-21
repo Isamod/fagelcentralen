@@ -1139,3 +1139,16 @@ html { scroll-padding-top: 100px; }
 .partner-item > a:hover img, .partner-item > a:focus-visible img { filter: none; opacity: 1; }
 .partner-item.is-example > span { border-style: dashed; border-color: var(--field-border); color: var(--muted); font-weight: 500; background: transparent; }
 @media (prefers-reduced-motion: reduce) { .partner-item img { transition: none; } }
+.patient-teaser { font-size: .9rem; margin: 18px 0 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+
+.tier-benefits { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 24px; background: var(--sage-100); border-radius: 12px; padding: 16px 22px; margin-top: 20px; }
+.tier-benefits-title { font-weight: 600; margin: 0; }
+.tier-benefits .check-list { display: flex; flex-wrap: wrap; gap: 4px 24px; margin: 0; }
+.tier-benefits .check-list li { margin: 0; font-size: .92rem; }
+.tier-card .tier-price { margin-bottom: 20px; }
+
+/* Toppbilden lika hög som texten bredvid (dator) */
+@media (min-width: 901px) {
+  .hero-grid:not(.align-start) { align-items: stretch; }
+  .hero-grid:not(.align-start) > .hero-image { aspect-ratio: auto; height: 100%; min-height: 380px; }
+}

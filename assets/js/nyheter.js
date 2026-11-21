@@ -73,9 +73,9 @@
   var DEFAULT_PATIENT = {
     active: true,
     example: true,
-    name: "Månadens patient",
+    name: "En av våra patienter",
     species: "Exempel",
-    text: "Här presenterar föreningen en fågel som kommit in till oss: vad som hänt, hur rehabiliteringen går och – förhoppningsvis – när den kan släppas fri igen.",
+    text: "Här visar föreningen en fågel som just nu får vård hos oss – vad som hänt och hur det går.",
     image: "assets/img/rovfagel.jpg",
     imageAlt: "Närbild på en rovfågel med krokig näbb."
   };
