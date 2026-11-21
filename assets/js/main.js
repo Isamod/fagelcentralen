@@ -373,8 +373,8 @@
   });
 
   /* ---------- Målmätare för Fågelvänner ----------
-     Fylls efter kronor per månad. Etappmål: driften → buffert för kristider →
-     tack. Mätaren säger aldrig att det räcker. */
+     Fylls efter kronor per månad. Etappmål: målet → buffert → tack.
+     Lovar aldrig att driften är "säkrad" – ingen vet hur många fåglar som kommer. */
   var goal = window.FCFagelvanMal;
   document.querySelectorAll("[data-goal-meter]").forEach(function (el) {
     if (!goal || !goal.malKrPerManad) { el.hidden = true; return; }
@@ -397,20 +397,21 @@
 
     if (have < drift || !buffer) {
       el.innerHTML =
-        '<p class="goal-title">Vi behöver ' + kr(drift) + " i månaden från Fågelvänner för att klara driften " + ar + "</p>" +
+        '<p class="goal-title">Vårt mål för ' + ar + ": " + kr(drift) + " i månaden från Fågelvänner</p>" +
         bar(drift, "Månadsgåvor från Fågelvänner") +
-        '<p class="goal-count"><strong>' + kr(have) + "</strong> av " + kr(drift) + " i månaden" + people + "</p>" + note;
+        '<p class="goal-count"><strong>' + kr(have) + "</strong> av " + kr(drift) + " i månaden" + people + "</p>" +
+        '<p class="goal-note">Målet bygger på ett normalår – kommer det fler fåglar behövs mer.</p>' + note;
     } else if (have < buffer) {
       el.innerHTML =
-        '<p class="goal-title">Driften för ' + ar + " är säkrad – tack! Nu bygger vi en buffert för kristider</p>" +
+        '<p class="goal-title">Vi har nått målet – tack! Nu bygger vi en buffert för år med många fåglar</p>' +
         bar(buffer, "Månadsgåvor mot bufferten", drift) +
         '<p class="goal-count"><strong>' + kr(have) + "</strong> av " + kr(buffer) + " i månaden" + people + "</p>" +
-        '<p class="goal-note">Strecket visar driften (' + kr(drift) + ").</p>" + note;
+        '<p class="goal-note">Strecket visar målet (' + kr(drift) + ").</p>" + note;
     } else {
       el.classList.add("goal-done");
       el.innerHTML =
-        '<p class="goal-title">Tack! Driften och bufferten för ' + ar + " är säkrade.</p>" +
-        '<p class="goal-count">Varje ny Fågelvän gör att vi kan ta emot fler fåglar – och står starkare när nästa kris kommer.' + people + "</p>" + note;
+        '<p class="goal-title">Tack! Vi har nått både målet och bufferten.</p>' +
+        '<p class="goal-count">Ingen vet hur många fåglar nästa år för med sig – varje ny Fågelvän gör oss bättre rustade.' + people + "</p>" + note;
     }
   });
 })();
