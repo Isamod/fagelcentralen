@@ -305,6 +305,36 @@
     });
   });
 
+  /* Stödföretag från assets/js/insamling.js */
+  document.querySelectorAll("[data-supporters]").forEach(function (section) {
+  var level = section.getAttribute("data-supporter-level");
+  var data = ((window.FCInsamling && window.FCInsamling.stodforetag) || []).filter(function (c) { return !level || c.niva === level; });
+  var list = section.querySelector("[data-supporter-list]");
+  if (list && data.length) {
+    data.forEach(function (c) {
+      var li = document.createElement("li");
+      var inner = c.lank && /^https?:\/\//.test(c.lank) ? document.createElement("a") : document.createElement("span");
+      if (inner.tagName === "A") { inner.href = c.lank; inner.rel = "noopener"; }
+      if (c.logga) {
+        var img = document.createElement("img");
+        img.src = c.logga; img.alt = c.namn; img.loading = "lazy";
+        inner.appendChild(img);
+      } else {
+        inner.textContent = c.namn;
+      }
+      li.appendChild(inner);
+      if (c.niva) {
+        var tag = document.createElement("small");
+        tag.textContent = c.niva;
+        li.appendChild(tag);
+      }
+      list.appendChild(li);
+    });
+    section.hidden = false;
+  }
+  });
+
+
   /* ---------- Målmätare för Fågelvänner ---------- */
   var goal = window.FCFagelvanMal;
   document.querySelectorAll("[data-goal-meter]").forEach(function (el) {

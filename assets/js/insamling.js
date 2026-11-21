@@ -19,5 +19,10 @@ window.FCInsamling = {
     { rubrik: "Foder och vätska", text: "Rätt föda för varje art – från insekter till fisk.", andel: null },
     { rubrik: "Vård och medicin", text: "Medicin, förband och veterinärkontakter.", andel: null },
     { rubrik: "Voljärer och drift", text: "Uppvärmning, el och underhåll av rehabiliteringsvoljärerna.", andel: null }
-  ]
+  ],
+
+  /* Stödföretag som visas på företagssidan, t.ex.
+     { namn: "Exempel AB", niva: "Havsörn", logga: "assets/img/stodforetag/exempel.png", lank: "https://exempel.se" }
+     Tom lista = sektionen visas inte. */
+  stodforetag: []
 };

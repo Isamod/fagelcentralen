@@ -10,6 +10,7 @@
 
   var KEY_MISSIONS = "fc.uppdrag.v1";
   var KEY_APPLICATIONS = "fc.ansokningar.v1";
+  var KEY_COMPANIES = "fc.stodforetag.v1";
 
   var DEFAULT_MISSIONS = [
     {
@@ -152,6 +153,20 @@
     },
 
     applications: function () { return read(KEY_APPLICATIONS, []); },
+
+    companies: function () { return read(KEY_COMPANIES, []); },
+
+    addCompany: function (c) {
+      var list = store.companies();
+      c.receivedAt = new Date().toISOString();
+      list.push(c);
+      write(KEY_COMPANIES, list);
+      return c;
+    },
+
+    removeCompany: function (receivedAt) {
+      write(KEY_COMPANIES, store.companies().filter(function (c) { return c.receivedAt !== receivedAt; }));
+    },
 
     removeApplication: function (receivedAt) {
       write(KEY_APPLICATIONS, store.applications().filter(function (a) { return a.receivedAt !== receivedAt; }));

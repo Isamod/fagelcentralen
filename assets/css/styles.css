@@ -1039,3 +1039,29 @@ html { scroll-padding-top: 100px; }
 .urgent-link { color: #fff; font-weight: 600; font-size: .9rem; text-underline-offset: 3px; }
 .urgent-card :focus-visible { outline-color: #fff; box-shadow: none; }
 @media (max-width: 560px) { .urgent-phone { font-size: 1.8rem; } }
+
+/* ---------- Stödföretag ---------- */
+
+.tier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+.tier-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  border-top: 4px solid var(--green-900);
+}
+.tier-card h3 { font-size: 1.5rem; margin-bottom: 4px; }
+.tier-price { font-family: var(--serif); font-size: 1.6rem; color: var(--green-900); margin: 0 0 16px; }
+.tier-price span { font-family: var(--sans); font-size: .85rem; color: var(--muted); }
+.tier-card .check-list li { font-size: .9rem; }
+.tier-card .btn { margin-top: auto; }
+.tier-options { grid-template-columns: 1fr 1fr; }
+.tier-options label { flex-direction: column; gap: 2px; }
+.tier-options label small { font-size: .78rem; color: var(--muted); font-weight: 400; }
+.supporter-list { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.supporter-list li { background: var(--card); border-radius: 10px; padding: 14px 18px; display: flex; flex-direction: column; gap: 2px; font-weight: 600; }
+.supporter-list img { max-height: 48px; max-width: 160px; }
+.supporter-list small { font-weight: 400; color: var(--muted); font-size: .78rem; }
+@media (max-width: 1000px) { .tier-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .tier-grid { grid-template-columns: 1fr; } }
