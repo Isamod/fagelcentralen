@@ -15,7 +15,7 @@
   <meta property="og:site_name" content="Fågelcentralen">
   <meta property="og:title" content="Fågelcentralen – Fågelrehabilitering i Göteborg och Kungälv">
   <meta property="og:description" content="Fågelcentralen är en ideell förening som tar hand om skadade och sjuka vilda fåglar i Göteborg, Kungälv och Västra Götaland. Ring 0733–105 773 för fågelhjälp.">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611201450">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611211039">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,7 +69,7 @@
         <a class="btn header-cta" href="stod-oss.html">Stöd oss</a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Meny</button>
         <ul id="menu">
-          <li><a href="hjalp-en-fagel.html">Hjälp en fågel</a></li>
+          <li><a href="hjalp-en-fagel.html">Hittat en fågel?</a></li>
           <li><a href="volontar.html">Engagera dig</a></li>
           <li><a href="om-oss.html">Om oss</a></li>
           <li><a href="kontakt.html">Kontakt</a></li>
@@ -87,11 +87,16 @@
             <p class="eyebrow">En ideell förening för vilda fåglar</p>
             <h1>En andra chans<br>att flyga fritt.</h1>
             <p class="lead">Vi tar hand om skadade och sjuka vilda fåglar. Med din hjälp kan fler få komma tillbaka till naturen.</p>
-            <div class="btn-group" style="margin: 28px 0 20px">
-              <a class="btn" href="hjalp-en-fagel.html">Hjälp en fågel <span aria-hidden="true">→</span></a>
+            <aside class="urgent-card" aria-labelledby="akut-rubrik">
+              <p class="urgent-title" id="akut-rubrik">Hittat en skadad fågel i Västra Götaland?</p>
+              <a class="urgent-phone" href="tel:0733105773">0733–105 773</a>
+              <p class="urgent-hours">Telefontider alla dagar:<br><strong>10.00–12.00 och 13.00–16.00</strong></p>
+              <p class="urgent-note"><strong>OBS!</strong> Vi kan inte svara på frågor om fåglar via mejl eller sociala medier.</p>
+              <a class="urgent-link" href="hjalp-en-fagel.html">Råd innan du ringer <span aria-hidden="true">→</span></a>
+            </aside>
+            <div class="btn-group" style="margin-top: 24px">
               <a class="btn btn-outline" href="stod-oss.html">Stöd vårt arbete</a>
             </div>
-            <p class="tiny muted">Fågelhjälp i Västra Götaland</p>
           </div>
           <div class="hero-image">
             <img src="assets/img/kraka.jpg" alt="En kråka sitter på ett rostigt smidesstaket framför gröna blad." width="1600" height="1000">
@@ -176,6 +181,14 @@
             <p class="tiny muted" style="margin-top:18px">Avsluta när du vill.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section-sm" aria-labelledby="partner-rubrik" data-supporters data-supporter-level="Kungsörn" hidden>
+      <div class="container">
+        <h2 id="partner-rubrik" class="eyebrow">Med stöd av</h2>
+        <ul class="supporter-list" data-supporter-list></ul>
+        <p class="small" style="margin-top:16px"><a href="foretag.html">Bli stödföretag</a></p>
       </div>
     </section>
 
@@ -278,8 +291,9 @@
     </div>
   </footer>
 
-  <script src="assets/js/nyheter.js?v=202611201450"></script>
-  <script src="assets/js/main.js?v=202611201450"></script>
-  <script src="assets/js/nyheter-sida.js?v=202611201450"></script>
+  <script src="assets/js/nyheter.js?v=202611211039"></script>
+  <script src="assets/js/insamling.js?v=202611211039"></script>
+  <script src="assets/js/main.js?v=202611211039"></script>
+  <script src="assets/js/nyheter-sida.js?v=202611211039"></script>
 </body>
 </html>

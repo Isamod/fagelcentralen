@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex">
   <title>Översikt – Administration – Fågelcentralen</title>
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=202611201450">
-  <link rel="stylesheet" href="../assets/css/admin.css?v=202611201450">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211039">
+  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211039">
 </head>
 <body class="admin">
   <header class="admin-header">
@@ -48,6 +48,12 @@
         <span class="sub">De tre senaste visas på startsidan</span>
       </a>
     </div>
+
+    <section class="admin-card" aria-labelledby="company-heading" style="max-width:760px; margin-bottom:24px">
+      <h2 class="editor-title" id="company-heading">Anmälningar från företag</h2>
+      <p class="small muted">Företag som vill bli stödföretag. Skicka faktura och ta bort anmälan när den är klar.</p>
+      <div id="company-list"></div>
+    </section>
 
     <section class="admin-card" aria-labelledby="patient-heading" style="max-width:760px; margin-bottom:24px">
       <h2 class="editor-title" id="patient-heading">Månadens patient</h2>
@@ -113,9 +119,9 @@
     </section>
   </main>
 
-  <script src="../assets/js/main.js?v=202611201450"></script>
-  <script src="../assets/js/uppdrag.js?v=202611201450"></script>
-  <script src="../assets/js/nyheter.js?v=202611201450"></script>
+  <script src="../assets/js/main.js?v=202611211039"></script>
+  <script src="../assets/js/uppdrag.js?v=202611211039"></script>
+  <script src="../assets/js/nyheter.js?v=202611211039"></script>
   <script>
     (function () {
       var U = window.FCUppdrag, N = window.FCNyheter;
@@ -123,6 +129,32 @@
       set("apps", U.applications().length);
       set("missions", U.published().length);
       set("news", N.published().length);
+
+      /* Företagsanmälningar */
+      function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+      function renderCompanies() {
+        var el = document.getElementById("company-list");
+        var list = U.companies().slice().reverse();
+        if (!list.length) { el.innerHTML = '<div class="empty">Inga anmälningar än.</div>'; return; }
+        el.innerHTML = list.map(function (c) {
+          var date = new Date(c.receivedAt).toLocaleString("sv-SE", { dateStyle: "medium", timeStyle: "short" });
+          return '<article class="app-card"><h3>' + esc(c.company) + ' <span class="badge">' + esc(c.niva) + "</span></h3>" +
+            '<p class="tiny muted" style="margin:0">' + esc(date) + "</p>" +
+            "<dl><dt>Org.nr</dt><dd>" + esc(c.orgnr) + "</dd><dt>Kontakt</dt><dd>" + esc(c.contact) + "</dd>" +
+            '<dt>E-post</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + "</a></dd>" +
+            (c.phone ? "<dt>Telefon</dt><dd>" + esc(c.phone) + "</dd>" : "") +
+            (c.message ? "<dt>Meddelande</dt><dd>" + esc(c.message) + "</dd>" : "") + "</dl>" +
+            '<div class="row-actions" style="margin-top:16px"><button class="btn btn-danger" type="button" data-remove-company="' + esc(c.receivedAt) + '">Ta bort</button></div></article>';
+        }).join("");
+      }
+      renderCompanies();
+      document.getElementById("company-list").addEventListener("click", function (e) {
+        var b = e.target.closest("[data-remove-company]");
+        if (!b || !window.confirm("Ta bort anmälan? Det går inte att ångra.")) return;
+        U.removeCompany(b.getAttribute("data-remove-company"));
+        renderCompanies();
+        window.FCToast("Anmälan är borttagen.");
+      });
 
       /* Månadens patient */
       var pf = document.getElementById("patient-form");
