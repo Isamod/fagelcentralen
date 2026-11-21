@@ -209,6 +209,7 @@
       canvas.toBlob(function (blob) {
         var a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
+        a.hidden = true;
         a.download = name;
         document.body.appendChild(a);
         a.click();

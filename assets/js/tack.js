@@ -19,6 +19,28 @@
       ? "Gåvobeviset mejlas till mottagaren när betalningen är klar. Du får ett kvitto till din e-post."
       : "Gåvobeviset och kvittot mejlas till dig när betalningen är klar.");
     document.getElementById("upsell").hidden = false;
+    var gift = null;
+    try { gift = JSON.parse(window.sessionStorage.getItem("fc.gavobevis") || "null"); } catch (e) { gift = null; }
+    if (gift && gift.to && window.FCGiftPDF) {
+      document.getElementById("gift-download").hidden = false;
+      var btn = document.getElementById("gift-pdf");
+      btn.addEventListener("click", function () {
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Skapar PDF …";
+        window.FCGiftPDF.make(gift).then(function (blob) {
+          var a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.hidden = true;
+          a.download = "gavobevis-fagelcentralen.pdf";
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+        }).catch(function () {
+          window.FCToast && window.FCToast("PDF:en kunde inte skapas. Försök igen.");
+        }).then(function () { btn.disabled = false; btn.textContent = label; });
+      });
+    }
   } else if (typ === "manad") {
     set("thanks-eyebrow", "Fågelvän");
     set("thanks-title", "Tack – nu är du Fågelvän!");
