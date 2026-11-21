@@ -184,7 +184,14 @@
           var interval = panel.getAttribute("data-interval") === "month" ? "manad" : "engang";
           var tackUrl = "tack.html?typ=" + interval + "&belopp=" + amount + "&demo=1";
           var patient = panel.querySelector("input[name='patient']");
-          if (patient && patient.checked) tackUrl += "&patient=1";
+          if (patient && patient.checked) {
+            tackUrl += "&patient=1";
+            // Prototyp: visar kopplingen i admin. På riktigt sparas mottagaren
+            // när Stripe bekräftat betalningen (namn och e-post kommer från Stripe).
+            if (window.FCNyheter && window.FCNyheter.addSubscriber) {
+              window.FCNyheter.addSubscriber({ namn: "Ny Fågelvän (demo)", email: "hämtas från Stripe", demo: true });
+            }
+          }
           window.location.href = tackUrl;
         });
       }

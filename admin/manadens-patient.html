@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Månadens patient – Administration – Fågelcentralen</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211149">
+  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211149">
+</head>
+<body class="admin">
+  <header class="admin-header">
+    <div class="container">
+      <div class="admin-brand">
+        <a class="logo-name" href="index.html">Fågelcentralen</a>
+        <span class="admin-crumb">Administration</span>
+      </div>
+      <a class="admin-site-link" href="../index.html">Till webbplatsen <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <nav class="admin-nav" aria-label="Administration">
+    <div class="container"><a href="index.html">Översikt</a><a href="volontaruppdrag.html">Volontäruppdrag</a><a href="nyheter.html">Nyheter</a><a href="manadens-patient.html" aria-current="page">Månadens patient</a><a href="partner.html">Partner</a></div>
+  </nav>
+
+  <main class="container admin-main" id="innehall" tabindex="-1">
+    <div class="admin-title">
+      <div>
+        <h1>Månadens patient</h1>
+        <p class="muted">Mejlet som bara Fågelvänner får. Skriv, förhandsgranska och skicka härifrån.</p>
+      </div>
+      <a class="dash-card mp-count" href="#mottagare">
+        <span class="big" data-sub-count>0</span>
+        <span class="label">Fågelvänner får mejlet</span>
+      </a>
+    </div>
+
+    <div class="admin-note">
+      <span>Prototyp · Utskicket kopplas in när webbplatsen får en server och en e-posttjänst. Mottagarna nedan är exempel.</span>
+    </div>
+
+    <div class="editor-grid mp-grid">
+      <form class="admin-card" id="mp-form" novalidate>
+        <h2 class="editor-title" style="font-size:1.5rem">Skriv mejlet</h2>
+        <div class="field">
+          <label for="mp-subject">Ämnesrad *</label>
+          <input id="mp-subject" name="subject" type="text" maxlength="80" placeholder="T.ex. Möt Sigge – ormvråken som lärde sig flyga igen" required>
+        </div>
+        <div class="field">
+          <label for="mp-preheader">Förhandstext</label>
+          <input id="mp-preheader" name="preheader" type="text" maxlength="110" aria-describedby="mp-preheader-hint">
+          <p class="hint" id="mp-preheader-hint">Visas efter ämnesraden i inkorgen. En kort mening.</p>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="mp-title">Rubrik *</label>
+            <input id="mp-title" name="title" type="text" maxlength="70" required>
+          </div>
+          <div class="field">
+            <label for="mp-species">Art</label>
+            <input id="mp-species" name="species" type="text" maxlength="40" placeholder="T.ex. Ormvråk">
+          </div>
+        </div>
+        <div class="field">
+          <label for="mp-image">Bild</label>
+          <input id="mp-image" type="file" accept="image/*">
+          <button type="button" class="link-btn" id="mp-remove-image" hidden style="margin-top:8px">Ta bort bilden</button>
+        </div>
+        <div class="field">
+          <label for="mp-alt">Bildbeskrivning</label>
+          <input id="mp-alt" name="imageAlt" type="text" placeholder="T.ex. Sigge sitter på en gren i voljären.">
+        </div>
+        <div class="field">
+          <label for="mp-text">Berättelse *</label>
+          <textarea id="mp-text" name="text" style="min-height:220px" required aria-describedby="mp-text-hint"></textarea>
+          <p class="hint" id="mp-text-hint">Vad hände, hur går rehabiliteringen, och – om det blev så – utsläppet. Lämna en tom rad mellan stycken.</p>
+        </div>
+        <div class="mp-actions">
+          <button class="btn btn-light" type="button" id="mp-save">Spara utkast</button>
+          <button class="btn btn-light" type="button" id="mp-test">Skicka testmejl till mig</button>
+          <button class="btn" type="button" id="mp-send">Skicka till Fågelvänner</button>
+        </div>
+      </form>
+
+      <div class="mp-preview-wrap">
+        <p class="eyebrow">Förhandsvisning</p>
+        <div class="mail-inbox" aria-hidden="true">
+          <strong data-pv="subject">Ämnesrad</strong>
+          <span data-pv="preheader"></span>
+        </div>
+        <article class="mail" aria-label="Förhandsvisning av mejlet">
+          <header class="mail-head"><img src="../assets/img/logo-mark.svg" alt="" width="32" height="32"> Fågelcentralen · Månadens patient</header>
+          <img class="mail-img" data-pv="image" alt="" hidden>
+          <div class="mail-body">
+            <p class="mail-species" data-pv="species"></p>
+            <h2 data-pv="title">Rubrik</h2>
+            <div data-pv="text"><p class="muted">Berättelsen visas här.</p></div>
+            <p class="mail-thanks">Tack för att du är Fågelvän. Utan dig hade vi inte kunnat hjälpa fåglar som den här.</p>
+          </div>
+          <footer class="mail-foot">
+            Du får det här mejlet eftersom du är Fågelvän och har valt Månadens patient.<br>
+            <span class="mail-unsub">Avregistrera dig från Månadens patient</span> – du fortsätter som Fågelvän.<br>
+            Fågelcentralen / Animals HOPE · Org.nr 802458-3240
+          </footer>
+        </article>
+      </div>
+    </div>
+
+    <section class="admin-card" id="mottagare" aria-labelledby="sub-heading" style="margin-top:32px">
+      <h2 class="editor-title" id="sub-heading" style="font-size:1.5rem">Mottagare</h2>
+      <p class="small muted">Fågelvänner som kryssat i ”Ja tack till Månadens patient”. Läggs till automatiskt när betalningen är klar. Tas bort automatiskt när någon avslutar sin månadsgåva eller avregistrerar sig via länken i mejlet. Ta bort manuellt bara om någon ber om det.</p>
+      <div id="sub-list"></div>
+    </section>
+
+    <section class="admin-card" aria-labelledby="sent-heading" style="margin-top:24px">
+      <h2 class="editor-title" id="sent-heading" style="font-size:1.5rem">Tidigare utskick</h2>
+      <div id="sent-list"></div>
+    </section>
+  </main>
+
+  <dialog class="preview-dialog" id="mp-confirm" aria-labelledby="mp-confirm-title">
+    <h2 id="mp-confirm-title" style="font-size:1.4rem">Skicka Månadens patient?</h2>
+    <p data-confirm-text></p>
+    <div class="btn-group" style="margin-top:20px">
+      <button class="btn" type="button" id="mp-confirm-yes">Ja, skicka</button>
+      <button class="btn btn-light" type="button" id="mp-confirm-no">Avbryt</button>
+    </div>
+  </dialog>
+
+  <script src="../assets/js/main.js?v=202611211149"></script>
+  <script src="../assets/js/nyheter.js?v=202611211149"></script>
+  <script src="../assets/js/admin-patient-mail.js?v=202611211149"></script>
+</body>
+</html>

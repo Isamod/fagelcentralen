@@ -158,3 +158,28 @@
 .news-row h2 { font-family: var(--sans); font-weight: 600; font-size: 1rem; margin: 0 0 4px; }
 .logo-preview { background: var(--white); border: 1px solid var(--border); padding: 14px; max-width: 240px; }
 .logo-preview img { max-height: 80px; width: auto; margin: 0 auto; }
+
+/* ---------- Månadens patient (mejl) ---------- */
+
+.mp-count { min-width: 200px; padding: 18px 22px; }
+.mp-count .big { font-size: 2rem; }
+.mp-grid { grid-template-columns: 1fr 1fr; margin-top: 24px; }
+.mp-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.mp-preview-wrap { position: sticky; top: 24px; }
+.mail-inbox { background: var(--white); border: 1px solid var(--border); border-radius: 10px 10px 0 0; padding: 12px 16px; font-size: .88rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mail-inbox span { color: var(--muted); }
+.mail { background: var(--white); border: 1px solid var(--border); border-top: 0; border-radius: 0 0 12px 12px; overflow: hidden; }
+.mail-head { display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: var(--green-900); color: #fff; font-family: var(--serif); font-size: 1rem; }
+.mail-img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.mail-body { padding: 24px 28px; }
+.mail-body h2 { font-size: 1.6rem; margin-bottom: 12px; }
+.mail-body p { font-size: .95rem; line-height: 1.65; }
+.mail-species { font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 6px; }
+.mail-thanks { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-style: italic; color: var(--muted); }
+.mail-foot { background: var(--cream); padding: 16px 28px; font-size: .75rem; color: var(--muted); line-height: 1.6; }
+.mail-unsub { text-decoration: underline; color: var(--text); }
+.sub-list { list-style: none; margin: 0; padding: 0; }
+.sub-list li { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.sub-list li:last-child { border-bottom: 0; }
+.sub-meta { display: block; font-size: .8rem; color: var(--muted); }
+@media (max-width: 900px) { .mp-grid { grid-template-columns: 1fr; } .mp-preview-wrap { position: static; } }
