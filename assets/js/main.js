@@ -373,19 +373,44 @@
   });
 
   /* ---------- Målmätare för Fågelvänner ----------
-     Fylls efter kronor per månad; antalet Fågelvänner visas som komplement. */
+     Fylls efter kronor per månad. Etappmål: driften → buffert för kristider →
+     tack. Mätaren säger aldrig att det räcker. */
   var goal = window.FCFagelvanMal;
   document.querySelectorAll("[data-goal-meter]").forEach(function (el) {
     if (!goal || !goal.malKrPerManad) { el.hidden = true; return; }
     var kr = function (n) { return Number(n).toLocaleString("sv-SE") + " kr"; };
-    var pct = Math.max(0, Math.min(100, Math.round(goal.insamlatKrPerManad / goal.malKrPerManad * 100)));
-    el.innerHTML =
-      '<p class="goal-title">Vi behöver ' + kr(goal.malKrPerManad) + " i månaden från Fågelvänner för att klara driften " + escHtml(goal.ar) + "</p>" +
-      '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + goal.malKrPerManad +
-      '" aria-valuenow="' + goal.insamlatKrPerManad + '" aria-valuetext="' + kr(goal.insamlatKrPerManad) + " av " + kr(goal.malKrPerManad) +
-      ' i månaden" aria-label="Månadsgåvor från Fågelvänner"><span style="width:' + pct + '%"></span></div>' +
-      '<p class="goal-count"><strong>' + kr(goal.insamlatKrPerManad) + "</strong> av " + kr(goal.malKrPerManad) + " i månaden" +
-      (goal.antal ? ' <span class="goal-people">· ' + Number(goal.antal).toLocaleString("sv-SE") + " Fågelvänner är med</span>" : "") + "</p>" +
-      (goal.exempel ? '<p class="goal-note">Exempelsiffror – föreningen fyller i rätt mål och summa.</p>' : "");
+    var have = Number(goal.insamlatKrPerManad) || 0;
+    var drift = Number(goal.malKrPerManad);
+    var buffer = Number(goal.buffertKrPerManad) || 0;
+    var people = goal.antal ? ' <span class="goal-people">· ' + Number(goal.antal).toLocaleString("sv-SE") + " Fågelvänner är med</span>" : "";
+    var note = goal.exempel ? '<p class="goal-note">Exempelsiffror – föreningen fyller i rätt mål och summa.</p>' : "";
+    var ar = escHtml(goal.ar);
+
+    function bar(target, label, marker) {
+      var pct = Math.max(0, Math.min(100, Math.round(have / target * 100)));
+      return '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + target +
+        '" aria-valuenow="' + Math.min(have, target) + '" aria-valuetext="' + kr(have) + " av " + kr(target) + ' i månaden" aria-label="' + label + '">' +
+        '<span style="width:' + pct + '%"></span>' +
+        (marker ? '<i class="goal-marker" style="left:' + Math.round(marker / target * 100) + '%" aria-hidden="true"></i>' : "") +
+        "</div>";
+    }
+
+    if (have < drift || !buffer) {
+      el.innerHTML =
+        '<p class="goal-title">Vi behöver ' + kr(drift) + " i månaden från Fågelvänner för att klara driften " + ar + "</p>" +
+        bar(drift, "Månadsgåvor från Fågelvänner") +
+        '<p class="goal-count"><strong>' + kr(have) + "</strong> av " + kr(drift) + " i månaden" + people + "</p>" + note;
+    } else if (have < buffer) {
+      el.innerHTML =
+        '<p class="goal-title">Driften för ' + ar + " är säkrad – tack! Nu bygger vi en buffert för kristider</p>" +
+        bar(buffer, "Månadsgåvor mot bufferten", drift) +
+        '<p class="goal-count"><strong>' + kr(have) + "</strong> av " + kr(buffer) + " i månaden" + people + "</p>" +
+        '<p class="goal-note">Strecket visar driften (' + kr(drift) + ").</p>" + note;
+    } else {
+      el.classList.add("goal-done");
+      el.innerHTML =
+        '<p class="goal-title">Tack! Driften och bufferten för ' + ar + " är säkrade.</p>" +
+        '<p class="goal-count">Varje ny Fågelvän gör att vi kan ta emot fler fåglar – och står starkare när nästa kris kommer.' + people + "</p>" + note;
+    }
   });
 })();
