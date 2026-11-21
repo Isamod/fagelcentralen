@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Märken – Administration – Fågelcentralen</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211346">
+  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211346">
+</head>
+<body class="admin">
+  <header class="admin-header">
+    <div class="container">
+      <div class="admin-brand">
+        <a class="logo-name" href="index.html">Fågelcentralen</a>
+        <span class="admin-crumb">Administration</span>
+      </div>
+      <a class="admin-site-link" href="../index.html">Till webbplatsen <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <nav class="admin-nav" aria-label="Administration">
+    <div class="container"><a href="index.html">Översikt</a><a href="volontaruppdrag.html">Volontäruppdrag</a><a href="nyheter.html">Nyheter</a><a href="manadens-patient.html">Månadens patient</a><a href="partner.html">Partner</a><a href="marken.html" aria-current="page">Märken</a></div>
+  </nav>
+
+  <main class="container admin-main" id="innehall" tabindex="-1">
+    <div class="admin-title">
+      <div>
+        <h1>Märken för stödföretag</h1>
+        <p class="muted">Märke för webbplatsen, bild för sociala medier och diplom. Välj år och nivå, skriv gärna in företagets namn och ladda ner.</p>
+      </div>
+    </div>
+
+    <form class="admin-card badge-controls" id="badge-form" novalidate>
+      <div class="field">
+        <label for="b-year">År *</label>
+        <input id="b-year" name="year" type="number" min="2020" max="2100" required>
+      </div>
+      <fieldset>
+        <legend>Nivå *</legend>
+        <div class="switch-row"><input type="radio" name="level" id="b-std" value="std" checked><label for="b-std">Stödföretag</label></div>
+        <div class="switch-row"><input type="radio" name="level" id="b-pf" value="pf"><label for="b-pf">Pilgrimsfalk</label></div>
+      </fieldset>
+      <div class="field">
+        <label for="b-company">Företagets namn</label>
+        <input id="b-company" name="company" type="text" maxlength="50" placeholder="T.ex. Exempel AB" aria-describedby="b-company-hint">
+        <p class="hint" id="b-company-hint">Används på diplomet och bilden för sociala medier. Märket är detsamma för alla.</p>
+      </div>
+    </form>
+
+    <div class="badge-grid">
+      <section class="admin-card" aria-labelledby="h-badge">
+        <h2 class="editor-title" id="h-badge" style="font-size:1.4rem">Märke för webbplatsen</h2>
+        <p class="small muted">Ljus variant för ljusa sidor, mörk för mörka.</p>
+        <div class="badge-preview light"><canvas id="c-badge-light" width="720" height="240" role="img" aria-label="Märke, ljus variant"></canvas></div>
+        <div class="badge-preview dark"><canvas id="c-badge-dark" width="720" height="240" role="img" aria-label="Märke, mörk variant"></canvas></div>
+        <div class="btn-group">
+          <button class="btn btn-light" type="button" data-download="c-badge-light" data-name="marke-ljus">Ladda ner ljus (PNG)</button>
+          <button class="btn btn-light" type="button" data-download="c-badge-dark" data-name="marke-mork">Ladda ner mörk (PNG)</button>
+        </div>
+      </section>
+
+      <section class="admin-card" aria-labelledby="h-social">
+        <h2 class="editor-title" id="h-social" style="font-size:1.4rem">Bild för sociala medier</h2>
+        <p class="small muted">Kvadratisk, passar LinkedIn, Instagram och Facebook.</p>
+        <div class="badge-preview square"><canvas id="c-social" width="1080" height="1080" role="img" aria-label="Bild för sociala medier"></canvas></div>
+        <div class="btn-group">
+          <button class="btn btn-light" type="button" data-download="c-social" data-name="sociala-medier">Ladda ner (PNG)</button>
+        </div>
+      </section>
+
+      <section class="admin-card badge-wide" aria-labelledby="h-diplom">
+        <h2 class="editor-title" id="h-diplom" style="font-size:1.4rem">Diplom</h2>
+        <p class="small muted">A4 liggande. Skriv in företagets namn ovan innan du laddar ner.</p>
+        <div class="badge-preview"><canvas id="c-diplom" width="2480" height="1754" role="img" aria-label="Diplom"></canvas></div>
+        <div class="btn-group">
+          <button class="btn btn-light" type="button" data-download="c-diplom" data-name="diplom">Ladda ner (PNG)</button>
+        </div>
+      </section>
+
+      <section class="admin-card badge-wide" aria-labelledby="h-code">
+        <h2 class="editor-title" id="h-code" style="font-size:1.4rem">Kod till företagets webbplats</h2>
+        <p class="small muted">Skicka märket och koden till företaget. De laddar upp bilden på sin webbplats, byter <code>src</code> mot bildens adress och klistrar in koden. Märket länkar då till er.</p>
+        <label class="visually-hidden" for="b-code">Kod</label>
+        <textarea id="b-code" class="code-box" readonly rows="4"></textarea>
+        <div class="btn-group" style="margin-top:12px">
+          <button class="btn btn-light" type="button" id="copy-code">Kopiera koden</button>
+        </div>
+        <h3 class="badge-rules-title">Så får märket användas</h3>
+        <ul class="badge-rules">
+          <li>Märket visas under det år stödet gäller. Inför nytt år skickar ni ett nytt märke.</li>
+          <li>Märket får inte ändras – inga andra färger, ingen beskärning.</li>
+          <li>Märket får inte användas för att antyda att föreningen rekommenderar företagets produkter.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="../assets/js/main.js?v=202611211346"></script>
+  <script src="../assets/js/nyheter.js?v=202611211346"></script>
+  <script src="../assets/js/admin-marken.js?v=202611211346"></script>
+  <script src="../assets/js/admin-paminnelse.js?v=202611211346"></script>
+</body>
+</html>
