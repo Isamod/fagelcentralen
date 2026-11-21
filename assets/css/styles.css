@@ -1146,3 +1146,9 @@ html { scroll-padding-top: 100px; }
 .tier-benefits .check-list { display: flex; flex-wrap: wrap; gap: 4px 24px; margin: 0; }
 .tier-benefits .check-list li { margin: 0; font-size: .92rem; }
 .tier-card .tier-price { margin-bottom: 20px; }
+
+/* Toppbilden lika hög som texten bredvid (dator) */
+@media (min-width: 901px) {
+  .hero-grid:not(.align-start) { align-items: stretch; }
+  .hero-grid:not(.align-start) > .hero-image { aspect-ratio: auto; height: 100%; min-height: 380px; }
+}
