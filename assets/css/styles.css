@@ -1182,3 +1182,26 @@ html { scroll-padding-top: 100px; }
 .goal-people { color: var(--muted); }
 .goal-bar { position: relative; }
 .goal-marker { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--peach); outline: 1px solid var(--green-900); transform: translateX(-1px); }
+
+/* ---------- Sponsorhuset på Stöd oss ---------- */
+
+.shop-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px 24px;
+  align-items: center;
+  margin-top: 20px;
+  background: var(--sage-100);
+  border: 1px solid var(--sage-300);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+}
+.shop-icon { width: 48px; height: 48px; color: var(--green-900); }
+.shop-text h3 { font-family: var(--serif); font-size: 1.35rem; margin: 0 0 4px; }
+.shop-text p { margin: 0; font-size: .92rem; color: var(--muted); }
+.shop-bar .btn { white-space: nowrap; }
+@media (max-width: 760px) {
+  .shop-bar { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
+  .shop-icon { width: 40px; height: 40px; }
+  .shop-bar .btn { justify-self: start; margin-top: 6px; }
+}
