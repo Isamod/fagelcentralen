@@ -46,56 +46,97 @@
   }
 
   /* ---------- Märke 720×240 ---------- */
+  function goldGradient(ctx, x0, y0, x1, y1) {
+    var g = ctx.createLinearGradient(x0, y0, x1, y1);
+    g.addColorStop(0, "#f6dc9a");
+    g.addColorStop(0.55, GOLD);
+    g.addColorStop(1, "#c98f2a");
+    return g;
+  }
+  function pill(ctx, text, x, y, bg, fg) {
+    ctx.font = "700 20px Inter, sans-serif";
+    spaced(ctx, 3);
+    var w = ctx.measureText(text).width + 32;
+    roundRect(ctx, x, y - 26, w, 36, 18);
+    ctx.fillStyle = bg; ctx.fill();
+    ctx.fillStyle = fg;
+    ctx.fillText(text, x + 16, y - 1);
+    spaced(ctx, 0);
+    return w;
+  }
   function drawBadge(canvas, dark) {
     var o = opts(), ctx = canvas.getContext("2d"), W = 720, H = 240;
     ctx.clearRect(0, 0, W, H);
+    ctx.textBaseline = "alphabetic";
     roundRect(ctx, 4, 4, W - 8, H - 8, 32);
+    if (o.pf) {
+      ctx.fillStyle = dark ? GREEN : goldGradient(ctx, 0, 0, W, H);
+      ctx.fill();
+      ctx.lineWidth = dark ? 10 : 5;
+      ctx.strokeStyle = dark ? goldGradient(ctx, 0, 0, W, H) : GREEN;
+      ctx.stroke();
+      roundRect(ctx, 32, 32, 176, 176, 32); ctx.fillStyle = dark ? goldGradient(ctx, 32, 32, 208, 208) : GREEN; ctx.fill();
+      ctx.drawImage(logo, 40, 40, 160, 160);
+      var x = 236;
+      pill(ctx, "PILGRIMSFALK", x, 84, dark ? GOLD : GREEN, dark ? GREEN : "#f6dc9a");
+      ctx.fillStyle = dark ? CREAM : GREEN;
+      fit(ctx, "Fågelcentralen", "400 {s}px Lora, Georgia, serif", 60, W - x - 36);
+      ctx.fillText("Fågelcentralen", x, 150);
+      ctx.font = "600 24px Inter, sans-serif";
+      ctx.fillStyle = dark ? GOLD : GREEN;
+      ctx.fillText("Stödföretag " + o.year, x, 194);
+      return;
+    }
     ctx.fillStyle = dark ? GREEN : CREAM;
     ctx.fill();
-    ctx.lineWidth = o.pf ? 8 : 4;
-    ctx.strokeStyle = o.pf ? GOLD : (dark ? CREAM : GREEN);
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = dark ? CREAM : GREEN;
     ctx.stroke();
     if (dark) { roundRect(ctx, 34, 34, 172, 172, 30); ctx.fillStyle = CREAM; ctx.fill(); }
     ctx.drawImage(logo, 40, 40, 160, 160);
-    var fg = dark ? CREAM : GREEN, x = 236;
+    var fg = dark ? CREAM : GREEN, x2 = 236;
     ctx.fillStyle = fg;
-    ctx.textBaseline = "alphabetic";
     spaced(ctx, 2.5);
     ctx.font = "600 22px Inter, sans-serif";
-    ctx.fillText(o.pf ? "PILGRIMSFALK · STÖDFÖRETAG" : "STOLT STÖDFÖRETAG", x, 82);
+    ctx.fillText("STOLT STÖDFÖRETAG", x2, 82);
     spaced(ctx, 0);
-    fit(ctx, "Fågelcentralen", "400 {s}px Lora, Georgia, serif", 62, W - x - 36);
-    ctx.fillText("Fågelcentralen", x, 148);
+    fit(ctx, "Fågelcentralen", "400 {s}px Lora, Georgia, serif", 62, W - x2 - 36);
+    ctx.fillText("Fågelcentralen", x2, 148);
     ctx.font = "600 26px Inter, sans-serif";
-    ctx.fillStyle = o.pf ? (dark ? GOLD : GREEN) : fg;
-    ctx.fillText(o.year, x, 194);
+    ctx.fillText(o.year, x2, 194);
     ctx.font = "400 20px Inter, sans-serif";
     ctx.fillStyle = dark ? "rgba(247,246,241,.85)" : MUTED;
-    ctx.fillText("· Tillsammans för vilda fåglar", x + ctx.measureText(o.year).width + 30, 193);
+    ctx.fillText("· Tillsammans för vilda fåglar", x2 + ctx.measureText(o.year).width + 30, 193);
   }
 
   /* ---------- Sociala medier 1080×1080 ---------- */
   function drawSocial(canvas) {
     var o = opts(), ctx = canvas.getContext("2d"), W = 1080;
-    ctx.fillStyle = GREEN;
+    ctx.fillStyle = o.pf ? goldGradient(ctx, 0, 0, W, W) : GREEN;
     ctx.fillRect(0, 0, W, W);
-    if (o.pf) { ctx.lineWidth = 16; ctx.strokeStyle = GOLD; ctx.strokeRect(40, 40, W - 80, W - 80); }
-    roundRect(ctx, W / 2 - 160, 150, 320, 320, 60); ctx.fillStyle = CREAM; ctx.fill();
-    ctx.drawImage(logo, W / 2 - 150, 160, 300, 300);
+    if (o.pf) { ctx.lineWidth = 10; ctx.strokeStyle = GREEN; ctx.strokeRect(44, 44, W - 88, W - 88); }
+    roundRect(ctx, W / 2 - 160, 130, 320, 320, 60); ctx.fillStyle = o.pf ? GREEN : CREAM; ctx.fill();
+    ctx.drawImage(logo, W / 2 - 150, 140, 300, 300);
     ctx.textAlign = "center";
-    ctx.fillStyle = CREAM;
+    if (o.pf) {
+      ctx.font = "700 30px Inter, sans-serif"; spaced(ctx, 4);
+      var pw = ctx.measureText("PILGRIMSFALK").width + 56;
+      roundRect(ctx, W / 2 - pw / 2, 488, pw, 56, 28); ctx.fillStyle = GREEN; ctx.fill();
+      ctx.fillStyle = "#f6dc9a"; ctx.fillText("PILGRIMSFALK", W / 2, 527); spaced(ctx, 0);
+    }
+    ctx.fillStyle = o.pf ? GREEN : CREAM;
     ctx.font = "400 72px Lora, Georgia, serif";
     var who = o.company || "Vi";
-    var text = (o.company ? who + " är stolt " : "Vi är stolta ") + (o.pf ? "Pilgrimsfalk-stödföretag" : "stödföretag") + " till Fågelcentralen " + o.year;
+    var text = (o.company ? who + " är stolt " : "Vi är stolta ") + "stödföretag till Fågelcentralen " + o.year;
     var lines = wrap(ctx, text, W - 200);
     if (lines.length > 4) { ctx.font = "400 58px Lora, Georgia, serif"; lines = wrap(ctx, text, W - 200); }
     var lh = parseInt(ctx.font.match(/(\d+)px/)[1], 10) * 1.2;
-    var y = 590;
+    var y = o.pf ? 640 : 590;
     lines.forEach(function (l) { ctx.fillText(l, W / 2, y); y += lh; });
     spaced(ctx, 3);
     ctx.font = "600 28px Inter, sans-serif";
-    ctx.fillStyle = o.pf ? GOLD : "rgba(247,246,241,.85)";
-    ctx.fillText("TILLSAMMANS FÖR VILDA FÅGLAR", W / 2, Math.max(y + 30, 940));
+    ctx.fillStyle = o.pf ? GREEN : "rgba(247,246,241,.85)";
+    ctx.fillText("TILLSAMMANS FÖR VILDA FÅGLAR", W / 2, Math.min(Math.max(y + 30, 940), 1000));
     spaced(ctx, 0);
     ctx.textAlign = "start";
   }
@@ -104,14 +145,19 @@
   function drawDiplom(canvas) {
     var o = opts(), ctx = canvas.getContext("2d"), W = 2480, H = 1754;
     ctx.fillStyle = CREAM; ctx.fillRect(0, 0, W, H);
-    ctx.lineWidth = 6; ctx.strokeStyle = GREEN; ctx.strokeRect(90, 90, W - 180, H - 180);
-    ctx.lineWidth = 2; ctx.strokeStyle = o.pf ? GOLD : GREEN; ctx.strokeRect(120, 120, W - 240, H - 240);
+    if (o.pf) {
+      ctx.lineWidth = 28; ctx.strokeStyle = goldGradient(ctx, 0, 0, W, H); ctx.strokeRect(80, 80, W - 160, H - 160);
+      ctx.lineWidth = 4; ctx.strokeStyle = GREEN; ctx.strokeRect(124, 124, W - 248, H - 248);
+    } else {
+      ctx.lineWidth = 6; ctx.strokeStyle = GREEN; ctx.strokeRect(90, 90, W - 180, H - 180);
+      ctx.lineWidth = 2; ctx.strokeStyle = GREEN; ctx.strokeRect(120, 120, W - 240, H - 240);
+    }
     ctx.drawImage(logo, W / 2 - 130, 210, 260, 260);
     ctx.textAlign = "center";
     ctx.fillStyle = GREEN;
     spaced(ctx, 8);
     ctx.font = "600 44px Inter, sans-serif";
-    ctx.fillText(o.pf ? "DIPLOM · PILGRIMSFALK" : "DIPLOM", W / 2, 590);
+    ctx.fillText("DIPLOM", W / 2, 590);
     spaced(ctx, 0);
     fit(ctx, o.company || "Företagets namn", "400 {s}px Lora, Georgia, serif", 150, W - 500);
     ctx.fillStyle = o.company ? GREEN : "#8a9692";
@@ -126,6 +172,17 @@
     ctx.beginPath(); ctx.moveTo(W / 2 - 400, 1380); ctx.lineTo(W / 2 + 400, 1380); ctx.stroke();
     ctx.font = "400 40px Inter, sans-serif";
     ctx.fillText("Fågelcentralen / Animals HOPE · Org.nr 802458-3240", W / 2, 1450);
+    if (o.pf) {
+      var cx = W - 430, cy = H - 430, r = 190;
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fillStyle = goldGradient(ctx, cx - r, cy - r, cx + r, cy + r); ctx.fill();
+      ctx.beginPath(); ctx.arc(cx, cy, r - 18, 0, Math.PI * 2); ctx.lineWidth = 4; ctx.strokeStyle = GREEN; ctx.stroke();
+      ctx.fillStyle = GREEN;
+      ctx.font = "700 34px Inter, sans-serif"; spaced(ctx, 4);
+      ctx.fillText("PILGRIMSFALK", cx, cy - 20);
+      spaced(ctx, 0);
+      ctx.font = "400 64px Lora, Georgia, serif";
+      ctx.fillText(o.year, cx, cy + 60);
+    }
     ctx.textAlign = "start";
   }
 
