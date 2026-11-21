@@ -1169,3 +1169,10 @@ html { scroll-padding-top: 100px; }
 .policy-text ol { padding-left: 1.4em; }
 .policy-address { background: var(--card); border-radius: 10px; padding: 14px 18px; display: inline-block; }
 @media (max-width: 900px) { .policy { grid-template-columns: 1fr; gap: 24px; } .policy-toc { position: static; } }
+
+/* ---------- Volontärsidan utan uppdrag ---------- */
+
+#mission-list.is-empty { grid-template-columns: 1fr; }
+.empty-missions { background: var(--card); border: 1px dashed var(--field-border); border-radius: var(--radius); padding: 32px; text-align: center; }
+.empty-missions h3 { margin-bottom: .4em; }
+.empty-missions p { color: var(--muted); max-width: 36rem; margin: 0 auto 20px; }

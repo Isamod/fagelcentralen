@@ -27,7 +27,17 @@
 
   function renderList() {
     if (!missions.length) {
-      listEl.innerHTML = '<p class="muted">Just nu finns inga öppna uppdrag. Du kan fortfarande göra en allmän intresseanmälan nedan.</p>';
+      listEl.classList.add("is-empty");
+      listEl.innerHTML =
+        '<div class="empty-missions">' +
+          '<h3>Just nu har vi inga öppna volontäruppdrag</h3>' +
+          '<p>Men vi tar gärna emot din intresseanmälan. Berätta hur du vill bidra så hör vi av oss när något passar.</p>' +
+          '<a class="btn" href="#ansokan">Gör en intresseanmälan <span aria-hidden="true">↓</span></a>' +
+        "</div>";
+      var bar = document.querySelector("[data-interest-bar]");
+      if (bar) bar.hidden = true;
+      var cta = document.querySelector("[data-hero-cta]");
+      if (cta) { cta.href = "#ansokan"; cta.innerHTML = 'Gör en intresseanmälan <span aria-hidden="true">↓</span>'; }
       return;
     }
     listEl.innerHTML = missions.map(function (m) {
