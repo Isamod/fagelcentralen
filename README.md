@@ -13,7 +13,7 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | `volontar.html` | Volontäruppdrag och ansökningsformulär |
 | `stod-oss.html` | Stöd oss: Bli Fågelvän (månadsgåva, förvald), engångsgåva, Swish, bankgiro, Månadens patient |
 | `minnesgava.html` | Minnesgåva |
-| `foretag.html` | Bli stödföretag (Talgoxe, Ormvråk, Havsörn, Kungsörn) |
+| `foretag.html` | Bli stödföretag (Talgoxe, Ormvråk, Havsörn, Kungsörn, Pilgrimsfalk) |
 | `gavobevis.html` | Digitalt gåvobevis med motiv, hälsning och förhandsvisning |
 | `onskelista.html` | Fåglarnas önskelista (material) |
 | `bli-fagelvan.html` | Skickar vidare till Stöd oss (finns kvar så att gamla länkar fungerar) |
@@ -22,6 +22,7 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | `admin/index.html` | Administration: översikt och viktigt meddelande (visas överst på alla sidor) |
 | `admin/volontaruppdrag.html` | Administration: volontäruppdrag och ansökningar |
 | `admin/nyheter.html` | Administration: nyheter |
+| `admin/partner.html` | Administration: logotyper för samarbetspartner och stödföretag |
 
 ## Kör lokalt
 
@@ -51,6 +52,7 @@ Skriptet ger CSS- och JavaScript-filerna ett nytt versionsnummer i alla HTML-sid
 - `assets/js/nyheter.js` – datalager för nyheter och webbplatsmeddelande
 - `assets/js/nyheter-sida.js` – visar nyheter på webbplatsen
 - `assets/js/admin-nyheter.js` – nyhetsadministrationen
+- `assets/js/admin-partner.js` – partner och stödföretag
 - `assets/fonts/` – typsnitten ligger på sajten (inga anrop till Google, bra för GDPR och laddtid)
 - `assets/js/uppdrag.js` – datalager för volontäruppdrag och ansökningar
 - `assets/js/volontar.js` – volontärsidan

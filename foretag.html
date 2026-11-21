@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bli stödföretag – Fågelcentralen</title>
-  <meta name="description" content="Bli stödföretag till Fågelcentralen och hjälp skadade vilda fåglar i Västra Götaland. Välj nivå från 5 000 kr per år – Talgoxe, Ormvråk, Havsörn eller Kungsörn.">
+  <meta name="description" content="Bli stödföretag till Fågelcentralen och hjälp skadade vilda fåglar i Västra Götaland. Välj nivå från 5 000 kr per år – Talgoxe, Ormvråk, Havsörn, Kungsörn eller Pilgrimsfalk.">
   <meta name="theme-color" content="#163f35">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -14,8 +14,8 @@
   <meta property="og:locale" content="sv_SE">
   <meta property="og:site_name" content="Fågelcentralen">
   <meta property="og:title" content="Bli stödföretag – Fågelcentralen">
-  <meta property="og:description" content="Bli stödföretag till Fågelcentralen och hjälp skadade vilda fåglar i Västra Götaland. Välj nivå från 5 000 kr per år – Talgoxe, Ormvråk, Havsörn eller Kungsörn.">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611211059">
+  <meta property="og:description" content="Bli stödföretag till Fågelcentralen och hjälp skadade vilda fåglar i Västra Götaland. Välj nivå från 5 000 kr per år – Talgoxe, Ormvråk, Havsörn, Kungsörn eller Pilgrimsfalk.">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611211131">
 </head>
 <body>
   <aside class="topbar" aria-label="Snabbkontakt">
@@ -74,6 +74,18 @@
         <p class="eyebrow">Välj nivå</p>
         <h2 id="nivaer-rubrik">Bidra med en summa per år.</h2>
         <p class="muted small">Ni får en faktura. Stödet gäller ett år i taget.</p>
+        <article class="tier-card tier-featured" id="niva-pilgrimsfalk">
+          <div>
+            <p class="eyebrow" style="margin:0 0 6px">Där allt började</p>
+            <h3>Pilgrimsfalk</h3>
+            <p class="tier-price">100 000 kr <span>per år</span></p>
+            <p class="small muted" style="margin:0">Fågelcentralen började med ett projekt för att rädda den utrotningshotade pilgrimsfalken. Vår högsta nivå bär dess namn.</p>
+          </div>
+          <div>
+            <ul class="check-list"><li>Allt i Kungsörn</li><li>Ett samarbete som vi utformar tillsammans med er</li></ul>
+            <a class="btn btn-block" href="#bli-stodforetag" data-choose-tier="Pilgrimsfalk">Välj Pilgrimsfalk<span class="visually-hidden"> – 100 000 kr per år</span></a>
+          </div>
+        </article>
         <div class="tier-grid">
           <article class="tier-card" id="niva-kungsorn">
             <h3>Kungsörn</h3>
@@ -117,6 +129,7 @@
             <fieldset style="border:0; padding:0; margin:0 0 20px">
               <legend style="font-size:.82rem; font-weight:600; margin-bottom:8px">Välj nivå *</legend>
               <div class="amounts tier-options">
+                <div class="amount-option"><input type="radio" name="niva" id="f-pilgrimsfalk" value="Pilgrimsfalk"><label for="f-pilgrimsfalk"><strong>Pilgrimsfalk</strong><small>100 000 kr/år</small></label></div>
                 <div class="amount-option"><input type="radio" name="niva" id="f-kungsorn" value="Kungsörn"><label for="f-kungsorn"><strong>Kungsörn</strong><small>50 000 kr/år</small></label></div>
                 <div class="amount-option"><input type="radio" name="niva" id="f-havsorn" value="Havsörn"><label for="f-havsorn"><strong>Havsörn</strong><small>20 000 kr/år</small></label></div>
                 <div class="amount-option"><input type="radio" name="niva" id="f-ormvrak" value="Ormvråk" checked><label for="f-ormvrak"><strong>Ormvråk</strong><small>10 000 kr/år</small></label></div>
@@ -186,11 +199,12 @@
       </div>
     </section>
 
-    <section class="section-sm bg-white" aria-labelledby="stodforetag-rubrik" data-supporters hidden>
+    <section class="section-sm bg-white" aria-labelledby="stodforetag-rubrik" data-partners data-partner-type="foretag" hidden>
       <div class="container">
         <p class="eyebrow">Tack till</p>
         <h2 id="stodforetag-rubrik">Våra stödföretag</h2>
-        <ul class="supporter-list" data-supporter-list></ul>
+        <div data-partner-groups></div>
+        <p class="goal-note" data-partner-note hidden>Exempel – föreningen lägger in riktiga logotyper i administrationen.</p>
       </div>
     </section>
   </main>
@@ -227,10 +241,10 @@
     </div>
   </footer>
 
-  <script src="assets/js/nyheter.js?v=202611211059"></script>
-  <script src="assets/js/insamling.js?v=202611211059"></script>
-  <script src="assets/js/uppdrag.js?v=202611211059"></script>
-  <script src="assets/js/main.js?v=202611211059"></script>
-  <script src="assets/js/foretag.js?v=202611211059"></script>
+  <script src="assets/js/nyheter.js?v=202611211131"></script>
+  <script src="assets/js/insamling.js?v=202611211131"></script>
+  <script src="assets/js/uppdrag.js?v=202611211131"></script>
+  <script src="assets/js/main.js?v=202611211131"></script>
+  <script src="assets/js/foretag.js?v=202611211131"></script>
 </body>
 </html>

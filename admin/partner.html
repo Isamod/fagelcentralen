@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Partner – Administration – Fågelcentralen</title>
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211131">
+  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211131">
+</head>
+<body class="admin">
+  <header class="admin-header">
+    <div class="container">
+      <div class="admin-brand">
+        <a class="logo-name" href="index.html">Fågelcentralen</a>
+        <span class="admin-crumb">Administration</span>
+      </div>
+      <a class="admin-site-link" href="../index.html">Till webbplatsen <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <nav class="admin-nav" aria-label="Administration">
+    <div class="container"><a href="index.html">Översikt</a><a href="volontaruppdrag.html">Volontäruppdrag</a><a href="nyheter.html">Nyheter</a><a href="partner.html" aria-current="page">Partner</a></div>
+  </nav>
+
+  <main class="container admin-main" id="innehall" tabindex="-1">
+    <div class="admin-title">
+      <div>
+        <h1>Partner</h1>
+        <p class="muted">Logotyper för samarbetspartner och stödföretag. De visas under ”Tillsammans med” på startsidan, och stödföretagen även på företagssidan.</p>
+      </div>
+    </div>
+
+    <div class="admin-note" id="example-note" hidden>
+      <span>Exempel · Platshållarna visas tills ni lägger in riktiga logotyper.</span>
+      <button type="button" class="link-btn" id="remove-examples">Ta bort alla exempel</button>
+    </div>
+
+    <div class="editor-grid" style="margin-top:24px">
+      <section aria-labelledby="list-heading">
+        <h2 class="editor-title" id="list-heading" style="font-size:1.5rem">Inlagda</h2>
+        <div class="news-admin-list" id="partner-list"></div>
+      </section>
+
+      <section class="admin-card" aria-labelledby="form-heading">
+        <h2 class="editor-title" id="form-heading" style="font-size:1.5rem">Lägg till</h2>
+        <form id="partner-form" novalidate>
+          <div class="field">
+            <label for="pa-name">Namn *</label>
+            <input id="pa-name" name="namn" type="text" maxlength="60" required>
+          </div>
+          <fieldset style="border:0; padding:0; margin:0 0 20px">
+            <legend style="font-size:.82rem; font-weight:600; margin-bottom:8px">Typ *</legend>
+            <div class="switch-row" style="margin-bottom:8px"><input type="radio" name="typ" id="pa-partner" value="partner" checked><label for="pa-partner">Samarbetspartner</label></div>
+            <div class="switch-row" style="margin-bottom:0"><input type="radio" name="typ" id="pa-foretag" value="foretag"><label for="pa-foretag">Stödföretag</label></div>
+          </fieldset>
+          <div class="field">
+            <label for="pa-logo">Logotyp</label>
+            <input id="pa-logo" type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp" aria-describedby="pa-logo-hint">
+            <p class="hint" id="pa-logo-hint">Helst SVG eller PNG med genomskinlig bakgrund. Utan logotyp visas namnet.</p>
+            <div class="image-preview logo-preview" id="pa-preview" hidden><img alt=""></div>
+            <button type="button" class="link-btn" id="pa-remove-logo" hidden style="margin-top:8px">Ta bort logotypen</button>
+          </div>
+          <div class="field">
+            <label for="pa-link">Länk till deras webbplats (valfritt)</label>
+            <input id="pa-link" name="lank" type="url" placeholder="https://exempel.se">
+          </div>
+          <div class="btn-group">
+            <button class="btn" type="submit" id="pa-submit">Lägg till</button>
+            <button class="btn btn-light" type="button" id="pa-cancel" hidden>Avbryt</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="../assets/js/main.js?v=202611211131"></script>
+  <script src="../assets/js/nyheter.js?v=202611211131"></script>
+  <script src="../assets/js/admin-partner.js?v=202611211131"></script>
+</body>
+</html>
