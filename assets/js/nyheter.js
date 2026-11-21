@@ -62,6 +62,16 @@
 
   var KEY_PATIENT = "fc.patient.v1";
   var KEY_PARTNERS = "fc.partner.v1";
+  var KEY_MP_DRAFT = "fc.mp.utkast.v1";
+  var KEY_MP_SENT = "fc.mp.historik.v1";
+  var KEY_MP_SUBS = "fc.mp.mottagare.v1";
+  var DEFAULT_SUBS = [
+    { id: "ex1", namn: "Exempel Andersson", email: "exempel1@exempel.se", sedan: "2026-03-12", example: true },
+    { id: "ex2", namn: "Exempel Berg", email: "exempel2@exempel.se", sedan: "2026-05-02", example: true },
+    { id: "ex3", namn: "Exempel Carlsson", email: "exempel3@exempel.se", sedan: "2026-08-19", example: true },
+    { id: "ex4", namn: "Exempel Dahl", email: "exempel4@exempel.se", sedan: "2026-10-30", example: true }
+  ];
+  var DEFAULT_DRAFT = { subject: "", preheader: "", title: "", species: "", text: "", image: "", imageAlt: "" };
   var DEFAULT_PARTNERS = [
     { id: "exempel-1", namn: "Samarbetspartner", typ: "partner", logga: "", lank: "", example: true },
     { id: "exempel-2", namn: "Samarbetspartner", typ: "partner", logga: "", lank: "", example: true },
@@ -125,6 +135,29 @@
 
     notice: function () { return read(KEY_NOTICE, clone(DEFAULT_NOTICE)); },
     patient: function () { return read(KEY_PATIENT, clone(DEFAULT_PATIENT)); },
+
+    /* Månadens patient (mejlet till Fågelvänner) */
+    mpDraft: function () { return read(KEY_MP_DRAFT, clone(DEFAULT_DRAFT)); },
+    saveMpDraft: function (d) { return write(KEY_MP_DRAFT, d); },
+    clearMpDraft: function () { try { window.localStorage.removeItem(KEY_MP_DRAFT); } catch (e) { /* ignorera */ } },
+    mpSent: function () { return read(KEY_MP_SENT, []); },
+    addMpSent: function (issue) {
+      var list = store.mpSent();
+      issue.sentAt = new Date().toISOString();
+      list.unshift(issue);
+      return write(KEY_MP_SENT, list);
+    },
+    subscribers: function () { return read(KEY_MP_SUBS, clone(DEFAULT_SUBS)); },
+    addSubscriber: function (sub) {
+      var list = store.subscribers();
+      sub.id = "s" + Date.now().toString(36);
+      sub.sedan = new Date().toISOString().slice(0, 10);
+      list.push(sub);
+      write(KEY_MP_SUBS, list);
+    },
+    removeSubscriber: function (id) {
+      write(KEY_MP_SUBS, store.subscribers().filter(function (x) { return x.id !== id; }));
+    },
 
     /* Partner och stödföretag: { id, namn, typ: "partner" | "foretag", logga, lank } */
     partners: function () { return read(KEY_PARTNERS, clone(DEFAULT_PARTNERS)); },

@@ -22,6 +22,7 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | `admin/index.html` | Administration: översikt och viktigt meddelande (visas överst på alla sidor) |
 | `admin/volontaruppdrag.html` | Administration: volontäruppdrag och ansökningar |
 | `admin/nyheter.html` | Administration: nyheter |
+| `admin/manadens-patient.html` | Administration: skriva och skicka Månadens patient till Fågelvänner |
 | `admin/partner.html` | Administration: logotyper för samarbetspartner och stödföretag |
 
 ## Kör lokalt
@@ -53,6 +54,7 @@ Skriptet ger CSS- och JavaScript-filerna ett nytt versionsnummer i alla HTML-sid
 - `assets/js/nyheter-sida.js` – visar nyheter på webbplatsen
 - `assets/js/admin-nyheter.js` – nyhetsadministrationen
 - `assets/js/admin-partner.js` – partner och stödföretag
+- `assets/js/admin-patient-mail.js` – Månadens patient (mejlet)
 - `assets/fonts/` – typsnitten ligger på sajten (inga anrop till Google, bra för GDPR och laddtid)
 - `assets/js/uppdrag.js` – datalager för volontäruppdrag och ansökningar
 - `assets/js/volontar.js` – volontärsidan
@@ -70,6 +72,7 @@ Sidhuvud och sidfot finns i varje HTML-fil. Ändras de behöver alla sidor uppda
 - **Så används din gåva:** lägg till procentsatser (`andel`) i `assets/js/insamling.js` när föreningen har siffror.
 - **Just nu hos oss** (startsidan) visar en exempeltext tills föreningen fyller i en fågel under Administration → Översikt. Det är en kort smakbit – hela berättelsen, *Månadens patient*, mejlas bara till Fågelvänner.
 - **Stödföretag:** alla nivåer får diplom, digitalt märke och logga; Pilgrimsfalk får dessutom ett eget märke. Föreningen behöver ta fram diplom och märken. Bekräfta nivåer och priser. Lägg till stödföretag i `assets/js/insamling.js` (`stodforetag`) så visas de på startsidan och företagssidan – alla likadant, i bokstavsordning och utan nivå. Julgåvorutan visas bara i november och december.
+- **Månadens patient (mejl):** utskicket kräver server och e-posttjänst (t.ex. Brevo eller MailerLite med servrar i EU). Mottagare läggs till via Stripe när någon blir Fågelvän med kryss för Månadens patient, och tas bort när månadsgåvan avslutas eller via avregistreringslänken.
 - **Gåvobevis:** bekräfta belopp (100/250/500 kr, minst 100 kr) och motiv. Att mejla beviset kräver betalning och e-post från en server (görs när backend kopplas in).
 - **Minnesgåva:** bekräfta att föreningen kan meddela anhöriga när någon mejlar om en minnesgåva.
 - **Texterna under månadsbeloppen** (vad 50/100/200 kr räcker till) behöver bekräftas av föreningen.
