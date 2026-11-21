@@ -197,3 +197,20 @@
   width: 40px; height: 40px; font-size: 1.5rem; line-height: 1; cursor: pointer; color: var(--text);
 }
 .admin-reminder-close:hover { border-color: var(--field-border); }
+
+/* ---------- Märken ---------- */
+
+.badge-controls { display: grid; grid-template-columns: 160px 1fr 1.4fr; gap: 24px; align-items: start; margin-bottom: 24px; }
+.badge-controls fieldset { border: 0; padding: 0; margin: 0; }
+.badge-controls legend { font-size: .82rem; font-weight: 600; margin-bottom: 8px; padding: 0; }
+.badge-controls .switch-row { margin-bottom: 6px; }
+.badge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.badge-grid .badge-wide { grid-column: 1 / -1; }
+.badge-preview { border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 14px; background: var(--white); }
+.badge-preview.dark { background: #2d3b37; }
+.badge-preview.square { max-width: 420px; }
+.badge-preview canvas { display: block; width: 100%; height: auto; }
+.code-box { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .85rem; min-height: 0; }
+.badge-rules-title { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin: 24px 0 8px; }
+.badge-rules { margin: 0; padding-left: 1.2em; font-size: .9rem; color: var(--muted); }
+@media (max-width: 900px) { .badge-controls, .badge-grid { grid-template-columns: 1fr; } }
