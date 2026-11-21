@@ -13,7 +13,7 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | `volontar.html` | Volontäruppdrag och ansökningsformulär |
 | `stod-oss.html` | Stöd oss: Bli Fågelvän (månadsgåva, förvald), engångsgåva, Swish, bankgiro, Månadens patient |
 | `minnesgava.html` | Minnesgåva |
-| `foretag.html` | Bli stödföretag (Talgoxe, Ormvråk, Havsörn, Kungsörn) |
+| `foretag.html` | Bli stödföretag (Talgoxe, Ormvråk, Havsörn, Kungsörn, Pilgrimsfalk) |
 | `gavobevis.html` | Digitalt gåvobevis med motiv, hälsning och förhandsvisning |
 | `onskelista.html` | Fåglarnas önskelista (material) |
 | `bli-fagelvan.html` | Skickar vidare till Stöd oss (finns kvar så att gamla länkar fungerar) |
