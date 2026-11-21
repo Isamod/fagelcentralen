@@ -1,4 +1,4 @@
-/* Företagssidan: välj nivå, säsongsrutor, stödföretagslista och anmälan. */
+/* Företagssidan: välj nivå, säsongsrutor, stödföretagslista och formuläret. */
 (function () {
   "use strict";
 
@@ -18,7 +18,7 @@
     if (month < 10) el.hidden = true;
   });
 
-  /* Anmälan */
+  /* Formuläret Bli stödföretag */
   var form = document.getElementById("company-form");
   var success = document.getElementById("company-success");
   if (!form || !window.FCUppdrag) return;

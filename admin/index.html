@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex">
   <title>Översikt – Administration – Fågelcentralen</title>
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211359">
-  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211359">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211406">
+  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211406">
 </head>
 <body class="admin">
   <header class="admin-header">
@@ -50,8 +50,8 @@
     </div>
 
     <section class="admin-card" aria-labelledby="company-heading" style="max-width:760px; margin-bottom:24px">
-      <h2 class="editor-title" id="company-heading">Anmälningar från företag</h2>
-      <p class="small muted">Företag som vill bli stödföretag. Skicka faktura och ta bort anmälan när den är klar.</p>
+      <h2 class="editor-title" id="company-heading">Nya stödföretag</h2>
+      <p class="small muted">Företag som vill bli stödföretag. Skicka faktura och lägg till dem under Partner när de har betalat. Ta sedan bort dem härifrån.</p>
       <div id="company-list"></div>
     </section>
 
@@ -119,9 +119,9 @@
     </section>
   </main>
 
-  <script src="../assets/js/main.js?v=202611211359"></script>
-  <script src="../assets/js/uppdrag.js?v=202611211359"></script>
-  <script src="../assets/js/nyheter.js?v=202611211359"></script>
+  <script src="../assets/js/main.js?v=202611211406"></script>
+  <script src="../assets/js/uppdrag.js?v=202611211406"></script>
+  <script src="../assets/js/nyheter.js?v=202611211406"></script>
   <script>
     (function () {
       var U = window.FCUppdrag, N = window.FCNyheter;
@@ -130,12 +130,12 @@
       set("missions", U.published().length);
       set("news", N.published().length);
 
-      /* Företagsanmälningar */
+      /* Nya stödföretag */
       function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
       function renderCompanies() {
         var el = document.getElementById("company-list");
         var list = U.companies().slice().reverse();
-        if (!list.length) { el.innerHTML = '<div class="empty">Inga anmälningar än.</div>'; return; }
+        if (!list.length) { el.innerHTML = '<div class="empty">Inga nya stödföretag just nu.</div>'; return; }
         el.innerHTML = list.map(function (c) {
           var date = new Date(c.receivedAt).toLocaleString("sv-SE", { dateStyle: "medium", timeStyle: "short" });
           return '<article class="app-card"><h3>' + esc(c.company) + ' <span class="badge">' + esc(c.niva) + "</span></h3>" +
@@ -150,10 +150,10 @@
       renderCompanies();
       document.getElementById("company-list").addEventListener("click", function (e) {
         var b = e.target.closest("[data-remove-company]");
-        if (!b || !window.confirm("Ta bort anmälan? Det går inte att ångra.")) return;
+        if (!b || !window.confirm("Ta bort företaget från listan? Det går inte att ångra.")) return;
         U.removeCompany(b.getAttribute("data-remove-company"));
         renderCompanies();
-        window.FCToast("Anmälan är borttagen.");
+        window.FCToast("Företaget är borttaget från listan.");
       });
 
       /* Just nu hos oss */
@@ -223,6 +223,6 @@
       });
     })();
   </script>
-  <script src="../assets/js/admin-paminnelse.js?v=202611211359"></script>
+  <script src="../assets/js/admin-paminnelse.js?v=202611211406"></script>
 </body>
 </html>
