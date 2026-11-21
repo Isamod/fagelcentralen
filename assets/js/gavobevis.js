@@ -56,6 +56,13 @@
       else { window.FCForm.showError(c[0], c[2]); if (!first) first = c[0]; }
     });
     if (first) { first.focus(); return; }
+    // Uppgifterna till PDF:en sparas bara i den här fliken – aldrig i adressen.
+    try {
+      window.sessionStorage.setItem("fc.gavobevis", JSON.stringify({
+        to: form.to.value.trim(), from: form.from.value.trim(), message: form.message.value.trim(),
+        motiv: (form.querySelector('input[name="motiv"]:checked') || {}).value || "rodhake", belopp: amount()
+      }));
+    } catch (err) { /* PDF-knappen visas då inte */ }
     // Prototyp: här skapas en Stripe-betalning. Beviset mejlas när betalningen är klar.
     window.location.href = "tack.html?typ=gavobevis&belopp=" + amount() +
       "&leverans=" + encodeURIComponent(form.leverans.value) + "&demo=1";

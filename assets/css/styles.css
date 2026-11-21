@@ -1231,3 +1231,4 @@ html { scroll-padding-top: 100px; }
 .quick-links { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; margin-top: 16px; font-size: .9rem; }
 .quick-links span { color: var(--muted); width: 100%; font-size: .85rem; }
 .quick-links a { font-weight: 600; text-underline-offset: 3px; }
+.gift-download { margin: 8px 0 20px; }

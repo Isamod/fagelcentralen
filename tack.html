@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/lora-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611211355">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611211359">
 </head>
 <body>
   <aside class="topbar" aria-label="Snabbkontakt">
@@ -54,6 +54,10 @@
           <h1 id="thanks-title">Tack!</h1>
           <p class="lead" id="thanks-lead">Din gåva hjälper skadade och sjuka vilda fåglar att få en andra chans.</p>
           <p class="small muted" id="thanks-receipt">Ett kvitto skickas till din e-post.</p>
+          <div class="gift-download" id="gift-download" hidden>
+            <button class="btn" type="button" id="gift-pdf">Ladda ner gåvobeviset (PDF, A4)</button>
+            <p class="tiny muted" style="margin:8px 0 0">Skriv ut och ge bort det själv – eller vänta på mejlet.</p>
+          </div>
           <p><button class="btn btn-outline" type="button" data-share="stod-oss.html" data-share-text="Jag har gett en gåva till Fågelcentralen som vårdar skadade vilda fåglar. Vill du också hjälpa till?">Tipsa en vän om Fågelcentralen</button></p>
 
           <div class="upsell" id="upsell" hidden>
@@ -116,9 +120,10 @@
     </div>
   </footer>
 
-  <script src="assets/js/nyheter.js?v=202611211355"></script>
-  <script src="assets/js/insamling.js?v=202611211355"></script>
-  <script src="assets/js/main.js?v=202611211355"></script>
-  <script src="assets/js/tack.js?v=202611211355"></script>
+  <script src="assets/js/nyheter.js?v=202611211359"></script>
+  <script src="assets/js/insamling.js?v=202611211359"></script>
+  <script src="assets/js/main.js?v=202611211359"></script>
+  <script src="assets/js/gavobevis-pdf.js?v=202611211359"></script>
+  <script src="assets/js/tack.js?v=202611211359"></script>
 </body>
 </html>
