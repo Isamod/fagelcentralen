@@ -15,6 +15,8 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | `minnesgava.html` | Minnesgåva |
 | `foretag.html` | Bli stödföretag (Talgoxe, Ormvråk, Havsörn, Kungsörn, Pilgrimsfalk) |
 | `gavobevis.html` | Digitalt gåvobevis med motiv, hälsning och förhandsvisning |
+| `integritetspolicy.html` | Integritetspolicy (föreningens egen text) |
+| `om-cookies.html` | Om cookies |
 | `onskelista.html` | Fåglarnas önskelista (material) |
 | `bli-fagelvan.html` | Skickar vidare till Stöd oss (finns kvar så att gamla länkar fungerar) |
 | `nyheter.html`, `nyhet.html` | Nyhetslista och enskild nyhet |
@@ -76,7 +78,7 @@ Sidhuvud och sidfot finns i varje HTML-fil. Ändras de behöver alla sidor uppda
 - **Gåvobevis:** bekräfta belopp (100/250/500 kr, minst 100 kr) och motiv. Att mejla beviset kräver betalning och e-post från en server (görs när backend kopplas in).
 - **Minnesgåva:** bekräfta att föreningen kan meddela anhöriga när någon mejlar om en minnesgåva.
 - **Texterna under månadsbeloppen** (vad 50/100/200 kr räcker till) behöver bekräftas av föreningen.
-- **Länkar som saknar mål (`href="#"`):** integritetspolicy, cookies och villkor.
+- **Länkar som saknar mål (`href="#"`):** villkoren för Fågelvän och gåvor.
 
 ## SEO
 

@@ -1152,3 +1152,20 @@ html { scroll-padding-top: 100px; }
   .hero-grid:not(.align-start) { align-items: stretch; }
   .hero-grid:not(.align-start) > .hero-image { aspect-ratio: auto; height: 100%; min-height: 380px; }
 }
+
+/* ---------- Integritetspolicy ---------- */
+
+.policy { display: grid; grid-template-columns: 260px 1fr; gap: 56px; align-items: start; margin-top: 40px; }
+.policy-toc { position: sticky; top: 110px; }
+.policy-toc ol { margin: 0; padding-left: 1.2em; font-size: .88rem; }
+.policy-toc li { margin-bottom: 8px; }
+.policy-toc a { text-decoration: none; }
+.policy-toc a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.policy-text { max-width: 720px; }
+.policy-text section + section { margin-top: 36px; }
+.policy-text h2 { font-size: 1.5rem; }
+.policy-text h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; margin: 20px 0 6px; }
+.policy-text p, .policy-text li { line-height: 1.7; }
+.policy-text ol { padding-left: 1.4em; }
+.policy-address { background: var(--card); border-radius: 10px; padding: 14px 18px; display: inline-block; }
+@media (max-width: 900px) { .policy { grid-template-columns: 1fr; gap: 24px; } .policy-toc { position: static; } }
