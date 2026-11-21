@@ -372,17 +372,47 @@
     section.hidden = false;
   });
 
-  /* ---------- Målmätare för Fågelvänner ---------- */
+  /* ---------- Målmätare för Fågelvänner ----------
+     Fylls efter kronor per månad. Etappmål: målet → buffert → tack.
+     Lovar aldrig att driften är "säkrad" – ingen vet hur många fåglar som kommer. */
   var goal = window.FCFagelvanMal;
   document.querySelectorAll("[data-goal-meter]").forEach(function (el) {
-    if (!goal) { el.hidden = true; return; }
-    var pct = Math.max(0, Math.min(100, Math.round(goal.antal / goal.mal * 100)));
-    var fmt = function (n) { return Number(n).toLocaleString("sv-SE"); };
-    el.innerHTML =
-      '<p class="goal-title">' + goal.rubrik + "</p>" +
-      '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + goal.mal +
-      '" aria-valuenow="' + goal.antal + '" aria-label="Antal Fågelvänner"><span style="width:' + pct + '%"></span></div>' +
-      '<p class="goal-count"><strong>' + fmt(goal.antal) + " av " + fmt(goal.mal) + "</strong> har gått med</p>" +
-      (goal.exempel ? '<p class="goal-note">Exempelsiffror – föreningen fyller i rätt mål och antal.</p>' : "");
+    if (!goal || !goal.malKrPerManad) { el.hidden = true; return; }
+    var kr = function (n) { return Number(n).toLocaleString("sv-SE") + " kr"; };
+    var have = Number(goal.insamlatKrPerManad) || 0;
+    var drift = Number(goal.malKrPerManad);
+    var buffer = Number(goal.buffertKrPerManad) || 0;
+    var note = goal.exempel ? '<p class="goal-note">Exempelsiffror – föreningen fyller i rätt mål och summa.</p>' : "";
+
+    function bar(target, label, marker) {
+      var pct = Math.max(0, Math.min(100, Math.round(have / target * 100)));
+      return '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + target +
+        '" aria-valuenow="' + Math.min(have, target) + '" aria-valuetext="' + kr(have) + " i månaden av " + kr(target) + '" aria-label="' + label + '">' +
+        '<span style="width:' + pct + '%"></span>' +
+        (marker ? '<i class="goal-marker" style="left:' + Math.round(marker / target * 100) + '%" aria-hidden="true"></i>' : "") +
+        "</div>";
+    }
+
+    var n = Number(goal.antal) || 0;
+    var together = n
+      ? "Tillsammans ger " + n.toLocaleString("sv-SE") + " Fågelvänner " + kr(have) + " i månaden"
+      : "Fågelvänner ger tillsammans " + kr(have) + " i månaden";
+
+    if (have < drift || !buffer) {
+      el.innerHTML =
+        '<p class="goal-title">' + together + "</p>" +
+        bar(drift, "Månadsgåvor från Fågelvänner mot målet") +
+        '<p class="goal-count">Målet är ' + kr(drift) + " – så att vi kan ta emot alla fåglar som behöver oss.</p>" + note;
+    } else if (have < buffer) {
+      el.innerHTML =
+        '<p class="goal-title">Vi nådde målet – tack!</p>' +
+        bar(buffer, "Månadsgåvor från Fågelvänner mot bufferten", drift) +
+        '<p class="goal-count">Nu bygger vi en buffert för år då fler fåglar behöver oss. ' + together + ".</p>" + note;
+    } else {
+      el.classList.add("goal-done");
+      el.innerHTML =
+        '<p class="goal-title">Tack, alla Fågelvänner!</p>' +
+        '<p class="goal-count">Fler Fågelvänner betyder att vi kan ta emot fler fåglar – hur många som än kommer. ' + together + ".</p>" + note;
+    }
   });
 })();

@@ -1178,3 +1178,7 @@ html { scroll-padding-top: 100px; }
 .empty-missions p { color: var(--muted); max-width: 36rem; margin: 0 auto 20px; }
 .perk-line { font-size: .88rem; font-weight: 600; margin: 0 0 12px; }
 .perk-line::before { content: "✓ "; content: "✓ " / ""; color: var(--green-900); }
+.goal-meter.goal-wide { max-width: none; margin: 0 0 20px; }
+.goal-people { color: var(--muted); }
+.goal-bar { position: relative; }
+.goal-marker { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--peach); outline: 1px solid var(--green-900); transform: translateX(-1px); }
