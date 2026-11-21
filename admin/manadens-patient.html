@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex">
   <title>Månadens patient – Administration – Fågelcentralen</title>
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211155">
-  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211155">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211158">
+  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211158">
 </head>
 <body class="admin">
   <header class="admin-header">
@@ -75,6 +75,16 @@
           <textarea id="mp-text" name="text" style="min-height:220px" required aria-describedby="mp-text-hint"></textarea>
           <p class="hint" id="mp-text-hint">Vad hände, hur går rehabiliteringen, och – om det blev så – utsläppet. Lämna en tom rad mellan stycken.</p>
         </div>
+        <fieldset class="mp-when">
+          <legend>När ska mejlet skickas?</legend>
+          <div class="switch-row" style="margin-bottom:8px"><input type="radio" name="when" id="mp-now" value="nu" checked><label for="mp-now">Direkt</label></div>
+          <div class="switch-row" style="margin-bottom:8px"><input type="radio" name="when" id="mp-later" value="senare"><label for="mp-later">Schemalägg</label></div>
+          <div class="field" id="mp-at-field" hidden>
+            <label for="mp-at">Datum och tid *</label>
+            <input id="mp-at" name="at" type="datetime-local" aria-describedby="mp-at-hint">
+            <p class="hint" id="mp-at-hint">Mejlet går till alla som är Fågelvänner med Månadens patient när det skickas.</p>
+          </div>
+        </fieldset>
         <div class="mp-actions">
           <button class="btn btn-light" type="button" id="mp-save">Spara utkast</button>
           <button class="btn btn-light" type="button" id="mp-test">Skicka testmejl till mig</button>
@@ -112,6 +122,11 @@
       <div id="sub-list"></div>
     </section>
 
+    <section class="admin-card" aria-labelledby="sched-heading" style="margin-top:24px">
+      <h2 class="editor-title" id="sched-heading" style="font-size:1.5rem">Schemalagda</h2>
+      <div id="sched-list"></div>
+    </section>
+
     <section class="admin-card" aria-labelledby="sent-heading" style="margin-top:24px">
       <h2 class="editor-title" id="sent-heading" style="font-size:1.5rem">Tidigare utskick</h2>
       <div id="sent-list"></div>
@@ -127,8 +142,8 @@
     </div>
   </dialog>
 
-  <script src="../assets/js/main.js?v=202611211155"></script>
-  <script src="../assets/js/nyheter.js?v=202611211155"></script>
-  <script src="../assets/js/admin-patient-mail.js?v=202611211155"></script>
+  <script src="../assets/js/main.js?v=202611211158"></script>
+  <script src="../assets/js/nyheter.js?v=202611211158"></script>
+  <script src="../assets/js/admin-patient-mail.js?v=202611211158"></script>
 </body>
 </html>

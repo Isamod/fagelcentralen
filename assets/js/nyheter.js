@@ -65,6 +65,7 @@
   var KEY_MP_DRAFT = "fc.mp.utkast.v1";
   var KEY_MP_SENT = "fc.mp.historik.v1";
   var KEY_MP_SUBS = "fc.mp.mottagare.v1";
+  var KEY_MP_SCHED = "fc.mp.schemalagda.v1";
   var DEFAULT_SUBS = [
     { id: "ex1", namn: "Exempel Andersson", email: "exempel1@exempel.se", sedan: "2026-03-12", example: true },
     { id: "ex2", namn: "Exempel Berg", email: "exempel2@exempel.se", sedan: "2026-05-02", example: true },
@@ -146,6 +147,18 @@
       issue.sentAt = new Date().toISOString();
       list.unshift(issue);
       return write(KEY_MP_SENT, list);
+    },
+    mpScheduled: function () {
+      return read(KEY_MP_SCHED, []).sort(function (a, b) { return a.sendAt.localeCompare(b.sendAt); });
+    },
+    addMpScheduled: function (issue) {
+      var list = read(KEY_MP_SCHED, []);
+      issue.id = "m" + Date.now().toString(36);
+      list.push(issue);
+      return write(KEY_MP_SCHED, list);
+    },
+    removeMpScheduled: function (id) {
+      write(KEY_MP_SCHED, read(KEY_MP_SCHED, []).filter(function (x) { return x.id !== id; }));
     },
     subscribers: function () { return read(KEY_MP_SUBS, clone(DEFAULT_SUBS)); },
     addSubscriber: function (sub) {
