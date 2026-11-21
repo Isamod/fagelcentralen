@@ -53,6 +53,8 @@
         '<td><div class="row-actions">' + actions + "</div></td></tr>";
     }).join("");
     updateCounts();
+    var none = document.getElementById("no-published");
+    if (none) none.hidden = list.some(function (m) { return m.status === "published"; });
   }
 
   function updateCounts() {
