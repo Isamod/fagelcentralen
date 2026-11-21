@@ -153,6 +153,11 @@
       });
     });
 
+    if (window.location.hash === "#en-gang") {
+      var onceTab = root.querySelector('[role="tab"][aria-controls="panel-once"]');
+      if (onceTab) setTimeout(function () { activate(onceTab); }, 0);
+    }
+
     panels.forEach(function (panel) {
       var radios = panel.querySelectorAll("input[type='radio']");
       var custom = panel.querySelector("input[data-custom-amount]");
