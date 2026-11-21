@@ -68,7 +68,7 @@ Sidhuvud och sidfot finns i varje HTML-fil. Ändras de behöver alla sidor uppda
 - **Betalning:** knapparna Fortsätt och Bli Fågelvän går i dag direkt till `tack.html` i demoläge. Koppla dem till Stripe Checkout med `tack.html?typ=engang|manad&belopp=…` som adress efter lyckad betalning, och ta bort `demo=1`.
 - **Målmätaren** visar exempelsiffror (87 av 300). Fyll i riktigt mål och antal i `assets/js/insamling.js` och sätt `exempel: false`.
 - **Så används din gåva:** lägg till procentsatser (`andel`) i `assets/js/insamling.js` när föreningen har siffror.
-- **Månadens patient** visar en exempeltext tills föreningen fyller i en riktig patient under Administration → Översikt.
+- **Just nu hos oss** (startsidan) visar en exempeltext tills föreningen fyller i en fågel under Administration → Översikt. Det är en kort smakbit – hela berättelsen, *Månadens patient*, mejlas bara till Fågelvänner.
 - **Stödföretag:** bekräfta nivåer, priser och förmåner. Lägg till stödföretag i `assets/js/insamling.js` (`stodforetag`) så visas de på startsidan och företagssidan – alla likadant, i bokstavsordning och utan nivå. Julgåvorutan visas bara i november och december.
 - **Gåvobevis:** bekräfta belopp (100/250/500 kr, minst 100 kr) och motiv. Att mejla beviset kräver betalning och e-post från en server (görs när backend kopplas in).
 - **Minnesgåva:** bekräfta att föreningen kan meddela anhöriga när någon mejlar om en minnesgåva.

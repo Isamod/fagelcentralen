@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex">
   <title>Översikt – Administration – Fågelcentralen</title>
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211131">
-  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211131">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=202611211135">
+  <link rel="stylesheet" href="../assets/css/admin.css?v=202611211135">
 </head>
 <body class="admin">
   <header class="admin-header">
@@ -56,8 +56,8 @@
     </section>
 
     <section class="admin-card" aria-labelledby="patient-heading" style="max-width:760px; margin-bottom:24px">
-      <h2 class="editor-title" id="patient-heading">Månadens patient</h2>
-      <p class="small muted">Visas på startsidan. Berätta kort om en fågel som kommit in – vad som hänt och hur det går. Folk ger hellre till en fågel än till ”verksamheten”.</p>
+      <h2 class="editor-title" id="patient-heading">Just nu hos oss</h2>
+      <p class="small muted">En kort smakbit på startsidan: en fågel som just nu får vård hos er, med bild och två–tre meningar. Spara hela berättelsen och uppföljningen till <strong>Månadens patient</strong>, mejlet som bara Fågelvänner får. Byt fågel när ni har tid – det behöver inte vara varje månad.</p>
       <form id="patient-form" novalidate>
         <div class="switch-row">
           <input type="checkbox" id="p-active" name="active">
@@ -75,8 +75,8 @@
         </div>
         <div class="field">
           <label for="p-text">Berättelse *</label>
-          <textarea id="p-text" name="text" maxlength="400" aria-describedby="p-text-hint"></textarea>
-          <p class="hint" id="p-text-hint">Två–fyra meningar. Högst 400 tecken.</p>
+          <textarea id="p-text" name="text" maxlength="300" aria-describedby="p-text-hint"></textarea>
+          <p class="hint" id="p-text-hint">Två–tre meningar. Högst 300 tecken.</p>
         </div>
         <div class="field">
           <label for="p-image">Bild</label>
@@ -119,9 +119,9 @@
     </section>
   </main>
 
-  <script src="../assets/js/main.js?v=202611211131"></script>
-  <script src="../assets/js/uppdrag.js?v=202611211131"></script>
-  <script src="../assets/js/nyheter.js?v=202611211131"></script>
+  <script src="../assets/js/main.js?v=202611211135"></script>
+  <script src="../assets/js/uppdrag.js?v=202611211135"></script>
+  <script src="../assets/js/nyheter.js?v=202611211135"></script>
   <script>
     (function () {
       var U = window.FCUppdrag, N = window.FCNyheter;
@@ -156,7 +156,7 @@
         window.FCToast("Anmälan är borttagen.");
       });
 
-      /* Månadens patient */
+      /* Just nu hos oss */
       var pf = document.getElementById("patient-form");
       var pat = N.patient();
       var pImg = pat.example ? "" : (pat.image || "");
@@ -200,7 +200,7 @@
         var ok = N.savePatient({ active: pf.active.checked, example: false, name: pf.name.value.trim(),
           species: pf.species.value.trim(), text: pf.text.value.trim(), image: pImg, imageAlt: pf.imageAlt.value.trim() });
         window.FCToast(ok === false ? "Kunde inte spara – prova en mindre bild." :
-          pf.active.checked ? "Månadens patient visas nu på startsidan." : "Patienten är sparad men visas inte.");
+          pf.active.checked ? "Fågeln visas nu på startsidan." : "Fågeln är sparad men visas inte.");
       });
 
       var form = document.getElementById("notice-form");

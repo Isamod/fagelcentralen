@@ -250,7 +250,8 @@
     });
   }
 
-  /* ---------- Månadens patient ---------- */
+  /* ---------- Just nu hos oss (startsidan) ----------
+     En kort smakbit. Hela berättelsen, Månadens patient, mejlas bara till Fågelvänner. */
   document.querySelectorAll("[data-patient]").forEach(function (el) {
     var p = window.FCNyheter && window.FCNyheter.patient();
     var section = el.closest("section") || el;
@@ -259,11 +260,12 @@
     el.innerHTML =
       (img ? '<div class="patient-media"><img loading="lazy" decoding="async" src="' + escHtml(img) + '" alt="' + escHtml(p.imageAlt) + '"></div>' : "") +
       '<div class="patient-body">' +
-        '<p class="eyebrow">Månadens patient' + (p.species ? " · " + escHtml(p.species) : "") + "</p>" +
+        '<p class="eyebrow">Just nu hos oss' + (p.species ? " · " + escHtml(p.species) : "") + "</p>" +
         "<h2>" + escHtml(p.name) + "</h2>" +
         '<p class="muted">' + escHtml(p.text) + "</p>" +
         (p.example ? '<p class="goal-note">Exempeltext – föreningen fyller i en riktig patient i administrationen.</p>' : "") +
-        '<div class="btn-group" style="margin-top:20px"><a class="btn" href="stod-oss.html">Hjälp nästa patient <span aria-hidden="true">→</span></a></div>' +
+        '<p class="patient-teaser">Vill du följa hela vägen tillbaka? Som Fågelvän får du <strong>Månadens patient</strong> i mejlet varje månad.</p>' +
+        '<div class="btn-group"><a class="btn" href="stod-oss.html">Bli Fågelvän <span aria-hidden="true">→</span></a></div>' +
       "</div>";
   });
 
