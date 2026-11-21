@@ -14,6 +14,7 @@ Webbplats för Fågelcentralen, byggd efter skisserna i Figma. Ren HTML, CSS och
 | `stod-oss.html` | Stöd oss: Bli Fågelvän (månadsgåva, förvald), engångsgåva, Swish, bankgiro, Månadens patient |
 | `minnesgava.html` | Minnesgåva |
 | `foretag.html` | Bli stödföretag (Talgoxe, Ormvråk, Havsörn, Kungsörn) |
+| `gavobevis.html` | Digitalt gåvobevis med motiv, hälsning och förhandsvisning |
 | `onskelista.html` | Fåglarnas önskelista (material) |
 | `bli-fagelvan.html` | Skickar vidare till Stöd oss (finns kvar så att gamla länkar fungerar) |
 | `nyheter.html`, `nyhet.html` | Nyhetslista och enskild nyhet |
@@ -66,7 +67,8 @@ Sidhuvud och sidfot finns i varje HTML-fil. Ändras de behöver alla sidor uppda
 - **Målmätaren** visar exempelsiffror (87 av 300). Fyll i riktigt mål och antal i `assets/js/insamling.js` och sätt `exempel: false`.
 - **Så används din gåva:** lägg till procentsatser (`andel`) i `assets/js/insamling.js` när föreningen har siffror.
 - **Månadens patient** visar en exempeltext tills föreningen fyller i en riktig patient under Administration → Översikt.
-- **Stödföretag:** bekräfta nivåer, priser och förmåner. Lägg till stödföretag i `assets/js/insamling.js` (`stodforetag`) så visas de på företagssidan. Julgåvorutan visas bara i november och december.
+- **Stödföretag:** bekräfta nivåer, priser och förmåner. Lägg till stödföretag i `assets/js/insamling.js` (`stodforetag`) så visas de på startsidan och företagssidan – alla likadant, i bokstavsordning och utan nivå. Julgåvorutan visas bara i november och december.
+- **Gåvobevis:** bekräfta belopp (100/250/500 kr, minst 100 kr) och motiv. Att mejla beviset kräver betalning och e-post från en server (görs när backend kopplas in).
 - **Minnesgåva:** bekräfta att föreningen kan meddela anhöriga när någon mejlar om en minnesgåva.
 - **Texterna under månadsbeloppen** (vad 50/100/200 kr räcker till) behöver bekräftas av föreningen.
 - **Länkar som saknar mål (`href="#"`):** integritetspolicy, cookies och villkor.

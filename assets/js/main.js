@@ -307,8 +307,10 @@
 
   /* Stödföretag från assets/js/insamling.js */
   document.querySelectorAll("[data-supporters]").forEach(function (section) {
-  var level = section.getAttribute("data-supporter-level");
-  var data = ((window.FCInsamling && window.FCInsamling.stodforetag) || []).filter(function (c) { return !level || c.niva === level; });
+  /* Alla stödföretag visas likadant, i bokstavsordning och utan nivå. */
+  var data = ((window.FCInsamling && window.FCInsamling.stodforetag) || []).slice().sort(function (a, b) {
+    return String(a.namn).localeCompare(String(b.namn), "sv");
+  });
   var list = section.querySelector("[data-supporter-list]");
   if (list && data.length) {
     data.forEach(function (c) {
@@ -323,11 +325,6 @@
         inner.textContent = c.namn;
       }
       li.appendChild(inner);
-      if (c.niva) {
-        var tag = document.createElement("small");
-        tag.textContent = c.niva;
-        li.appendChild(tag);
-      }
       list.appendChild(li);
     });
     section.hidden = false;

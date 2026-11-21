@@ -1065,3 +1065,35 @@ html { scroll-padding-top: 100px; }
 .supporter-list small { font-weight: 400; color: var(--muted); font-size: .78rem; }
 @media (max-width: 1000px) { .tier-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .tier-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Gåvobevis ---------- */
+
+.gift-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: start; margin-top: 36px; }
+.gift-step { border: 0; padding: 0; margin: 0 0 26px; }
+.gift-step legend { font-weight: 600; font-size: .95rem; margin-bottom: 12px; padding: 0; }
+.motif-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.motif-option { position: relative; }
+.motif-option input { position: absolute; opacity: 0; pointer-events: none; }
+.motif-option label { display: block; border: 2px solid transparent; border-radius: 10px; overflow: hidden; cursor: pointer; background: var(--card); }
+.motif-option img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+.motif-option span { display: block; text-align: center; font-size: .85rem; font-weight: 500; padding: 6px; }
+.motif-option input:checked + label { border-color: var(--green-900); }
+.motif-option input:checked + label span { font-weight: 700; }
+.motif-option input:focus-visible + label { outline: 3px solid var(--green-900); outline-offset: 3px; }
+.choice-row { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+.choice-row input { margin-top: 4px; accent-color: var(--green-900); width: 18px; height: 18px; flex: none; }
+.choice-row label { font-size: .92rem; }
+.gift-preview-wrap { position: sticky; top: 110px; }
+.gift-card { margin: 0; background: var(--white); border-radius: var(--arch); overflow: hidden; box-shadow: 0 12px 40px rgba(22, 63, 53, .12); }
+.gift-card > img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+.gift-card-body { padding: 26px 30px 28px; text-align: center; }
+.gift-card-label { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 8px; }
+.gift-card-to { font-family: var(--serif); font-size: 1.7rem; color: var(--green-900); margin: 0 0 12px; overflow-wrap: anywhere; }
+.gift-card-msg { font-family: var(--serif); font-style: italic; color: var(--text); margin: 0 0 16px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.gift-card-amount { font-size: .88rem; color: var(--muted); margin: 0 0 12px; }
+.gift-card-from { font-weight: 600; margin: 0 0 18px; overflow-wrap: anywhere; }
+.gift-card-logo { display: inline-flex; align-items: center; gap: 8px; font-family: var(--serif); font-size: 1rem; color: var(--green-900); margin: 0; }
+@media (max-width: 900px) {
+  .gift-grid { grid-template-columns: 1fr; }
+  .gift-preview-wrap { position: static; }
+}
