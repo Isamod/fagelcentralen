@@ -66,7 +66,7 @@ Sidhuvud och sidfot finns i varje HTML-fil. Ändras de behöver alla sidor uppda
 - **Målmätaren** visar exempelsiffror (87 av 300). Fyll i riktigt mål och antal i `assets/js/insamling.js` och sätt `exempel: false`.
 - **Så används din gåva:** lägg till procentsatser (`andel`) i `assets/js/insamling.js` när föreningen har siffror.
 - **Månadens patient** visar en exempeltext tills föreningen fyller i en riktig patient under Administration → Översikt.
-- **Stödföretag:** bekräfta nivåer, priser och förmåner. Lägg till stödföretag i `assets/js/insamling.js` (`stodforetag`) så visas de på företagssidan. Julgåvorutan visas bara i november och december.
+- **Stödföretag:** bekräfta nivåer, priser och förmåner. Lägg till stödföretag i `assets/js/insamling.js` (`stodforetag`) så visas de på startsidan och företagssidan – alla likadant, i bokstavsordning och utan nivå. Julgåvorutan visas bara i november och december.
 - **Minnesgåva:** bekräfta att föreningen kan meddela anhöriga när någon mejlar om en minnesgåva.
 - **Texterna under månadsbeloppen** (vad 50/100/200 kr räcker till) behöver bekräftas av föreningen.
 - **Länkar som saknar mål (`href="#"`):** integritetspolicy, cookies och villkor.

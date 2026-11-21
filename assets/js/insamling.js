@@ -21,8 +21,10 @@ window.FCInsamling = {
     { rubrik: "Voljärer och drift", text: "Uppvärmning, el och underhåll av rehabiliteringsvoljärerna.", andel: null }
   ],
 
-  /* Stödföretag som visas på företagssidan, t.ex.
+  /* Stödföretag. Visas likadant på startsidan och företagssidan, i
+     bokstavsordning. Nivån är bara för föreningens egen koll och visas inte.
+     Exempel:
      { namn: "Exempel AB", niva: "Havsörn", logga: "assets/img/stodforetag/exempel.png", lank: "https://exempel.se" }
-     Tom lista = sektionen visas inte. */
+     Tom lista = sektionerna visas inte. */
   stodforetag: []
 };
