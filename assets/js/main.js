@@ -382,36 +382,37 @@
     var have = Number(goal.insamlatKrPerManad) || 0;
     var drift = Number(goal.malKrPerManad);
     var buffer = Number(goal.buffertKrPerManad) || 0;
-    var people = goal.antal ? ' <span class="goal-people">· ' + Number(goal.antal).toLocaleString("sv-SE") + " Fågelvänner är med</span>" : "";
     var note = goal.exempel ? '<p class="goal-note">Exempelsiffror – föreningen fyller i rätt mål och summa.</p>' : "";
-    var ar = escHtml(goal.ar);
 
     function bar(target, label, marker) {
       var pct = Math.max(0, Math.min(100, Math.round(have / target * 100)));
       return '<div class="goal-bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + target +
-        '" aria-valuenow="' + Math.min(have, target) + '" aria-valuetext="' + kr(have) + " av " + kr(target) + ' i månaden" aria-label="' + label + '">' +
+        '" aria-valuenow="' + Math.min(have, target) + '" aria-valuetext="' + kr(have) + " i månaden av " + kr(target) + '" aria-label="' + label + '">' +
         '<span style="width:' + pct + '%"></span>' +
         (marker ? '<i class="goal-marker" style="left:' + Math.round(marker / target * 100) + '%" aria-hidden="true"></i>' : "") +
         "</div>";
     }
 
+    var n = Number(goal.antal) || 0;
+    var together = n
+      ? "Tillsammans ger " + n.toLocaleString("sv-SE") + " Fågelvänner " + kr(have) + " i månaden"
+      : "Fågelvänner ger tillsammans " + kr(have) + " i månaden";
+
     if (have < drift || !buffer) {
       el.innerHTML =
-        '<p class="goal-title">Vårt mål för ' + ar + ": " + kr(drift) + " i månaden från Fågelvänner</p>" +
-        bar(drift, "Månadsgåvor från Fågelvänner") +
-        '<p class="goal-count"><strong>' + kr(have) + "</strong> av " + kr(drift) + " i månaden" + people + "</p>" +
-        '<p class="goal-note">Målet bygger på ett normalår – kommer det fler fåglar behövs mer.</p>' + note;
+        '<p class="goal-title">' + together + "</p>" +
+        bar(drift, "Månadsgåvor från Fågelvänner mot målet") +
+        '<p class="goal-count">Målet är ' + kr(drift) + " – så att vi kan ta emot alla fåglar som behöver oss.</p>" + note;
     } else if (have < buffer) {
       el.innerHTML =
-        '<p class="goal-title">Vi har nått målet – tack! Nu bygger vi en buffert för år med många fåglar</p>' +
-        bar(buffer, "Månadsgåvor mot bufferten", drift) +
-        '<p class="goal-count"><strong>' + kr(have) + "</strong> av " + kr(buffer) + " i månaden" + people + "</p>" +
-        '<p class="goal-note">Strecket visar målet (' + kr(drift) + ").</p>" + note;
+        '<p class="goal-title">Vi nådde målet – tack!</p>' +
+        bar(buffer, "Månadsgåvor från Fågelvänner mot bufferten", drift) +
+        '<p class="goal-count">Nu bygger vi en buffert för år då fler fåglar behöver oss. ' + together + ".</p>" + note;
     } else {
       el.classList.add("goal-done");
       el.innerHTML =
-        '<p class="goal-title">Tack! Vi har nått både målet och bufferten.</p>' +
-        '<p class="goal-count">Ingen vet hur många fåglar nästa år för med sig – varje ny Fågelvän gör oss bättre rustade.' + people + "</p>" + note;
+        '<p class="goal-title">Tack, alla Fågelvänner!</p>' +
+        '<p class="goal-count">Fler Fågelvänner betyder att vi kan ta emot fler fåglar – hur många som än kommer. ' + together + ".</p>" + note;
     }
   });
 })();
